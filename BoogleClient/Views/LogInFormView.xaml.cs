@@ -16,14 +16,18 @@ using System.Windows.Shapes;
 namespace BoogleClient.Views
 {
     /// <summary>
-    /// Interaction logic for View_LogIn.xaml
+    /// Interaction logic for LogInFormView.xaml
     /// </summary>
-    public partial class LogInView : UserControl
+    public partial class LogInFormView : UserControl
     {
-
-        public LogInView()
+        public LogInFormView()
         {
             InitializeComponent();
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+
         }
     }
 }

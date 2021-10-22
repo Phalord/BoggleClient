@@ -16,12 +16,11 @@ using System.Windows.Shapes;
 namespace BoogleClient.Views
 {
     /// <summary>
-    /// Interaction logic for View_LogIn.xaml
+    /// Interaction logic for RegisterFormView.xaml
     /// </summary>
-    public partial class LogInView : UserControl
+    public partial class RegisterFormView : UserControl
     {
-
-        public LogInView()
+        public RegisterFormView()
         {
             InitializeComponent();
         }

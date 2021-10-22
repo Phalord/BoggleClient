@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BoogleClient"
         xmlns:viewModel="clr-namespace:BoogleClient.ViewModel"
         mc:Ignorable="d" Background="{StaticResource BlackBrush}"
-        Title="Boggle Client" Height="585" Width="1040" ResizeMode="NoResize">
+        Title="Boggle Client" Height="620" Width="1040" ResizeMode="NoResize">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
