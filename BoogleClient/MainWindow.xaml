@@ -4,9 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoogleClient"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:viewModel="clr-namespace:BoogleClient.ViewModel"
+        mc:Ignorable="d" Background="{StaticResource BlackBrush}"
+        Title="Boggle Client" Height="585" Width="1040" ResizeMode="NoResize">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    
     <Grid>
-        
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

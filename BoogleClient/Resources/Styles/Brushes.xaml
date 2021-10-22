@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush 
+        x:Key="PrimaryBrush"
+        Color="{DynamicResource PrimaryColor}"/>
+    <SolidColorBrush 
+        x:Key="PrimaryLightBrush"
+        Color="{DynamicResource PrimaryLightColor}"/>
+    <SolidColorBrush 
+        x:Key="PrimaryDarkBrush"
+        Color="{DynamicResource PrimaryDarkColor}"/>
+    <SolidColorBrush 
+        x:Key="SecondaryBrush"
+        Color="{DynamicResource SecondaryColor}"/>
+    <SolidColorBrush 
+        x:Key="SecondaryLightBrush"
+        Color="{DynamicResource SecondaryLightColor}"/>
+    <SolidColorBrush 
+        x:Key="SecondaryDarkBrush"
+        Color="{DynamicResource SecondaryDarkColor}"/>
+    <SolidColorBrush 
+        x:Key="PositiveBrush"
+        Color="{DynamicResource BogglePositive}"/>
+    <SolidColorBrush 
+        x:Key="WarningBrush"
+        Color="{DynamicResource BoggleWarning}"/>
+    <SolidColorBrush 
+        x:Key="NegativeBrush"
+        Color="{DynamicResource BoggleNegative}"/>
+    <SolidColorBrush 
+        x:Key="InformativeBrush"
+        Color="{DynamicResource BoggleInformative}"/>
+    <SolidColorBrush 
+        x:Key="BlackBrush"
+        Color="{DynamicResource BoggleBlack}"/>
+    <SolidColorBrush 
+        x:Key="WhiteBrush"
+        Color="{DynamicResource BoggleWhite}"/>
+</ResourceDictionary>
+    
+    
+    <!--  
+        
+    <Color x:Key="BoggleOrange">#FF4500</Color>
+    
+    <Color x:Key="BoggleOrangeLight">#ffb195</Color>
+    <Color x:Key="BoggleOrangeDark">#782000</Color>
+    <Color x:Key="BogglePurple">#612AF7</Color>
+    <Color x:Key="BogglePurpleLight">#B69FF5</Color>
+    <Color x:Key="BogglePurpleDark">#1F085E</Color>
+    <Color x:Key="BogglePositive">#55FF55</Color>
+    <Color x:Key="BoggleWarning">#FFFF00</Color>
+    <Color x:Key="BoggleNegative">#FF0505</Color>
+    <Color x:Key="BoggleInformative">#0055FF</Color>
+    <Color x:Key="BoggleBlack">#131313</Color>
+    <Color x:Key="BoggleWhite">#FCFCFC</Color>
+
+    -->

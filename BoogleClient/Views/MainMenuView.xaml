@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="BoogleClient.Views.MainMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:BoogleClient.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="585" d:DesignWidth="1040">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="{StaticResource PrimaryBrush}">
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center">
+                <Button
+                    Content="PROFILE"
+                    Style="{StaticResource TextButton}"
+                    Height="70"
+                    Width="180"/>
+                <Button 
+                    Content="LEADERBOARD"
+                    Style="{StaticResource TextButton}"
+                    Height="70"
+                    Width="180"/>
+                <Button 
+                    Content="PLAY"
+                    Style="{StaticResource TextButton}"
+                    Background="{StaticResource SecondaryDarkBrush}"
+                    Height="70"
+                    Width="180"/>
+                <Button
+                    Content="SOCIALS"
+                    Style="{StaticResource TextButton}"
+                    Height="70"
+                    Width="180"/>
+                <Button
+                    Content="SETTINGS"
+                    Style="{StaticResource TextButton}"
+                    Height="70"
+                    Width="180"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="{StaticResource WhiteBrush}">
+            <ContentControl></ContentControl>
+        </Grid>
+    </Grid>
+</UserControl>
