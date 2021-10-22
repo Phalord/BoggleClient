@@ -3,20 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:p="clr-namespace:BoogleClient.Properties"
              xmlns:local="clr-namespace:BoogleClient.Views"
              mc:Ignorable="d" 
              d:DesignHeight="585" d:DesignWidth="300">
     <Grid>
         <StackPanel Grid.Column="0" Background="{StaticResource WhiteBrush}">
             <Label 
-                Content="Create account"
+                Content="{x:Static p:Resources.createAccount}"
                 Margin="0,50,0,30"
                 HorizontalAlignment="Center"
                 FontSize="30"
-                FontWeight="Bold"/>
+                FontWeight="Bold"
+                Typography.Capitals="AllSmallCaps"/>
             <StackPanel>
                 <Label
-                    Content="Email" 
+                    Content="{x:Static p:Resources.email}" 
                     FontSize="13"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"
@@ -26,9 +28,9 @@
                     Width="200"
                     HorizontalAlignment="Center"/>
             </StackPanel>
-            <StackPanel>
+            <StackPanel Margin="0,10,0,0">
                 <Label
-                    Content="Username" 
+                    Content="{x:Static p:Resources.username}" 
                     FontSize="13"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"
@@ -40,7 +42,7 @@
             </StackPanel>
             <StackPanel Margin="0,10,0,0">
                 <Label 
-                    Content="Password" 
+                    Content="{x:Static p:Resources.password}" 
                     FontSize="13"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"
@@ -55,7 +57,7 @@
             </StackPanel>
             <StackPanel Margin="0,10,0,40">
                 <Label 
-                    Content="Comfirm Password" 
+                    Content="{x:Static p:Resources.confirmPassword}" 
                     FontSize="13"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"
@@ -69,13 +71,13 @@
                     HorizontalAlignment="Center"/>
             </StackPanel>
             <Button 
-                Content="Create Account"
+                Content="{x:Static p:Resources.createAccount}"
                 Style="{StaticResource ContainedButton}"
                 Width="200"
                 Height="30"
                 HorizontalAlignment="Center"/>
             <Button
-                Content="Log In"
+                Content="{x:Static p:Resources.logIn}"
                 Style="{StaticResource OutlinedButton}"
                 Width="200"
                 Height="30"

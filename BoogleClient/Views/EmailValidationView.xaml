@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="BoogleClient.Views.LogInFormView"
+﻿<UserControl x:Class="BoogleClient.Views.EmailValidationView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,14 +13,21 @@
                 Source="/Resources/Icons/Boggle_Logo.png"
                 Width="70" Margin="0,40,0,0"/>
             <Label 
-                Content="{x:Static p:Resources.logIn}"
+                Content="{x:Static p:Resources.validateEmail}"
                 Margin="0,35"
                 HorizontalAlignment="Center"
                 FontSize="30"
-                FontWeight="Bold"/>
-            <StackPanel>
+                FontWeight="Bold"
+                Typography.Capitals="AllSmallCaps"/>
+            <TextBlock Text="{x:Static p:Resources.codeSentMessage}"
+                       TextWrapping="Wrap"
+                       FontSize="15"
+                       FontWeight="DemiBold"
+                       Margin="40,0"
+                       TextAlignment="Center"/>
+            <StackPanel Margin="0,25">
                 <Label
-                    Content="{x:Static p:Resources.username}" 
+                    Content="{x:Static p:Resources.code}" 
                     FontSize="13"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"
@@ -30,40 +37,18 @@
                     Width="200"
                     HorizontalAlignment="Center"/>
             </StackPanel>
-            <StackPanel Margin="0,10,0,25">
-                <Label 
-                    Content="{x:Static p:Resources.password}" 
-                    FontSize="13"
-                    FontWeight="DemiBold"
-                    HorizontalAlignment="Left"
-                    Margin="50,0,0,0"/>
-                <PasswordBox
-                    Style="{StaticResource UnderlinedPasswordBox}"
-                    FontSize="15"
-                    BorderBrush="{StaticResource PrimaryLightBrush}"
-                    Width="200"
-                    VerticalContentAlignment="Center"
-                    HorizontalAlignment="Center"/>
-            </StackPanel>
             <Button 
-                Content="{x:Static p:Resources.logIn}"
+                Content="{x:Static p:Resources.validateEmail}"
                 Style="{StaticResource ContainedButton}"
                 Width="200"
                 Height="30"
-                HorizontalAlignment="Center"/>
-            <Button
-                Content="{x:Static p:Resources.createAccount}"
-                Style="{StaticResource OutlinedButton}"
-                Width="200"
-                Height="30"
-                Margin="0,10,0,0"
                 HorizontalAlignment="Center"/>
             <Label HorizontalAlignment="Center">
                 <Hyperlink
                     NavigateUri="https://google.com"
                     TextDecorations="None"
                     RequestNavigate="Hyperlink_RequestNavigate">
-                    <Label Content="{x:Static p:Resources.forgotPassword}"
+                    <Label Content="{x:Static p:Resources.changeEmail}"
                            Foreground="{StaticResource SecondaryBrush}"/>
                 </Hyperlink>
             </Label>

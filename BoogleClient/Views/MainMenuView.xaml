@@ -6,6 +6,7 @@
              xmlns:viewModel="clr-namespace:BoogleClient.ViewModel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:BoogleClient.Views"
+             xmlns:p="clr-namespace:BoogleClient.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="585" d:DesignWidth="1040">
 
@@ -24,28 +25,30 @@
                 Orientation="Horizontal"
                 HorizontalAlignment="Center">
                 <Button
-                    Content="PROFILE"
+                    Content="{x:Static p:Resources.profile}"
                     Style="{StaticResource TextButton}"
                     Height="70"
                     Width="180"/>
                 <Button 
-                    Content="LEADERBOARD"
+                    Content="{x:Static p:Resources.leaderboard}"
                     Style="{StaticResource TextButton}"
                     Height="70"
                     Width="180"/>
                 <Button 
-                    Content="PLAY"
+                    Content="{x:Static p:Resources.play}"
                     Style="{StaticResource TextButton}"
                     Background="{StaticResource SecondaryDarkBrush}"
                     Height="70"
+                    FontSize="50"
+                    Padding="0,0,0,10"
                     Width="180"/>
                 <Button
-                    Content="SOCIALS"
+                    Content="{x:Static p:Resources.socials}"
                     Style="{StaticResource TextButton}"
                     Height="70"
                     Width="180"/>
                 <Button
-                    Content="SETTINGS"
+                    Content="{x:Static p:Resources.settings}"
                     Style="{StaticResource TextButton}"
                     Height="70"
                     Width="180"/>

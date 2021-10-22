@@ -10,8 +10,8 @@ namespace BoogleClient.ViewModel
     {
         public MainViewModel()
         {
-            //CurrentViewModel = new LogInViewModel();
-            CurrentViewModel = new MainMenuViewModel();
+            CurrentViewModel = new LogInViewModel();
+            //CurrentViewModel = new MainMenuViewModel();
         }
 
         public BaseViewModel CurrentViewModel { get; set; }

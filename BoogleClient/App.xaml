@@ -34,6 +34,9 @@
             <DataTemplate DataType="{x:Type viewModel:PlayOptionsViewModel}">
                 <view:PlayOptionsView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:EmailValidationViewModel}">
+                <view:EmailValidationView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

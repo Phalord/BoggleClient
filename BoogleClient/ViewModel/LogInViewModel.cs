@@ -5,7 +5,8 @@
         public LogInViewModel()
         {
             //CurrentFormView = new LogInFormViewModel();
-            CurrentFormView = new RegisterFormViewModel();
+            //CurrentFormView = new RegisterFormViewModel();
+            CurrentFormView = new EmailValidationViewModel();
         }
 
         public BaseViewModel CurrentFormView { get; set; }
@@ -18,6 +19,11 @@
     }
 
     internal partial class RegisterFormViewModel : BaseViewModel
+    {
+
+    }
+
+    internal partial class EmailValidationViewModel : BaseViewModel
     {
 
     }

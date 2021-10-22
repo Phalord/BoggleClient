@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BoogleClient.Views"
+             xmlns:p="clr-namespace:BoogleClient.Properties"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="515" d:DesignWidth="1040">
@@ -30,9 +31,10 @@
                 <Label 
                     Width="250"
                     Height="60"
-                    Content="CREATE LOBBY"
-                    FontSize="20"
+                    Content="{x:Static p:Resources.createLobby}"
+                    FontSize="22"
                     FontWeight="Bold"
+                    Typography.Capitals="AllSmallCaps"
                     Foreground="{StaticResource BlackBrush}"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
@@ -53,9 +55,10 @@
                 <Label 
                     Width="250"
                     Height="60"
-                    Content="SEARCH PUBLIC LOBBY"
-                    FontSize="20"
+                    Content="{x:Static p:Resources.searchPublicLobby}"
+                    FontSize="22"
                     FontWeight="Bold"
+                    Typography.Capitals="AllSmallCaps"
                     Foreground="{StaticResource WhiteBrush}"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"

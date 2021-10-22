@@ -28,6 +28,8 @@
         TargetType="Button" 
         x:Key="TextButton" 
         BasedOn="{StaticResource MaterialDesignFlatButton}">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -35,8 +37,11 @@
                         x:Name="_TextButton"
                         Content="{TemplateBinding Content}"
                         Style="{StaticResource MaterialDesignFlatButton}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Padding="{TemplateBinding Padding}"
                         BorderThickness="0"
-                        FontSize="20"
+                        FontSize="{TemplateBinding FontSize}"
+                        Typography.Capitals="AllSmallCaps"
                         Height="{TemplateBinding Height}"
                         Width="{TemplateBinding Width}"
                         Foreground="{StaticResource WhiteBrush}"
