@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BoogleClient.ViewModel
 {
-    class MainViewModel : BaseViewModel
+    internal class MainViewModel : BaseViewModel
     {
         public MainViewModel()
         {
-            CurrentViewModel = new LogInViewModel();
-            //CurrentViewModel = new MainMenuViewModel();
+            //CurrentViewModel = new LogInViewModel();
+            CurrentViewModel = new MainMenuViewModel();
         }
 
         public BaseViewModel CurrentViewModel { get; set; }

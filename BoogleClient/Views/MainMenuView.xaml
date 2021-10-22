@@ -3,10 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModel="clr-namespace:BoogleClient.ViewModel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:BoogleClient.Views"
              mc:Ignorable="d" 
              d:DesignHeight="585" d:DesignWidth="1040">
+
+    <UserControl.DataContext>
+        <viewModel:MainMenuViewModel/>
+    </UserControl.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
@@ -47,7 +53,7 @@
         </Grid>
 
         <Grid Grid.Row="1" Background="{StaticResource WhiteBrush}">
-            <ContentControl></ContentControl>
+            <ContentControl Content="{Binding CurrentMenuSelected}"/>
         </Grid>
     </Grid>
 </UserControl>

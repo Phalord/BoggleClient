@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoogleClient.ViewModel
 {
-    class BaseViewModel
+    internal class BaseViewModel
     {
     }
 }

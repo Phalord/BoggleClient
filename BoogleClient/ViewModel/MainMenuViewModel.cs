@@ -1,6 +1,13 @@
 ﻿namespace BoogleClient.ViewModel
 {
-    class MainMenuViewModel : BaseViewModel
+    internal partial class MainMenuViewModel : BaseViewModel
     {
+        public MainMenuViewModel()
+        {
+            CurrentMenuSelected = new PlayOptionsViewModel();
+        }
+
+        public BaseViewModel CurrentMenuSelected { get; set; }
+
     }
 }
