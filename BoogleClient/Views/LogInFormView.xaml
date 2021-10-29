@@ -14,10 +14,9 @@
                 Width="70" Margin="0,40,0,0"/>
             <Label 
                 Content="{x:Static p:Resources.logIn}"
+                Style="{StaticResource TitleText}"
                 Margin="0,35"
-                HorizontalAlignment="Center"
-                FontSize="30"
-                FontWeight="Bold"/>
+                HorizontalAlignment="Center"/>
             <StackPanel>
                 <Label
                     Content="{x:Static p:Resources.username}" 
@@ -26,6 +25,7 @@
                     HorizontalAlignment="Left"
                     Margin="50,0,0,0"/>
                 <TextBox
+                    x:Name="usernameTextBox"
                     Style="{StaticResource UnderlinedTextBox}"
                     Width="200"
                     HorizontalAlignment="Center"/>
@@ -38,7 +38,7 @@
                     HorizontalAlignment="Left"
                     Margin="50,0,0,0"/>
                 <PasswordBox
-                    Style="{StaticResource UnderlinedPasswordBox}"
+                    x:Name="passwordTextBox"
                     FontSize="15"
                     BorderBrush="{StaticResource PrimaryLightBrush}"
                     Width="200"
@@ -48,6 +48,7 @@
             <Button 
                 Content="{x:Static p:Resources.logIn}"
                 Style="{StaticResource ContainedButton}"
+                Click="Button_Click"
                 Width="200"
                 Height="30"
                 HorizontalAlignment="Center"/>

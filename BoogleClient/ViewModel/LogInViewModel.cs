@@ -4,9 +4,9 @@
     {
         public LogInViewModel()
         {
-            //CurrentFormView = new LogInFormViewModel();
+            CurrentFormView = new LogInFormViewModel();
             //CurrentFormView = new RegisterFormViewModel();
-            CurrentFormView = new EmailValidationViewModel();
+            //CurrentFormView = new EmailValidationViewModel();
         }
 
         public BaseViewModel CurrentFormView { get; set; }

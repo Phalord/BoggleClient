@@ -37,22 +37,3 @@
         x:Key="WhiteBrush"
         Color="{DynamicResource BoggleWhite}"/>
 </ResourceDictionary>
-    
-    
-    <!--  
-        
-    <Color x:Key="BoggleOrange">#FF4500</Color>
-    
-    <Color x:Key="BoggleOrangeLight">#ffb195</Color>
-    <Color x:Key="BoggleOrangeDark">#782000</Color>
-    <Color x:Key="BogglePurple">#612AF7</Color>
-    <Color x:Key="BogglePurpleLight">#B69FF5</Color>
-    <Color x:Key="BogglePurpleDark">#1F085E</Color>
-    <Color x:Key="BogglePositive">#55FF55</Color>
-    <Color x:Key="BoggleWarning">#FFFF00</Color>
-    <Color x:Key="BoggleNegative">#FF0505</Color>
-    <Color x:Key="BoggleInformative">#0055FF</Color>
-    <Color x:Key="BoggleBlack">#131313</Color>
-    <Color x:Key="BoggleWhite">#FCFCFC</Color>
-
-    -->

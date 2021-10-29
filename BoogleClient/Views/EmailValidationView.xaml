@@ -14,11 +14,9 @@
                 Width="70" Margin="0,40,0,0"/>
             <Label 
                 Content="{x:Static p:Resources.validateEmail}"
+                Style="{StaticResource TitleText}"
                 Margin="0,35"
-                HorizontalAlignment="Center"
-                FontSize="30"
-                FontWeight="Bold"
-                Typography.Capitals="AllSmallCaps"/>
+                HorizontalAlignment="Center"/>
             <TextBlock Text="{x:Static p:Resources.codeSentMessage}"
                        TextWrapping="Wrap"
                        FontSize="15"

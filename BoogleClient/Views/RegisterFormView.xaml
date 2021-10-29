@@ -11,11 +11,9 @@
         <StackPanel Grid.Column="0" Background="{StaticResource WhiteBrush}">
             <Label 
                 Content="{x:Static p:Resources.createAccount}"
+                Style="{StaticResource TitleText}"
                 Margin="0,50,0,30"
-                HorizontalAlignment="Center"
-                FontSize="30"
-                FontWeight="Bold"
-                Typography.Capitals="AllSmallCaps"/>
+                HorizontalAlignment="Center"/>
             <StackPanel>
                 <Label
                     Content="{x:Static p:Resources.email}" 
@@ -48,7 +46,6 @@
                     HorizontalAlignment="Left"
                     Margin="50,0,0,0"/>
                 <PasswordBox
-                    Style="{StaticResource UnderlinedPasswordBox}"
                     FontSize="15"
                     BorderBrush="{StaticResource PrimaryLightBrush}"
                     Width="200"
@@ -63,7 +60,6 @@
                     HorizontalAlignment="Left"
                     Margin="50,0,0,0"/>
                 <PasswordBox
-                    Style="{StaticResource UnderlinedPasswordBox}"
                     FontSize="15"
                     BorderBrush="{StaticResource PrimaryLightBrush}"
                     Width="200"
