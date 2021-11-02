@@ -1,4 +1,5 @@
 ﻿using BoogleClient.Commands;
+using BoogleClient.Services;
 using BoogleClient.Stores;
 using System;
 using System.Windows.Input;
@@ -7,15 +8,21 @@ namespace BoogleClient.ViewModel
 {
     internal partial class LogInViewModel : BaseViewModel
     {
-        NavigationStore LogInNavigationStore;
+        private readonly NavigationService navigationService;
+        private readonly NavigationStore logInNavigationStore;
 
-        public LogInViewModel(NavigationStore navigationStore)
+        public LogInViewModel(NavigationService navigationService)
         {
-            LogInNavigationStore = new NavigationStore();
-            LogInNavigationStore.CurrentViewModel =
-                new LogInFormViewModel(navigationStore, LogInNavigationStore);
+            logInNavigationStore = new NavigationStore();
+            logInNavigationStore.CurrentViewModel =
+                new LogInFormViewModel(
+                    navigationService,
+                    new NavigationService(
+                        logInNavigationStore, CreateRegisterFormViewModel));
 
-            LogInNavigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+            logInNavigationStore
+                .CurrentViewModelChanged += OnCurrentViewModelChanged;
+            this.navigationService = navigationService;
         }
 
         private void OnCurrentViewModelChanged()
@@ -23,58 +30,53 @@ namespace BoogleClient.ViewModel
             OnPropertyChanged(nameof(CurrentFormView));
         }
 
-        public BaseViewModel CurrentFormView => LogInNavigationStore.CurrentViewModel;
+        public BaseViewModel CurrentFormView =>
+            logInNavigationStore.CurrentViewModel;
 
+
+        private RegisterFormViewModel CreateRegisterFormViewModel()
+        {
+            return new RegisterFormViewModel(new NavigationService(logInNavigationStore, CreateLogInFormViewModel));
+        }
+
+        private BaseViewModel CreateLogInFormViewModel()
+        {
+            return new LogInFormViewModel(
+                navigationService,
+                new NavigationService(logInNavigationStore, CreateRegisterFormViewModel));
+        }
     }
 
     internal partial class LogInFormViewModel : BaseViewModel
     {
-        private readonly NavigationStore windowNavigationStore;
-        private readonly NavigationStore logInNavigationStore;
 
         public LogInFormViewModel(
-            NavigationStore windowNavigationStore,
-            NavigationStore logInNavigationStore)
+            NavigationService windowNavigationService,
+            NavigationService formsNavigationService)
         {
-            LogInCommand = new LogInCommand(this, windowNavigationStore);
-            LogInViewNavigateCommand = new LogInViewNavigateCommand(
-                logInNavigationStore, CreateRegisterFormViewModel);
-            this.windowNavigationStore = windowNavigationStore;
-            this.logInNavigationStore = logInNavigationStore;
+            LogInCommand = new LogInCommand(this, windowNavigationService);
+            NavigateCommand = new NavigateCommand(formsNavigationService);
+
+            NavigationService = windowNavigationService;
         }
 
         public string UserName { get; set; }
 
         public ICommand LogInCommand { get; }
 
-        public ICommand LogInViewNavigateCommand { get; }
+        public ICommand NavigateCommand { get; }
 
-        private RegisterFormViewModel CreateRegisterFormViewModel()
-        {
-            return new RegisterFormViewModel(windowNavigationStore, logInNavigationStore);
-        }
+        public NavigationService NavigationService { get; }
     }
 
     internal partial class RegisterFormViewModel : BaseViewModel
     {
-        private readonly NavigationStore logInNavigationStore;
-        private readonly NavigationStore windowNavigationStore;
-
-        public RegisterFormViewModel(
-            NavigationStore windowNavigationStore, NavigationStore logInNavigationStore)
+        public RegisterFormViewModel(NavigationService formsNavigationService)
         {
-            LogInViewNavigateCommand = new LogInViewNavigateCommand(
-                logInNavigationStore, CreateLogInFormViewModel);
-            this.logInNavigationStore = logInNavigationStore;
-            this.windowNavigationStore = windowNavigationStore;
+            NavigateCommand = new NavigateCommand(formsNavigationService);
         }
 
-        private BaseViewModel CreateLogInFormViewModel()
-        {
-            return new LogInFormViewModel(windowNavigationStore, logInNavigationStore);
-        }
-
-        public ICommand LogInViewNavigateCommand { get; }
+        public ICommand NavigateCommand { get; }
     }
 
     internal partial class EmailValidationViewModel : BaseViewModel
