@@ -1,36 +1,80 @@
 ﻿using BoogleClient.Commands;
+using BoogleClient.Stores;
+using System;
 using System.Windows.Input;
 
 namespace BoogleClient.ViewModel
 {
     internal partial class LogInViewModel : BaseViewModel
     {
-        public LogInViewModel()
+        NavigationStore LogInNavigationStore;
+
+        public LogInViewModel(NavigationStore navigationStore)
         {
-            CurrentFormView = new LogInFormViewModel();
-            //CurrentFormView = new RegisterFormViewModel();
-            //CurrentFormView = new EmailValidationViewModel();
+            LogInNavigationStore = new NavigationStore();
+            LogInNavigationStore.CurrentViewModel =
+                new LogInFormViewModel(navigationStore, LogInNavigationStore);
+
+            LogInNavigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 
-        public BaseViewModel CurrentFormView { get; set; }
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentFormView));
+        }
+
+        public BaseViewModel CurrentFormView => LogInNavigationStore.CurrentViewModel;
 
     }
 
     internal partial class LogInFormViewModel : BaseViewModel
     {
-        public string UserName { get; set; }
+        private readonly NavigationStore windowNavigationStore;
+        private readonly NavigationStore logInNavigationStore;
 
-        public LogInFormViewModel()
+        public LogInFormViewModel(
+            NavigationStore windowNavigationStore,
+            NavigationStore logInNavigationStore)
         {
-            LogInCommand = new LogInCommand(this);
+            LogInCommand = new LogInCommand(this, windowNavigationStore);
+            LogInViewNavigateCommand = new LogInViewNavigateCommand(
+                logInNavigationStore, CreateRegisterFormViewModel);
+            this.windowNavigationStore = windowNavigationStore;
+            this.logInNavigationStore = logInNavigationStore;
         }
 
+        public string UserName { get; set; }
+
         public ICommand LogInCommand { get; }
+
+        public ICommand LogInViewNavigateCommand { get; }
+
+        private RegisterFormViewModel CreateRegisterFormViewModel()
+        {
+            return new RegisterFormViewModel(windowNavigationStore, logInNavigationStore);
+        }
     }
 
     internal partial class RegisterFormViewModel : BaseViewModel
     {
+        private readonly NavigationStore logInNavigationStore;
+        private readonly NavigationStore windowNavigationStore;
 
+        public RegisterFormViewModel(
+            NavigationStore windowNavigationStore, NavigationStore logInNavigationStore)
+        {
+            LogInViewNavigateCommand = new LogInViewNavigateCommand(
+                logInNavigationStore, CreateLogInFormViewModel);
+            this.logInNavigationStore = logInNavigationStore;
+            this.windowNavigationStore = windowNavigationStore;
+        }
+
+        private BaseViewModel CreateLogInFormViewModel()
+        {
+            return new LogInFormViewModel(windowNavigationStore, logInNavigationStore);
+        }
+
+        public ICommand LogInViewNavigateCommand { get; }
     }
 
     internal partial class EmailValidationViewModel : BaseViewModel

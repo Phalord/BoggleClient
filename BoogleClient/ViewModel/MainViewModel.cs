@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoogleClient.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,20 @@ namespace BoogleClient.ViewModel
 {
     internal class MainViewModel : BaseViewModel
     {
-        public MainViewModel()
+        private readonly NavigationStore navigationStore;
+
+        public MainViewModel(NavigationStore navigationStore)
         {
-            CurrentViewModel = new LogInViewModel();
-            //CurrentViewModel = new MainMenuViewModel();
+            this.navigationStore = navigationStore;
+            this.navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 
-        public BaseViewModel CurrentViewModel { get; set; }
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
+        }
+
+        public BaseViewModel CurrentViewModel => navigationStore.CurrentViewModel;
+
     }
 }

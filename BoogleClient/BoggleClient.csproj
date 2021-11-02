@@ -82,6 +82,7 @@
     </ApplicationDefinition>
     <Compile Include="Callbacks\UserManagerCallback.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\LogInViewNavigateCommand.cs" />
     <Compile Include="Commands\LogInCommand.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Connected Services\BoggleServices\Reference.cs">
@@ -89,6 +90,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Stores\NavigationStore.cs" />
     <Compile Include="ViewModel\LogInViewModel.cs" />
     <Compile Include="ViewModel\MainMenuViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

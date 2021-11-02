@@ -8,10 +8,6 @@
         mc:Ignorable="d" Background="{StaticResource BlackBrush}"
         Title="Boggle Client" Height="620" Width="1040" ResizeMode="NoResize">
 
-    <Window.DataContext>
-        <viewModel:MainViewModel/>
-    </Window.DataContext>
-    
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>

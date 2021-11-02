@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BoogleClient"
              xmlns:viewModel="clr-namespace:BoogleClient.ViewModel"
-             xmlns:view="clr-namespace:BoogleClient.Views"
-             StartupUri="MainWindow.xaml">
+             xmlns:view="clr-namespace:BoogleClient.Views">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

@@ -8,10 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="585" d:DesignWidth="1040">
 
-    <UserControl.DataContext>
-        <viewModel:LogInViewModel/>
-    </UserControl.DataContext>
-    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>

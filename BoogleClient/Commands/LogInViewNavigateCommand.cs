@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace BoogleClient.Commands
 {
-    internal class NavigateCommand : BaseCommand
+    internal class LogInViewNavigateCommand : BaseCommand
     {
-        private readonly NavigationStore navigationStore;
+        private readonly NavigationStore logInNavigationStore;
         private readonly Func<BaseViewModel> createViewModel;
 
-        public NavigateCommand(NavigationStore navigationStore,
+        public LogInViewNavigateCommand(NavigationStore logInNavigationStore,
             Func<BaseViewModel> createViewModel)
         {
-            this.navigationStore = navigationStore;
+            this.logInNavigationStore = logInNavigationStore;
             this.createViewModel = createViewModel;
         }
 
         public override void Execute(object parameter)
         {
-            navigationStore.CurrentViewModel = createViewModel();
+            logInNavigationStore.CurrentViewModel = createViewModel();
         }
     }
 }
