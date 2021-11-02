@@ -1,7 +1,6 @@
 ﻿using BoogleClient.Commands;
 using BoogleClient.Services;
 using BoogleClient.Stores;
-using System;
 using System.Windows.Input;
 
 namespace BoogleClient.ViewModel
@@ -15,10 +14,9 @@ namespace BoogleClient.ViewModel
         {
             logInNavigationStore = new NavigationStore();
             logInNavigationStore.CurrentViewModel =
-                new LogInFormViewModel(
-                    navigationService,
-                    new NavigationService(
-                        logInNavigationStore, CreateRegisterFormViewModel));
+                new LogInFormViewModel(navigationService,
+                new NavigationService(
+                    logInNavigationStore, CreateRegisterFormViewModel));
 
             logInNavigationStore
                 .CurrentViewModelChanged += OnCurrentViewModelChanged;
