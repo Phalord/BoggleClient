@@ -41,11 +41,20 @@
   <wsdl:message name="IUserManagerContract_CreateAccount_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateAccount" />
   </wsdl:message>
+  <wsdl:message name="IUserManagerContract_ValidateEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmail" />
+  </wsdl:message>
   <wsdl:message name="IUserManagerContract_GrantAccess_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GrantAccess" />
   </wsdl:message>
   <wsdl:message name="IUserManagerContract_GrantAccess_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GrantAccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagerContract_AskForEmailValidation_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:AskForEmailValidation" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagerContract_AskForEmailValidation_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:AskForEmailValidationResponse" />
   </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="IUserManagerContract">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="LogIn">
@@ -54,9 +63,16 @@
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="CreateAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagerContract/CreateAccount" message="tns:IUserManagerContract_CreateAccount_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ValidateEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagerContract/ValidateEmail" message="tns:IUserManagerContract_ValidateEmail_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GrantAccess">
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagerContract/GrantAccess" message="tns:IUserManagerContract_GrantAccess_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagerContract/GrantAccessResponse" message="tns:IUserManagerContract_GrantAccess_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AskForEmailValidation">
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagerContract/AskForEmailValidation" message="tns:IUserManagerContract_AskForEmailValidation_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagerContract/AskForEmailValidationResponse" message="tns:IUserManagerContract_AskForEmailValidation_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManagerContract" type="tns:IUserManagerContract">
@@ -74,8 +90,23 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="ValidateEmail">
+      <soap12:operation soapAction="http://tempuri.org/IUserManagerContract/ValidateEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="GrantAccess">
       <soap12:operation soapAction="http://tempuri.org/IUserManagerContract/GrantAccess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AskForEmailValidation">
+      <soap12:operation soapAction="http://tempuri.org/IUserManagerContract/AskForEmailValidation" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

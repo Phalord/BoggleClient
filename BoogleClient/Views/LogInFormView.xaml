@@ -26,6 +26,7 @@
                     Margin="50,0,0,0"/>
                 <TextBox
                     x:Name="usernameTextBox"
+                    Text="{Binding UserName}"
                     Style="{StaticResource UnderlinedTextBox}"
                     Width="200"
                     HorizontalAlignment="Center"/>
@@ -48,7 +49,8 @@
             <Button 
                 Content="{x:Static p:Resources.logIn}"
                 Style="{StaticResource ContainedButton}"
-                Click="Button_Click"
+                Command="{Binding LogInCommand}"
+                CommandParameter="{x:Reference Name=passwordTextBox}"
                 Width="200"
                 Height="30"
                 HorizontalAlignment="Center"/>

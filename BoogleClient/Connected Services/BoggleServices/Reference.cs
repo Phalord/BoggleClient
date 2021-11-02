@@ -16,23 +16,32 @@ namespace BoogleClient.BoggleServices {
     public interface IUserManagerContract {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/LogIn")]
-        void LogIn(string username, string password);
+        void LogIn(string userName, string password);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/LogIn")]
-        System.Threading.Tasks.Task LogInAsync(string username, string password);
+        System.Threading.Tasks.Task LogInAsync(string userName, string password);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/CreateAccount")]
-        void CreateAccount(string username, string email, string password);
+        void CreateAccount(string userName, string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/CreateAccount")]
-        System.Threading.Tasks.Task CreateAccountAsync(string username, string email, string password);
+        System.Threading.Tasks.Task CreateAccountAsync(string userName, string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/ValidateEmail")]
+        void ValidateEmail(string validationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/ValidateEmail")]
+        System.Threading.Tasks.Task ValidateEmailAsync(string validationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IUserManagerContractCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagerContract/GrantAccess", ReplyAction="http://tempuri.org/IUserManagerContract/GrantAccessResponse")]
-        void GrantAccess(bool access);
+        void GrantAccess(string accessStatus);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagerContract/AskForEmailValidation", ReplyAction="http://tempuri.org/IUserManagerContract/AskForEmailValidationResponse")]
+        void AskForEmailValidation();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,20 +72,28 @@ namespace BoogleClient.BoggleServices {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void LogIn(string username, string password) {
-            base.Channel.LogIn(username, password);
+        public void LogIn(string userName, string password) {
+            base.Channel.LogIn(userName, password);
         }
         
-        public System.Threading.Tasks.Task LogInAsync(string username, string password) {
-            return base.Channel.LogInAsync(username, password);
+        public System.Threading.Tasks.Task LogInAsync(string userName, string password) {
+            return base.Channel.LogInAsync(userName, password);
         }
         
-        public void CreateAccount(string username, string email, string password) {
-            base.Channel.CreateAccount(username, email, password);
+        public void CreateAccount(string userName, string email, string password) {
+            base.Channel.CreateAccount(userName, email, password);
         }
         
-        public System.Threading.Tasks.Task CreateAccountAsync(string username, string email, string password) {
-            return base.Channel.CreateAccountAsync(username, email, password);
+        public System.Threading.Tasks.Task CreateAccountAsync(string userName, string email, string password) {
+            return base.Channel.CreateAccountAsync(userName, email, password);
+        }
+        
+        public void ValidateEmail(string validationCode) {
+            base.Channel.ValidateEmail(validationCode);
+        }
+        
+        public System.Threading.Tasks.Task ValidateEmailAsync(string validationCode) {
+            return base.Channel.ValidateEmailAsync(validationCode);
         }
     }
 }

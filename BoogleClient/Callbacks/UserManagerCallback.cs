@@ -12,15 +12,30 @@ namespace BoogleClient.Callbacks
     class UserManagerCallback : IUserManagerContractCallback
     {
         private MainViewModel mainViewModel;
+        private const string accessGranted = "AccessGranted";
+        private const string wrongPassword = "WrongPassword";
+        private const string unverifiedEmail = "UnverifiedEmail";
+        private const string nonExistentUser = "NonExistentUser";
 
-        public void GrantAccess(bool access)
+        public void AskForEmailValidation()
         {
-            if (access)
+            MessageBox.Show("User Created");
+        }
+
+        public void GrantAccess(string accessStatus)
+        {
+            if (accessStatus == accessGranted)
             {
-                MessageBox.Show("Acceso Permitido!");
-            } else
+                MessageBox.Show(accessGranted);
+            } else if (accessStatus == wrongPassword)
             {
-                MessageBox.Show("Acceso Denegado!");
+                MessageBox.Show(wrongPassword);
+            } else if (accessStatus == unverifiedEmail)
+            {
+                MessageBox.Show(unverifiedEmail);
+            } else if (accessStatus == nonExistentUser)
+            {
+                MessageBox.Show(nonExistentUser);
             }
         }
     }
