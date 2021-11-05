@@ -10,17 +10,19 @@ namespace BoogleClient.Commands
     internal class CreateAccountCommand : BaseCommand
     {
         private RegisterFormViewModel registerFormViewModel;
+        private readonly LogInViewModel logInViewModel;
 
-        public CreateAccountCommand(RegisterFormViewModel registerFormViewModel)
+        public CreateAccountCommand(RegisterFormViewModel registerFormViewModel, LogInViewModel logInViewModel)
         {
             this.registerFormViewModel = registerFormViewModel;
+            this.logInViewModel = logInViewModel;
         }
 
         public override void Execute(object parameter)
         {
             UserManagerContractClient contractClient =
                 new UserManagerContractClient(
-                    new InstanceContext(registerFormViewModel));
+                    new InstanceContext(logInViewModel));
 
             PasswordBox passwordBox = (PasswordBox)parameter;
 

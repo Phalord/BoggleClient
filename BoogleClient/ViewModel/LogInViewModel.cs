@@ -38,25 +38,31 @@ namespace BoogleClient.ViewModel
 
         private RegisterFormViewModel CreateRegisterFormViewModel()
         {
-            return new RegisterFormViewModel(new NavigationService(formsNavigationStore, CreateLogInFormViewModel));
+            return new RegisterFormViewModel(this,
+                new NavigationService(formsNavigationStore, CreateLogInFormViewModel));
         }
 
-        private BaseViewModel CreateLogInFormViewModel()
+        private LogInFormViewModel CreateLogInFormViewModel()
         {
             return new LogInFormViewModel(this,
                 new NavigationService(formsNavigationStore, CreateRegisterFormViewModel));
         }
 
+        private EmailValidationViewModel CreateEmailValidationViewModel()
+        {
+            return new EmailValidationViewModel();
+        }
+
         public void AskForEmailValidation()
         {
-            MessageBox.Show("User Created");
+            formsNavigationStore.CurrentViewModel = CreateEmailValidationViewModel();
         }
 
         public void GrantAccess(string accessStatus)
         {
             if (accessStatus == accessGranted)
             {
-                MessageBox.Show(accessGranted);
+                windowNavigationService.Navigate();
             }
             else if (accessStatus == wrongPassword)
             {
@@ -92,10 +98,12 @@ namespace BoogleClient.ViewModel
 
     internal partial class RegisterFormViewModel : BaseViewModel
     {
-        public RegisterFormViewModel(NavigationService formsNavigationService)
+        public RegisterFormViewModel(
+            LogInViewModel logInViewModel,
+            NavigationService formsNavigationService)
         {
             NavigateCommand = new NavigateCommand(formsNavigationService);
-            CreateAccountCommand = new CreateAccountCommand(this);
+            CreateAccountCommand = new CreateAccountCommand(this, logInViewModel);
         }
 
         public string UserName { get; set; }

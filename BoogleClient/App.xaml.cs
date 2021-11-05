@@ -20,7 +20,7 @@ namespace BoogleClient
         protected override void OnStartup(StartupEventArgs e)
         {
             navigationStore.CurrentViewModel = 
-                new LogInViewModel(new Services.NavigationService(navigationStore, CreateMainViewModel));
+                new LogInViewModel(new Services.NavigationService(navigationStore, CreateMainMenuViewModel));
 
             MainWindow = new MainWindow()
             {
@@ -32,9 +32,9 @@ namespace BoogleClient
             base.OnStartup(e);
         }
 
-        private BaseViewModel CreateMainViewModel()
+        private BaseViewModel CreateMainMenuViewModel()
         {
-            return new MainViewModel(navigationStore);
+            return new MainMenuViewModel();
         }
     }
 }
