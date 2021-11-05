@@ -1,26 +1,31 @@
-﻿using BoogleClient.Commands;
+﻿using BoogleClient.BoggleServices;
+using BoogleClient.Commands;
 using BoogleClient.Services;
 using BoogleClient.Stores;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BoogleClient.ViewModel
 {
-    internal partial class LogInViewModel : BaseViewModel
+    internal partial class LogInViewModel : BaseViewModel, IUserManagerContractCallback
     {
-        private readonly NavigationService navigationService;
-        private readonly NavigationStore logInNavigationStore;
+        private readonly NavigationService windowNavigationService;
+        private readonly NavigationStore formsNavigationStore;
+        private const string accessGranted = "AccessGranted";
+        private const string wrongPassword = "WrongPassword";
+        private const string unverifiedEmail = "UnverifiedEmail";
+        private const string nonExistentUser = "NonExistentUser";
 
-        public LogInViewModel(NavigationService navigationService)
+        public LogInViewModel(NavigationService windowNavigationService)
         {
-            logInNavigationStore = new NavigationStore();
-            logInNavigationStore.CurrentViewModel =
-                new LogInFormViewModel(navigationService,
-                new NavigationService(
-                    logInNavigationStore, CreateRegisterFormViewModel));
+            formsNavigationStore = new NavigationStore();
+            formsNavigationStore.CurrentViewModel =
+                new LogInFormViewModel(this, new NavigationService(
+                    formsNavigationStore, CreateRegisterFormViewModel));
 
-            logInNavigationStore
+            formsNavigationStore
                 .CurrentViewModelChanged += OnCurrentViewModelChanged;
-            this.navigationService = navigationService;
+            this.windowNavigationService = windowNavigationService;
         }
 
         private void OnCurrentViewModelChanged()
@@ -29,33 +34,53 @@ namespace BoogleClient.ViewModel
         }
 
         public BaseViewModel CurrentFormView =>
-            logInNavigationStore.CurrentViewModel;
-
+            formsNavigationStore.CurrentViewModel;
 
         private RegisterFormViewModel CreateRegisterFormViewModel()
         {
-            return new RegisterFormViewModel(new NavigationService(logInNavigationStore, CreateLogInFormViewModel));
+            return new RegisterFormViewModel(new NavigationService(formsNavigationStore, CreateLogInFormViewModel));
         }
 
         private BaseViewModel CreateLogInFormViewModel()
         {
-            return new LogInFormViewModel(
-                navigationService,
-                new NavigationService(logInNavigationStore, CreateRegisterFormViewModel));
+            return new LogInFormViewModel(this,
+                new NavigationService(formsNavigationStore, CreateRegisterFormViewModel));
+        }
+
+        public void AskForEmailValidation()
+        {
+            MessageBox.Show("User Created");
+        }
+
+        public void GrantAccess(string accessStatus)
+        {
+            if (accessStatus == accessGranted)
+            {
+                MessageBox.Show(accessGranted);
+            }
+            else if (accessStatus == wrongPassword)
+            {
+                MessageBox.Show(wrongPassword);
+            }
+            else if (accessStatus == unverifiedEmail)
+            {
+                MessageBox.Show(unverifiedEmail);
+            }
+            else if (accessStatus == nonExistentUser)
+            {
+                MessageBox.Show(nonExistentUser);
+            }
         }
     }
 
     internal partial class LogInFormViewModel : BaseViewModel
     {
-
         public LogInFormViewModel(
-            NavigationService windowNavigationService,
+            LogInViewModel logInViewModel,
             NavigationService formsNavigationService)
         {
-            LogInCommand = new LogInCommand(this, windowNavigationService);
+            LogInCommand = new LogInCommand(this, logInViewModel);
             NavigateCommand = new NavigateCommand(formsNavigationService);
-
-            NavigationService = windowNavigationService;
         }
 
         public string UserName { get; set; }
@@ -63,8 +88,6 @@ namespace BoogleClient.ViewModel
         public ICommand LogInCommand { get; }
 
         public ICommand NavigateCommand { get; }
-
-        public NavigationService NavigationService { get; }
     }
 
     internal partial class RegisterFormViewModel : BaseViewModel
@@ -72,9 +95,16 @@ namespace BoogleClient.ViewModel
         public RegisterFormViewModel(NavigationService formsNavigationService)
         {
             NavigateCommand = new NavigateCommand(formsNavigationService);
+            CreateAccountCommand = new CreateAccountCommand(this);
         }
 
+        public string UserName { get; set; }
+
+        public string Email { get; set; }
+
         public ICommand NavigateCommand { get; }
+
+        public ICommand CreateAccountCommand { get; set; }
     }
 
     internal partial class EmailValidationViewModel : BaseViewModel

@@ -23,6 +23,7 @@
                     Margin="50,0,0,0"/>
                 <TextBox
                     Style="{StaticResource UnderlinedTextBox}"
+                    Text="{Binding Email}"
                     Width="200"
                     HorizontalAlignment="Center"/>
             </StackPanel>
@@ -35,6 +36,7 @@
                     Margin="50,0,0,0"/>
                 <TextBox
                     Style="{StaticResource UnderlinedTextBox}"
+                    Text="{Binding UserName}"
                     Width="200"
                     HorizontalAlignment="Center"/>
             </StackPanel>
@@ -60,6 +62,7 @@
                     HorizontalAlignment="Left"
                     Margin="50,0,0,0"/>
                 <PasswordBox
+                    x:Name="ConfirmPasswordBox"
                     FontSize="15"
                     BorderBrush="{StaticResource PrimaryLightBrush}"
                     Width="200"
@@ -69,6 +72,8 @@
             <Button 
                 Content="{x:Static p:Resources.createAccount}"
                 Style="{StaticResource ContainedButton}"
+                Command="{Binding CreateAccountCommand}"
+                CommandParameter="{x:Reference Name=ConfirmPasswordBox}"
                 Width="200"
                 Height="30"
                 HorizontalAlignment="Center"/>

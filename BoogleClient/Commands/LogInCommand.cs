@@ -1,5 +1,4 @@
 ﻿using BoogleClient.BoggleServices;
-using BoogleClient.Callbacks;
 using BoogleClient.Services;
 using BoogleClient.ViewModel;
 using System.ServiceModel;
@@ -11,21 +10,21 @@ namespace BoogleClient.Commands
     internal class LogInCommand : BaseCommand
     {
         private LogInFormViewModel logInFormViewModel;
-        private readonly NavigationService navigationService;
+        private readonly LogInViewModel logInViewModel;
 
         public LogInCommand(
-            LogInFormViewModel logInFormViewModel,
-            NavigationService navigationService)
+            LogInFormViewModel logInFormViewModel, 
+            LogInViewModel logInViewModel)
         {
             this.logInFormViewModel = logInFormViewModel;
-            this.navigationService = navigationService;
+            this.logInViewModel = logInViewModel;
         }
 
         public override void Execute(object parameter)
         {
             UserManagerContractClient contractClient =
                 new UserManagerContractClient(
-                    new InstanceContext(new UserManagerCallback()));
+                    new InstanceContext(logInViewModel));
 
             PasswordBox passwordBox = (PasswordBox) parameter;
 
