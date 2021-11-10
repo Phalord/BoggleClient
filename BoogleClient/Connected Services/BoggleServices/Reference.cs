@@ -28,10 +28,10 @@ namespace BoogleClient.BoggleServices {
         System.Threading.Tasks.Task CreateAccountAsync(string userName, string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/ValidateEmail")]
-        void ValidateEmail(string validationCode);
+        void ValidateEmail(string validationCode, string email);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/ValidateEmail")]
-        System.Threading.Tasks.Task ValidateEmailAsync(string validationCode);
+        System.Threading.Tasks.Task ValidateEmailAsync(string validationCode, string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -41,7 +41,10 @@ namespace BoogleClient.BoggleServices {
         void GrantAccess(string accessStatus);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagerContract/AskForEmailValidation", ReplyAction="http://tempuri.org/IUserManagerContract/AskForEmailValidationResponse")]
-        void AskForEmailValidation();
+        void AskForEmailValidation(string accountCreationStatus, string userEmail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagerContract/GrantValidation", ReplyAction="http://tempuri.org/IUserManagerContract/GrantValidationResponse")]
+        void GrantValidation(string validationStatus);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -88,12 +91,12 @@ namespace BoogleClient.BoggleServices {
             return base.Channel.CreateAccountAsync(userName, email, password);
         }
         
-        public void ValidateEmail(string validationCode) {
-            base.Channel.ValidateEmail(validationCode);
+        public void ValidateEmail(string validationCode, string email) {
+            base.Channel.ValidateEmail(validationCode, email);
         }
         
-        public System.Threading.Tasks.Task ValidateEmailAsync(string validationCode) {
-            return base.Channel.ValidateEmailAsync(validationCode);
+        public System.Threading.Tasks.Task ValidateEmailAsync(string validationCode, string email) {
+            return base.Channel.ValidateEmailAsync(validationCode, email);
         }
     }
 }

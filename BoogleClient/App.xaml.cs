@@ -1,6 +1,5 @@
 ﻿using BoogleClient.Stores;
 using BoogleClient.ViewModel;
-using System;
 using System.Windows;
 
 namespace BoogleClient
@@ -19,7 +18,7 @@ namespace BoogleClient
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            navigationStore.CurrentViewModel = 
+            navigationStore.CurrentViewModel =
                 new LogInViewModel(new Services.NavigationService(navigationStore, CreateMainMenuViewModel));
 
             MainWindow = new MainWindow()

@@ -21,6 +21,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="validationCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -38,10 +39,25 @@
   </xs:element>
   <xs:element name="AskForEmailValidation">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountCreationStatus" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userEmail" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AskForEmailValidationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GrantValidation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="validationStatus" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GrantValidationResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

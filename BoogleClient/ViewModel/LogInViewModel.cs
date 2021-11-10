@@ -11,10 +11,20 @@ namespace BoogleClient.ViewModel
     {
         private readonly NavigationService windowNavigationService;
         private readonly NavigationStore formsNavigationStore;
+
+
+        #region Constants
         private const string accessGranted = "AccessGranted";
         private const string wrongPassword = "WrongPassword";
         private const string unverifiedEmail = "UnverifiedEmail";
         private const string nonExistentUser = "NonExistentUser";
+        private const string usernameRegistered = "UserNameRegistered";
+        private const string emailRegistered = "EmailRegistered";
+        private const string accountCreated = "AccountCreated";
+        private const string emailNotFound = "EmailNotFound";
+        private const string wrongValidationCode = "WrongValidationCode";
+        private const string emailValidated = "EmailValidated";
+        #endregion
 
         public LogInViewModel(NavigationService windowNavigationService)
         {
@@ -48,14 +58,9 @@ namespace BoogleClient.ViewModel
                 new NavigationService(formsNavigationStore, CreateRegisterFormViewModel));
         }
 
-        private EmailValidationViewModel CreateEmailValidationViewModel()
+        private EmailValidationViewModel CreateEmailValidationViewModel(string userEmail)
         {
-            return new EmailValidationViewModel();
-        }
-
-        public void AskForEmailValidation()
-        {
-            formsNavigationStore.CurrentViewModel = CreateEmailValidationViewModel();
+            return new EmailValidationViewModel(userEmail);
         }
 
         public void GrantAccess(string accessStatus)
@@ -70,11 +75,39 @@ namespace BoogleClient.ViewModel
             }
             else if (accessStatus == unverifiedEmail)
             {
-                MessageBox.Show(unverifiedEmail);
+                formsNavigationStore.CurrentViewModel = CreateEmailValidationViewModel(string.Empty);
             }
             else if (accessStatus == nonExistentUser)
             {
                 MessageBox.Show(nonExistentUser);
+            }
+        }
+
+        public void AskForEmailValidation(string accountCreationStatus, string userEmail)
+        {
+            if (accountCreationStatus.Equals(usernameRegistered))
+            {
+                MessageBox.Show(usernameRegistered);
+            } else if (accountCreationStatus.Equals(emailRegistered))
+            {
+                MessageBox.Show(emailRegistered);
+            } else if (accountCreationStatus.Equals(accountCreated))
+            {
+                formsNavigationStore.CurrentViewModel = CreateEmailValidationViewModel(userEmail);
+            }
+        }
+
+        public void GrantValidation(string validationStatus)
+        {
+            if (validationStatus.Equals(emailNotFound))
+            {
+
+            } else if (validationStatus.Equals(wrongValidationCode))
+            {
+
+            } else if (validationStatus.Equals(emailValidated))
+            {
+                windowNavigationService.Navigate();
             }
         }
     }
@@ -117,6 +150,11 @@ namespace BoogleClient.ViewModel
 
     internal partial class EmailValidationViewModel : BaseViewModel
     {
+        private readonly string userEmail;
 
+        public EmailValidationViewModel(string userEmail)
+        {
+            this.userEmail = userEmail;
+        }
     }
 }

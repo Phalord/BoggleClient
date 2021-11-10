@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace BoogleClient.Commands
 {
-    abstract class BaseCommand : ICommand
+    internal abstract class BaseCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
