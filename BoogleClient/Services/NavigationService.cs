@@ -1,4 +1,5 @@
-﻿using BoogleClient.Stores;
+﻿using BoogleClient.BoggleServices;
+using BoogleClient.Stores;
 using BoogleClient.ViewModel;
 using System;
 
@@ -7,18 +8,18 @@ namespace BoogleClient.Services
     internal class NavigationService
     {
         private readonly NavigationStore navigationStore;
-        private readonly Func<BaseViewModel> createViewModel;
+        private readonly Func<AccountDTO, BaseViewModel> createViewModel;
 
         public NavigationService(NavigationStore navigationStore,
-            Func<BaseViewModel> createViewModel)
+            Func<AccountDTO, BaseViewModel> createViewModel)
         {
             this.navigationStore = navigationStore;
             this.createViewModel = createViewModel;
         }
 
-        public void Navigate()
+        public void Navigate(AccountDTO userAccount)
         {
-            navigationStore.CurrentViewModel = createViewModel();
+            navigationStore.CurrentViewModel = createViewModel(userAccount);
         }
     }
 }

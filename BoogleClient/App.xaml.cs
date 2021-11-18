@@ -1,5 +1,7 @@
-﻿using BoogleClient.Stores;
+﻿using BoogleClient.BoggleServices;
+using BoogleClient.Stores;
 using BoogleClient.ViewModel;
+using System;
 using System.Windows;
 
 namespace BoogleClient
@@ -31,9 +33,14 @@ namespace BoogleClient
             base.OnStartup(e);
         }
 
-        private BaseViewModel CreateMainMenuViewModel()
+        private BaseViewModel CreateMainMenuViewModel(AccountDTO userAccount)
         {
-            return new MainMenuViewModel();
+            return new MainMenuViewModel(new Services.NavigationService(navigationStore, CreateLobbyViewModel));
+        }
+
+        private BaseViewModel CreateLobbyViewModel(AccountDTO accountDTO)
+        {
+            throw new NotImplementedException();
         }
     }
 }

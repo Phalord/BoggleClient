@@ -32,12 +32,14 @@
                     Margin="50,0,0,0"/>
                 <TextBox
                     Style="{StaticResource UnderlinedTextBox}"
+                    Text="{Binding Path=ValidationCode, UpdateSourceTrigger=PropertyChanged}"
                     Width="200"
                     HorizontalAlignment="Center"/>
             </StackPanel>
             <Button 
                 Content="{x:Static p:Resources.validateEmail}"
                 Style="{StaticResource ContainedButton}"
+                Command="{Binding ValidateEmailCommand}"
                 Width="200"
                 Height="30"
                 HorizontalAlignment="Center"/>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8130/BoggleServices?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" />
   <xs:element name="LogIn">
     <xs:complexType>
       <xs:sequence>
@@ -11,9 +12,7 @@
   <xs:element name="CreateAccount">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="accountDTO" nillable="true" type="q1:AccountDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -29,6 +28,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="accessStatus" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="playerInfoDTO" nillable="true" type="q2:AccountDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -54,6 +54,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="validationStatus" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="playerInfoDTO" nillable="true" type="q3:AccountDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

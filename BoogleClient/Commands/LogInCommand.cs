@@ -1,5 +1,4 @@
 ﻿using BoogleClient.BoggleServices;
-using BoogleClient.Services;
 using BoogleClient.ViewModel;
 using System.ServiceModel;
 using System.Windows;
@@ -9,7 +8,7 @@ namespace BoogleClient.Commands
 {
     internal class LogInCommand : BaseCommand
     {
-        private LogInFormViewModel logInFormViewModel;
+        private readonly LogInFormViewModel logInFormViewModel;
         private readonly LogInViewModel logInViewModel;
 
         public LogInCommand(

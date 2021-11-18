@@ -10,10 +10,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="585" d:DesignWidth="1040">
 
-    <UserControl.DataContext>
-        <viewModel:MainMenuViewModel/>
-    </UserControl.DataContext>
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
@@ -55,7 +51,7 @@
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Row="1" Background="{StaticResource WhiteBrush}">
+        <Grid Grid.Row="1" Background="{StaticResource SecondaryDarkBrush}">
             <ContentControl Content="{Binding CurrentMenuSelected}"/>
         </Grid>
     </Grid>

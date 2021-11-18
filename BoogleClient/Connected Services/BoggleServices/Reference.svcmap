@@ -24,6 +24,7 @@
   <Metadata>
     <MetadataFile FileName="BoggleServices.xsd" MetadataType="Schema" ID="00d232bf-ae43-4549-90c4-fd2df4887659" SourceId="1" SourceUrl="http://localhost:8130/BoggleServices?xsd=xsd0" />
     <MetadataFile FileName="BoggleServices1.xsd" MetadataType="Schema" ID="2b7d9743-6286-4385-b355-8b76115ac4f9" SourceId="1" SourceUrl="http://localhost:8130/BoggleServices?xsd=xsd1" />
+    <MetadataFile FileName="BoggleServices2.xsd" MetadataType="Schema" ID="7a1ec283-f9a1-4aca-ac56-95458716c1e3" SourceId="1" SourceUrl="http://localhost:8130/BoggleServices?xsd=xsd2" />
     <MetadataFile FileName="UserManager.wsdl" MetadataType="Wsdl" ID="c9a76a45-a40b-4e0b-b771-c8af4e9222b5" SourceId="1" SourceUrl="http://localhost:8130/BoggleServices?wsdl" />
     <MetadataFile FileName="BoggleServices.disco" MetadataType="Disco" ID="d65cf5ea-3fd1-4bfd-a05b-528b6e39a19a" SourceId="1" SourceUrl="http://localhost:8130/BoggleServices?disco" />
   </Metadata>

@@ -1,14 +1,24 @@
-﻿namespace BoogleClient.ViewModel
+﻿using BoogleClient.BoggleServices;
+using BoogleClient.Services;
+using BoogleClient.Stores;
+
+namespace BoogleClient.ViewModel
 {
     internal partial class MainMenuViewModel : BaseViewModel
     {
-        public MainMenuViewModel()
+        private readonly NavigationService windowNavigationService;
+        private readonly NavigationStore menusNavigationStore;
+
+        public MainMenuViewModel(NavigationService windowNavigationService)
         {
-            //CurrentMenuSelected = new PlayOptionsViewModel();
-            CurrentMenuSelected = new SocialsMenuViewModel();
+            menusNavigationStore = new NavigationStore();
+            menusNavigationStore.CurrentViewModel = new PlayOptionsViewModel();
+
+            this.windowNavigationService = windowNavigationService;
         }
 
-        public BaseViewModel CurrentMenuSelected { get; set; }
+        public BaseViewModel CurrentMenuSelected =>
+            menusNavigationStore.CurrentViewModel;
 
     }
 

@@ -32,10 +32,11 @@ namespace BoogleClient.ViewModel
             formsNavigationStore.CurrentViewModel =
                 new LogInFormViewModel(this, new NavigationService(
                     formsNavigationStore, CreateRegisterFormViewModel));
+            
+            this.windowNavigationService = windowNavigationService;
 
             formsNavigationStore
                 .CurrentViewModelChanged += OnCurrentViewModelChanged;
-            this.windowNavigationService = windowNavigationService;
         }
 
         private void OnCurrentViewModelChanged()
@@ -46,13 +47,13 @@ namespace BoogleClient.ViewModel
         public BaseViewModel CurrentFormView =>
             formsNavigationStore.CurrentViewModel;
 
-        private RegisterFormViewModel CreateRegisterFormViewModel()
+        private RegisterFormViewModel CreateRegisterFormViewModel(AccountDTO userAccount)
         {
             return new RegisterFormViewModel(this,
                 new NavigationService(formsNavigationStore, CreateLogInFormViewModel));
         }
 
-        private LogInFormViewModel CreateLogInFormViewModel()
+        private LogInFormViewModel CreateLogInFormViewModel(AccountDTO userAccount)
         {
             return new LogInFormViewModel(this,
                 new NavigationService(formsNavigationStore, CreateRegisterFormViewModel));
@@ -60,14 +61,15 @@ namespace BoogleClient.ViewModel
 
         private EmailValidationViewModel CreateEmailValidationViewModel(string userEmail)
         {
-            return new EmailValidationViewModel(userEmail);
+            return new EmailValidationViewModel(this, userEmail);
         }
 
-        public void GrantAccess(string accessStatus)
+        #region Callback
+        public void GrantAccess(string accessStatus, AccountDTO userAccount)
         {
             if (accessStatus == accessGranted)
             {
-                windowNavigationService.Navigate();
+                windowNavigationService.Navigate(userAccount);
             }
             else if (accessStatus == wrongPassword)
             {
@@ -75,7 +77,8 @@ namespace BoogleClient.ViewModel
             }
             else if (accessStatus == unverifiedEmail)
             {
-                formsNavigationStore.CurrentViewModel = CreateEmailValidationViewModel(string.Empty);
+                formsNavigationStore.CurrentViewModel =
+                    CreateEmailValidationViewModel(userAccount.Email);
             }
             else if (accessStatus == nonExistentUser)
             {
@@ -88,28 +91,35 @@ namespace BoogleClient.ViewModel
             if (accountCreationStatus.Equals(usernameRegistered))
             {
                 MessageBox.Show(usernameRegistered);
-            } else if (accountCreationStatus.Equals(emailRegistered))
+            }
+            else if (accountCreationStatus.Equals(emailRegistered))
             {
                 MessageBox.Show(emailRegistered);
-            } else if (accountCreationStatus.Equals(accountCreated))
+            }
+            else if (accountCreationStatus.Equals(accountCreated))
             {
                 formsNavigationStore.CurrentViewModel = CreateEmailValidationViewModel(userEmail);
             }
         }
 
-        public void GrantValidation(string validationStatus)
+        public void GrantValidation(string validationStatus, AccountDTO userAccount)
         {
             if (validationStatus.Equals(emailNotFound))
             {
-
-            } else if (validationStatus.Equals(wrongValidationCode))
+                MessageBox.Show(emailNotFound);
+            }
+            else if (validationStatus.Equals(wrongValidationCode))
             {
-
-            } else if (validationStatus.Equals(emailValidated))
+                MessageBox.Show(wrongValidationCode);
+            }
+            else if (validationStatus.Equals(emailValidated))
             {
-                windowNavigationService.Navigate();
+                windowNavigationService.Navigate(userAccount);
             }
         }
+
+        #endregion
+
     }
 
     internal partial class LogInFormViewModel : BaseViewModel
@@ -119,7 +129,7 @@ namespace BoogleClient.ViewModel
             NavigationService formsNavigationService)
         {
             LogInCommand = new LogInCommand(this, logInViewModel);
-            NavigateCommand = new NavigateCommand(formsNavigationService);
+            NavigateCommand = new NavigateCommand(formsNavigationService, null);
         }
 
         public string UserName { get; set; }
@@ -131,17 +141,60 @@ namespace BoogleClient.ViewModel
 
     internal partial class RegisterFormViewModel : BaseViewModel
     {
+        private string userName;
+        private string email;
+        private string password;
+        private string passwordConfirmation;
+
         public RegisterFormViewModel(
             LogInViewModel logInViewModel,
             NavigationService formsNavigationService)
         {
-            NavigateCommand = new NavigateCommand(formsNavigationService);
+            NavigateCommand = new NavigateCommand(formsNavigationService, null);
             CreateAccountCommand = new CreateAccountCommand(this, logInViewModel);
+            Password = string.Empty;
+            PasswordConfirmation = string.Empty;
         }
 
-        public string UserName { get; set; }
+        public string UserName
+        {
+            get => userName;
+            set
+            {
+                userName = value;
+                OnPropertyChanged(nameof(UserName));
+            }
+        }
 
-        public string Email { get; set; }
+        public string Email
+        {
+            get => email;
+            set
+            {
+                email = value;
+                OnPropertyChanged(nameof(Email));
+            }
+        }
+
+        public string Password
+        {
+            get => password;
+            set
+            {
+                password = value;
+                OnPropertyChanged(nameof(Password));
+            }
+        }
+
+        public string PasswordConfirmation
+        {
+            get => passwordConfirmation;
+            set
+            {
+                passwordConfirmation = value;
+                OnPropertyChanged(nameof(PasswordConfirmation));
+            }
+        }
 
         public ICommand NavigateCommand { get; }
 
@@ -150,11 +203,38 @@ namespace BoogleClient.ViewModel
 
     internal partial class EmailValidationViewModel : BaseViewModel
     {
-        private readonly string userEmail;
+        private bool isWaiting;
+        private string validationCode;
 
-        public EmailValidationViewModel(string userEmail)
+        public EmailValidationViewModel(
+            LogInViewModel logInViewModel,
+            string userEmail)
         {
-            this.userEmail = userEmail;
+            ValidateEmailCommand = new ValidateEmailCommand(this, logInViewModel, userEmail);
+            IsWaiting = false;
+            ValidationCode = string.Empty;
         }
+
+        public bool IsWaiting
+        {
+            get => isWaiting;
+            set
+            {
+                isWaiting = value;
+                OnPropertyChanged(nameof(IsWaiting));
+            }
+        }
+
+        public string ValidationCode
+        {
+            get => validationCode;
+            set
+            {
+                validationCode = value;
+                OnPropertyChanged(nameof(ValidationCode));
+            }
+        }
+
+        public ICommand ValidateEmailCommand { get; set; }
     }
 }

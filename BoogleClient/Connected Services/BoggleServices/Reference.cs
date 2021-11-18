@@ -9,7 +9,86 @@
 //------------------------------------------------------------------------------
 
 namespace BoogleClient.BoggleServices {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AccountDTO", Namespace="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos")]
+    [System.SerializableAttribute()]
+    public partial class AccountDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BoggleServices.IUserManagerContract", CallbackContract=typeof(BoogleClient.BoggleServices.IUserManagerContractCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
@@ -22,10 +101,10 @@ namespace BoogleClient.BoggleServices {
         System.Threading.Tasks.Task LogInAsync(string userName, string password);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/CreateAccount")]
-        void CreateAccount(string userName, string email, string password);
+        void CreateAccount(BoogleClient.BoggleServices.AccountDTO accountDTO);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/CreateAccount")]
-        System.Threading.Tasks.Task CreateAccountAsync(string userName, string email, string password);
+        System.Threading.Tasks.Task CreateAccountAsync(BoogleClient.BoggleServices.AccountDTO accountDTO);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/ValidateEmail")]
         void ValidateEmail(string validationCode, string email);
@@ -38,13 +117,13 @@ namespace BoogleClient.BoggleServices {
     public interface IUserManagerContractCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagerContract/GrantAccess", ReplyAction="http://tempuri.org/IUserManagerContract/GrantAccessResponse")]
-        void GrantAccess(string accessStatus);
+        void GrantAccess(string accessStatus, BoogleClient.BoggleServices.AccountDTO playerInfoDTO);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagerContract/AskForEmailValidation", ReplyAction="http://tempuri.org/IUserManagerContract/AskForEmailValidationResponse")]
         void AskForEmailValidation(string accountCreationStatus, string userEmail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagerContract/GrantValidation", ReplyAction="http://tempuri.org/IUserManagerContract/GrantValidationResponse")]
-        void GrantValidation(string validationStatus);
+        void GrantValidation(string validationStatus, BoogleClient.BoggleServices.AccountDTO playerInfoDTO);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,12 +162,12 @@ namespace BoogleClient.BoggleServices {
             return base.Channel.LogInAsync(userName, password);
         }
         
-        public void CreateAccount(string userName, string email, string password) {
-            base.Channel.CreateAccount(userName, email, password);
+        public void CreateAccount(BoogleClient.BoggleServices.AccountDTO accountDTO) {
+            base.Channel.CreateAccount(accountDTO);
         }
         
-        public System.Threading.Tasks.Task CreateAccountAsync(string userName, string email, string password) {
-            return base.Channel.CreateAccountAsync(userName, email, password);
+        public System.Threading.Tasks.Task CreateAccountAsync(BoogleClient.BoggleServices.AccountDTO accountDTO) {
+            return base.Channel.CreateAccountAsync(accountDTO);
         }
         
         public void ValidateEmail(string validationCode, string email) {
