@@ -10,7 +10,8 @@ namespace BoogleClient.Services
         private readonly NavigationStore navigationStore;
         private readonly Func<AccountDTO, BaseViewModel> createViewModel;
 
-        public NavigationService(NavigationStore navigationStore,
+        public NavigationService(
+            NavigationStore navigationStore,
             Func<AccountDTO, BaseViewModel> createViewModel)
         {
             this.navigationStore = navigationStore;

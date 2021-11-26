@@ -103,9 +103,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\ChangeLobbyCommand.cs" />
+    <Compile Include="Commands\CreateNewLobbyCommand.cs" />
     <Compile Include="Commands\CreateAccountCommand.cs" />
     <Compile Include="Commands\LogInCommand.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
+    <Compile Include="Commands\NavigateMainMenuCommand.cs" />
+    <Compile Include="Commands\NavigateTabCommand.cs" />
+    <Compile Include="Commands\ScrollNextGameModeCommand.cs" />
+    <Compile Include="Commands\ScrollNextNumberOfPlayersCommand.cs" />
+    <Compile Include="Commands\ScrollPreviousGameModeCommand.cs" />
+    <Compile Include="Commands\ScrollPreviousNumberOfPlayersCommand.cs" />
     <Compile Include="Commands\ValidateEmailCommand.cs" />
     <Compile Include="Connected Services\BoggleServices\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -113,11 +121,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\TabNavigationService.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="ViewModel\BoggleServiceCallback.cs" />
+    <Compile Include="ViewModel\LobbyCreationViewModel.cs" />
     <Compile Include="ViewModel\LogInViewModel.cs" />
     <Compile Include="ViewModel\MainMenuViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\SearchLobbyViewModel.cs" />
     <Compile Include="Views\CreateLobbyView.xaml.cs">
       <DependentUpon>CreateLobbyView.xaml</DependentUpon>
     </Compile>
@@ -139,8 +151,20 @@
     <Compile Include="Views\PlayOptionsView.xaml.cs">
       <DependentUpon>PlayOptionsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProfileOverviewView.xaml.cs">
+      <DependentUpon>ProfileOverviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProfileView.xaml.cs">
+      <DependentUpon>ProfileView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegisterFormView.xaml.cs">
       <DependentUpon>RegisterFormView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchLobbyView.xaml.cs">
+      <DependentUpon>SearchLobbyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SocialsMenuView.xaml.cs">
       <DependentUpon>SocialsMenuView.xaml</DependentUpon>
@@ -173,10 +197,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Styles\TextBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\CreateLobbyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -205,7 +225,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ProfileOverviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProfileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RegisterFormView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchLobbyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

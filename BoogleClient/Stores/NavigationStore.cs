@@ -10,8 +10,8 @@ namespace BoogleClient.Stores
         public BaseViewModel CurrentViewModel
         {
             get => currentViewModel;
-            set 
-            { 
+            set
+            {
                 currentViewModel = value;
                 OnCurrentViewModelChanged();
             }

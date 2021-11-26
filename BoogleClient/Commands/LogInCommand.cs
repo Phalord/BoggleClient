@@ -12,7 +12,7 @@ namespace BoogleClient.Commands
         private readonly LogInViewModel logInViewModel;
 
         public LogInCommand(
-            LogInFormViewModel logInFormViewModel, 
+            LogInFormViewModel logInFormViewModel,
             LogInViewModel logInViewModel)
         {
             this.logInFormViewModel = logInFormViewModel;
@@ -21,15 +21,15 @@ namespace BoogleClient.Commands
 
         public override void Execute(object parameter)
         {
-            UserManagerContractClient contractClient =
-                new UserManagerContractClient(
+            BoggleServiceContractsClient contractsClient =
+                new BoggleServiceContractsClient(
                     new InstanceContext(logInViewModel));
 
             PasswordBox passwordBox = (PasswordBox) parameter;
 
             try
             {
-                contractClient.LogIn(logInFormViewModel.UserName, passwordBox.Password);
+                contractsClient.LogIn(logInFormViewModel.UserName, passwordBox.Password);
             } catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Error al establecer conexión con el servidor", "Error de conexión");

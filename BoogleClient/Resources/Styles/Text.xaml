@@ -6,9 +6,17 @@
         TargetType="Label"
         x:Key="TitleText"
         BasedOn="{StaticResource {x:Type Label}}">
-        <Setter Property="FontSize" Value="35" />
+        <Setter Property="FontSize" Value="40" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Typography.Capitals" Value="AllSmallCaps" />
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="BodyText"
+        BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
     </Style>
     
 </ResourceDictionary>

@@ -12,6 +12,9 @@
     <Color x:Key="BoggleNegative">#FF0505</Color>
     <Color x:Key="BoggleInformative">#0055FF</Color>
     <Color x:Key="BoggleBlack">#131313</Color>
+    <Color x:Key="BoggleLightBlack">#333333</Color>
+    <Color x:Key="BoggleGray">#535353</Color>
+    <Color x:Key="BoggleLightGray">#838383</Color>
     <Color x:Key="BoggleWhite">#FCFCFC</Color>
     
 </ResourceDictionary>

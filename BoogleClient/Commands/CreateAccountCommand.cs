@@ -1,5 +1,4 @@
-﻿
-using BoogleClient.BoggleServices;
+﻿using BoogleClient.BoggleServices;
 using BoogleClient.ViewModel;
 using System.ComponentModel;
 using System.ServiceModel;
@@ -23,14 +22,29 @@ namespace BoogleClient.Commands
             registerFormViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
 
-        private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+        public override void Execute(object parameter)
         {
-            if (e.PropertyName == nameof(RegisterFormViewModel.UserName)
-                || e.PropertyName == nameof(RegisterFormViewModel.Email)
-                || e.PropertyName == nameof(RegisterFormViewModel.Password)
-                || e.PropertyName == nameof(RegisterFormViewModel.PasswordConfirmation))
+            BoggleServiceContractsClient contractsClient =
+                new BoggleServiceContractsClient(
+                    new InstanceContext(logInViewModel));
+
+            string hashedPassword =
+                GenerateHashedPassword((PasswordBox)parameter);
+
+            AccountDTO accountDTO = new AccountDTO
             {
-                OnCanExecuteChanged();
+                UserName = registerFormViewModel.UserName,
+                Email = registerFormViewModel.Email,
+                Password = hashedPassword
+            };
+
+            try
+            {
+                contractsClient.CreateAccount(accountDTO);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Error al establecer conexión con el servidor", "Error de conexión");
             }
         }
 
@@ -49,6 +63,8 @@ namespace BoogleClient.Commands
             return canExecute;
         }
 
+        #region Local Methods
+
         private bool PasswordMatches()
         {
             return registerFormViewModel.Password.Equals(
@@ -63,32 +79,6 @@ namespace BoogleClient.Commands
                 || registerFormViewModel.PasswordConfirmation == string.Empty;
         }
 
-        public override void Execute(object parameter)
-        {
-            UserManagerContractClient contractClient =
-                new UserManagerContractClient(
-                    new InstanceContext(logInViewModel));
-
-            string hashedPassword =
-                GenerateHashedPassword((PasswordBox)parameter);
-            
-            AccountDTO accountDTO = new AccountDTO
-            {
-                UserName = registerFormViewModel.UserName,
-                Email = registerFormViewModel.Email,
-                Password = hashedPassword
-            };
-
-            try
-            {
-                contractClient.CreateAccount(accountDTO);
-            }
-            catch (EndpointNotFoundException)
-            {
-                MessageBox.Show("Error al establecer conexión con el servidor", "Error de conexión");
-            }
-        }
-
         private string GenerateHashedPassword(PasswordBox parameter)
         {
             string salt = BCrypt.Net.BCrypt.GenerateSalt(7);
@@ -96,5 +86,18 @@ namespace BoogleClient.Commands
 
             return hashedPassword;
         }
+
+        private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(RegisterFormViewModel.UserName)
+                || e.PropertyName == nameof(RegisterFormViewModel.Email)
+                || e.PropertyName == nameof(RegisterFormViewModel.Password)
+                || e.PropertyName == nameof(RegisterFormViewModel.PasswordConfirmation))
+            {
+                OnCanExecuteChanged();
+            }
+        }
+
+        #endregion
     }
 }

@@ -46,6 +46,7 @@
                         Width="{TemplateBinding Width}"
                         Foreground="{StaticResource WhiteBrush}"
                         Background="{TemplateBinding Background}"
+                        Command="{TemplateBinding Command}"
                         FontWeight="Bold"/>
                 </ControlTemplate>
             </Setter.Value>

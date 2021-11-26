@@ -18,7 +18,7 @@
             Style="{StaticResource TitleText}"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Foreground="{StaticResource WhiteBrush}"/>
+            Foreground="{StaticResource BlackBrush}"/>
 
         <StackPanel Grid.Row="1">
             <StackPanel Orientation="Vertical">

@@ -26,12 +26,12 @@ namespace BoogleClient.Commands
 
         public override void Execute(object parameter)
         {
-            UserManagerContractClient contractClient =
-                new UserManagerContractClient(
+            BoggleServiceContractsClient contractsClient =
+                new BoggleServiceContractsClient(
                     new InstanceContext(logInViewModel));
             try
             {
-                contractClient.ValidateEmail(
+                contractsClient.ValidateEmail(
                     emailValidationViewModel.ValidationCode, userEmail);
             } catch (EndpointNotFoundException)
             {

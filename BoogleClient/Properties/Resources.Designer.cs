@@ -61,11 +61,29 @@ namespace BoogleClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arcade.
+        /// </summary>
+        public static string arcade {
+            get {
+                return ResourceManager.GetString("arcade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change email.
         /// </summary>
         public static string changeEmail {
             get {
                 return ResourceManager.GetString("changeEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Classic.
+        /// </summary>
+        public static string classic {
+            get {
+                return ResourceManager.GetString("classic", resourceCulture);
             }
         }
         
@@ -174,6 +192,15 @@ namespace BoogleClient.Properties {
         public static string profile {
             get {
                 return ResourceManager.GetString("profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Race.
+        /// </summary>
+        public static string race {
+            get {
+                return ResourceManager.GetString("race", resourceCulture);
             }
         }
         

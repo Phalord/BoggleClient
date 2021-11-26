@@ -1,17 +1,15 @@
-﻿<UserControl x:Class="BoogleClient.Views.SocialsMenuView"
+﻿<UserControl x:Class="BoogleClient.Views.ProfileView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:p="clr-namespace:BoogleClient.Properties"
-             xmlns:local="clr-namespace:BoogleClient.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="515" d:DesignWidth="1040">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Background="{StaticResource BlackBrush}">
@@ -22,42 +20,26 @@
 
             <StackPanel Orientation="Horizontal" Grid.Column="0">
                 <Button 
-                    Content="Online"
+                    Content="Overview"
                     Style="{StaticResource TextButton}"
                     Height="75"
                     Width="200"/>
                 <Button 
-                    Content="All"
+                    Content="Match History"
                     Style="{StaticResource TextButton}"
                     Height="75"
                     Width="200"/>
                 <Button 
-                    Content="Requests"
+                    Content="Analytics"
                     Style="{StaticResource TextButton}"
                     Height="75"
                     Width="200"/>
-            </StackPanel>
-            <StackPanel
-                Grid.Column="1"
-                Orientation="Horizontal"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center">
-                <TextBox
-                    BorderBrush="{StaticResource PrimaryLightBrush}"
-                    materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PrimaryBrush}"
-                    Foreground="{StaticResource WhiteBrush}"
-                    FontSize="15"
-                    Width="250"
-                    Height="40"/>
-                <Button 
-                    Content="Add Friend"
-                    Style="{StaticResource ContainedButton}"
-                    FontSize="20"
-                    Height="40"
-                    Margin="20,0,20,0"
-                    HorizontalAlignment="Right"/>
             </StackPanel>
         </Grid>
+
+        <StackPanel Grid.Row="1">
+            <ContentControl Content="{Binding CurrentViewSelected}" Height="445"/>
+        </StackPanel>
         
     </Grid>
 </UserControl>

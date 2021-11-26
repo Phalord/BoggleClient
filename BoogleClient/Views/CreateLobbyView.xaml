@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BoogleClient.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:p="clr-namespace:BoogleClient.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="585" d:DesignWidth="1040">
@@ -18,9 +19,189 @@
            Grid.Row="0"
             Content="{x:Static p:Resources.createLobby}"
             Style="{StaticResource TitleText}"
-            Foreground="{StaticResource WhiteBrush}"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"/>
+
+        <StackPanel Grid.Row="1">
+            
+            <Grid
+                Margin="10"
+                HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                    
+                    <Button
+                        Padding="0"
+                        Margin="0"
+                        Height="60"
+                        Width="60"
+                        Foreground="{StaticResource PrimaryBrush}"
+                        Style="{StaticResource TextButton}"
+                        Command="{Binding ScrollPreviousGameMode}">
+                        <materialDesign:PackIcon
+                            Kind="ChevronLeft"
+                            Height="60"
+                            Width="60"/>
+                    </Button>
+                    
+                    <Label
+                        Content="{Binding LobbySettings.GameMode}"
+                        VerticalContentAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        Style="{StaticResource BodyText}"
+                        Foreground="{StaticResource InformativeBrush}"
+                        Width="125"
+                        FontSize="35"
+                        FontWeight="Bold"/>
+                    
+                    <Button
+                        Padding="0"
+                        Margin="0"
+                        Height="60"
+                        Width="60"
+                        Foreground="{StaticResource PrimaryBrush}"
+                        Style="{StaticResource TextButton}"
+                        Command="{Binding ScrollNextGameMode}" >
+                        <materialDesign:PackIcon
+                            Kind="ChevronRight"
+                            Height="60"
+                            Width="60"/>
+                    </Button>
+                    
+                </StackPanel>
+                <Label
+                    Content="Game mode"
+                    Style="{StaticResource BodyText}"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"/>
+            </Grid>
+            
+            <Grid
+                Margin="10"
+                HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                    
+                    <Button
+                        Padding="0"
+                        Margin="0"
+                        Height="60"
+                        Width="60"
+                        Foreground="{StaticResource PrimaryBrush}"
+                        Style="{StaticResource TextButton}"
+                        Command="{Binding ScrollPreviousNumberOfPlayers}">
+                        <materialDesign:PackIcon
+                            Kind="ChevronLeft"
+                            Height="60"
+                            Width="60"/>
+                    </Button>
+                    
+                    <Label
+                        Content="{Binding LobbySettings.NumberOfPlayers}"
+                        VerticalContentAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        Style="{StaticResource BodyText}"
+                        Foreground="{StaticResource InformativeBrush}"
+                        Width="125"
+                        FontSize="35"
+                        FontWeight="Bold"/>
+                    
+                    <Button
+                        Padding="0"
+                        Margin="0"
+                        Height="60"
+                        Width="60"
+                        Foreground="{StaticResource PrimaryBrush}"
+                        Style="{StaticResource TextButton}"
+                        Command="{Binding ScrollNextNumberOfPlayers}">
+                        <materialDesign:PackIcon
+                            Kind="ChevronRight"
+                            Height="60"
+                            Width="60"/>
+                    </Button>
+                    
+                </StackPanel>
+                <Label
+                    Content="Number of players"
+                    Style="{StaticResource BodyText}"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"/>
+            </Grid>
+            
+            <Grid
+                Margin="10"
+                HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                    
+                    <Button
+                        Padding="0"
+                        Margin="0"
+                        Height="60"
+                        Width="60"
+                        Foreground="{StaticResource PrimaryBrush}"
+                        Style="{StaticResource TextButton}"
+                        Command="{Binding ChangeLobbyPrivacy}">
+                        <materialDesign:PackIcon
+                            Kind="ChevronLeft"
+                            Height="60"
+                            Width="60"/>
+                    </Button>
+                    
+                    <Label
+                        Content="{Binding LobbySettings.LobbyPrivacy}"
+                        VerticalContentAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        Style="{StaticResource BodyText}"
+                        Foreground="{StaticResource InformativeBrush}"
+                        Width="125"
+                        FontSize="35"
+                        FontWeight="Bold"/>
+                    
+                    <Button
+                        Padding="0"
+                        Margin="0"
+                        Height="60"
+                        Width="60"
+                        Foreground="{StaticResource PrimaryBrush}"
+                        Style="{StaticResource TextButton}"
+                        Command="{Binding ChangeLobbyPrivacy}">
+                        <materialDesign:PackIcon
+                            Kind="ChevronRight"
+                            Height="60"
+                            Width="60"/>
+                    </Button>
+                    
+                </StackPanel>
+                <Label
+                    Content="Lobby privacy"
+                    Style="{StaticResource BodyText}"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"/>
+            </Grid>
+            
+        </StackPanel>
 
         <StackPanel
             Orientation="Horizontal"
@@ -30,6 +211,7 @@
             <Button 
                 Content="Cancel"
                 Style="{StaticResource OutlinedButton}"
+                Command="{Binding CancelCommand}"
                 Width="200"
                 Height="44"
                 FontSize="20"
@@ -37,6 +219,7 @@
             <Button 
                 Content="{x:Static p:Resources.createLobby}"
                 Style="{StaticResource ContainedButton}"
+                Command="{Binding CreateLobbyCommand}"
                 Width="200"
                 Height="44"
                 FontSize="20"

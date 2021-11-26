@@ -17,10 +17,10 @@
         </StackPanel>
 
         <Image 
-        Source="/Resources/Images/boggle_background.jpg"
-        Grid.Column="1"
-        Height="585" 
-        Stretch="UniformToFill"
-        HorizontalAlignment="Right"/>
+            Source="/Resources/Images/boggle_background.jpg"
+            Grid.Column="1"
+            Height="585" 
+            Stretch="UniformToFill"
+            HorizontalAlignment="Right"/>
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
 ﻿using BoogleClient.BoggleServices;
+using BoogleClient.Services;
 using BoogleClient.Stores;
 using BoogleClient.ViewModel;
 using System;
@@ -13,6 +14,16 @@ namespace BoogleClient
     {
         private readonly NavigationStore navigationStore;
 
+        #region Constants
+
+        private const string Public = "Public";
+        private const string Private = "Private";
+        private const string Classic = "Classic";
+        private const string Arcade = "Arcade";
+        private const string Race = "Race";
+
+        #endregion
+
         public App()
         {
             navigationStore = new NavigationStore();
@@ -21,7 +32,7 @@ namespace BoogleClient
         protected override void OnStartup(StartupEventArgs e)
         {
             navigationStore.CurrentViewModel =
-                new LogInViewModel(new Services.NavigationService(navigationStore, CreateMainMenuViewModel));
+                new LogInViewModel(new NavigationService(navigationStore, CreateMainMenuViewModel));
 
             MainWindow = new MainWindow()
             {
@@ -35,12 +46,29 @@ namespace BoogleClient
 
         private BaseViewModel CreateMainMenuViewModel(AccountDTO userAccount)
         {
-            return new MainMenuViewModel(new Services.NavigationService(navigationStore, CreateLobbyViewModel));
+            return new MainMenuViewModel(
+                new NavigationService(navigationStore, CreateLobbyCreationViewModel),
+                new NavigationService(navigationStore, SearchLobbyViewModel),
+                userAccount);
         }
 
-        private BaseViewModel CreateLobbyViewModel(AccountDTO accountDTO)
+        private BaseViewModel SearchLobbyViewModel(AccountDTO userAccount)
         {
-            throw new NotImplementedException();
+            return new SearchLobbyViewModel(
+                new NavigationService(navigationStore, CreateMainMenuViewModel),
+                userAccount);
+        }
+
+        private BaseViewModel CreateLobbyCreationViewModel(AccountDTO userAccount)
+        {
+            int[] roomSizes = { 2, 4, 8, 16 };
+            string[] gameModes = { Classic, Arcade, Race };
+            string[] privacies = { Public, Private };
+
+            return
+                new LobbyCreationViewModel(
+                    new NavigationService(navigationStore, CreateMainMenuViewModel),
+                    userAccount, roomSizes, gameModes, privacies);
         }
     }
 }

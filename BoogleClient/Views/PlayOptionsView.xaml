@@ -8,66 +8,77 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="515" d:DesignWidth="1040">
-    <Grid Background="Transparent">
+    <Grid Background="{StaticResource SecondaryDarkBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
-        <materialDesign:Card
-            Grid.Column="0"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Right"
-            Background="{StaticResource SecondaryBrush}"
-            Margin="50"
-            Height="350"
-            Width="250"
-            Cursor="Hand">
-            <StackPanel VerticalAlignment="Bottom">
-                <Image 
-                    Source="/Resources/Images/Throne.png"
-                    Width="200"
-                    Margin="0,45"/>
-                <Label 
-                    Width="250"
-                    Height="60"
-                    Content="{x:Static p:Resources.createLobby}"
-                    FontSize="22"
-                    FontWeight="Bold"
-                    Typography.Capitals="AllSmallCaps"
-                    Foreground="{StaticResource BlackBrush}"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Background="{StaticResource SecondaryLightBrush}"/>
-            </StackPanel>
-        </materialDesign:Card>
 
-        <materialDesign:Card 
-            Grid.Column="1"
-            VerticalAlignment="Center" 
-            HorizontalAlignment="Left"
-            Background="{StaticResource SecondaryLightBrush}"
-            Margin="50"
+        <Button
+            Grid.Column="0"
+            Padding="0"
             Height="350"
             Width="250"
-            Cursor="Hand">
-            <StackPanel>
-                <Label 
-                    Width="250"
-                    Height="60"
-                    Content="{x:Static p:Resources.searchPublicLobby}"
-                    FontSize="22"
-                    FontWeight="Bold"
-                    Typography.Capitals="AllSmallCaps"
-                    Foreground="{StaticResource WhiteBrush}"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Background="{StaticResource SecondaryBrush}"/>
-                <Image 
-                    Source="/Resources/Images/Low_Poly_Globe.png"
-                    Width="200"
-                    Margin="0,35"/>
-            </StackPanel>
-        </materialDesign:Card>
+            Command="{Binding CreateLobbyCommand}">
+            <materialDesign:Card
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Background="{StaticResource SecondaryBrush}"
+                Height="350"
+                Width="250"
+                Cursor="Hand">
+                <StackPanel VerticalAlignment="Bottom">
+
+                    <Image 
+                        Source="/Resources/Images/Throne.png"
+                        Width="200"
+                        Margin="0,45"/>
+                    <Label 
+                        Width="250"
+                        Height="60"
+                        Content="{x:Static p:Resources.createLobby}"
+                        FontSize="22"
+                        FontWeight="Bold"
+                        Typography.Capitals="AllSmallCaps"
+                        Foreground="{StaticResource BlackBrush}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Background="{StaticResource SecondaryLightBrush}"/>
+                </StackPanel>
+            </materialDesign:Card>
+        </Button>
+
+        <Button
+            Grid.Column="1"
+            Padding="0"
+            Height="350"
+            Width="250"
+            Command="{Binding SearchLobbyCommand}">
+            <materialDesign:Card 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Left"
+                Background="{StaticResource SecondaryLightBrush}"
+                Height="350"
+                Width="250"
+                Cursor="Hand">
+                <StackPanel>
+                    <Label 
+                        Width="250"
+                        Height="60"
+                        Content="{x:Static p:Resources.searchPublicLobby}"
+                        FontSize="22"
+                        FontWeight="Bold"
+                        Typography.Capitals="AllSmallCaps"
+                        Foreground="{StaticResource WhiteBrush}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Background="{StaticResource SecondaryBrush}"/>
+                    <Image 
+                        Source="/Resources/Images/Low_Poly_Globe.png"
+                        Width="200"
+                        Margin="0,35"/>
+                </StackPanel>
+            </materialDesign:Card>
+        </Button>
     </Grid>
 </UserControl>

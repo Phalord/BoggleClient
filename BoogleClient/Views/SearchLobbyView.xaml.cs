@@ -1,5 +1,4 @@
-﻿using BoogleClient.BoggleServices;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +16,11 @@ using System.Windows.Shapes;
 namespace BoogleClient.Views
 {
     /// <summary>
-    /// Interaction logic for LogInFormView.xaml
+    /// Interaction logic for SearchLobbyView.xaml
     /// </summary>
-    public partial class LogInFormView : UserControl
+    public partial class SearchLobbyView : UserControl
     {
-        public LogInFormView()
+        public SearchLobbyView()
         {
             InitializeComponent();
         }

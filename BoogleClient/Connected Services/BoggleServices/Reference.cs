@@ -90,67 +90,185 @@ namespace BoogleClient.BoggleServices {
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BoggleServices.IUserManagerContract", CallbackContract=typeof(BoogleClient.BoggleServices.IUserManagerContractCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
-    public interface IUserManagerContract {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LobbySettingsDTO", Namespace="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos")]
+    [System.SerializableAttribute()]
+    public partial class LobbySettingsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/LogIn")]
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreatorUserNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GameModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LanguageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LobbyPrivacyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NumberOfPlayersField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CreatorUserName {
+            get {
+                return this.CreatorUserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreatorUserNameField, value) != true)) {
+                    this.CreatorUserNameField = value;
+                    this.RaisePropertyChanged("CreatorUserName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GameMode {
+            get {
+                return this.GameModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GameModeField, value) != true)) {
+                    this.GameModeField = value;
+                    this.RaisePropertyChanged("GameMode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Language {
+            get {
+                return this.LanguageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LanguageField, value) != true)) {
+                    this.LanguageField = value;
+                    this.RaisePropertyChanged("Language");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LobbyPrivacy {
+            get {
+                return this.LobbyPrivacyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LobbyPrivacyField, value) != true)) {
+                    this.LobbyPrivacyField = value;
+                    this.RaisePropertyChanged("LobbyPrivacy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NumberOfPlayers {
+            get {
+                return this.NumberOfPlayersField;
+            }
+            set {
+                if ((this.NumberOfPlayersField.Equals(value) != true)) {
+                    this.NumberOfPlayersField = value;
+                    this.RaisePropertyChanged("NumberOfPlayers");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BoggleServices.IBoggleServiceContracts", CallbackContract=typeof(BoogleClient.BoggleServices.IBoggleServiceContractsCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
+    public interface IBoggleServiceContracts {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/LogIn")]
         void LogIn(string userName, string password);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/LogIn")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/LogIn")]
         System.Threading.Tasks.Task LogInAsync(string userName, string password);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/CreateAccount")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/CreateAccount")]
         void CreateAccount(BoogleClient.BoggleServices.AccountDTO accountDTO);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/CreateAccount")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/CreateAccount")]
         System.Threading.Tasks.Task CreateAccountAsync(BoogleClient.BoggleServices.AccountDTO accountDTO);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/ValidateEmail")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/ValidateEmail")]
         void ValidateEmail(string validationCode, string email);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagerContract/ValidateEmail")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/ValidateEmail")]
         System.Threading.Tasks.Task ValidateEmailAsync(string validationCode, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/CreateLobby")]
+        void CreateLobby(BoogleClient.BoggleServices.LobbySettingsDTO lobbySettings);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/CreateLobby")]
+        System.Threading.Tasks.Task CreateLobbyAsync(BoogleClient.BoggleServices.LobbySettingsDTO lobbySettings);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserManagerContractCallback {
+    public interface IBoggleServiceContractsCallback {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagerContract/GrantAccess", ReplyAction="http://tempuri.org/IUserManagerContract/GrantAccessResponse")]
-        void GrantAccess(string accessStatus, BoogleClient.BoggleServices.AccountDTO playerInfoDTO);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBoggleServiceContracts/GrantAccess", ReplyAction="http://tempuri.org/IBoggleServiceContracts/GrantAccessResponse")]
+        void GrantAccess(string accessStatus, BoogleClient.BoggleServices.AccountDTO accountInfoDTO);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagerContract/AskForEmailValidation", ReplyAction="http://tempuri.org/IUserManagerContract/AskForEmailValidationResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBoggleServiceContracts/AskForEmailValidation", ReplyAction="http://tempuri.org/IBoggleServiceContracts/AskForEmailValidationResponse")]
         void AskForEmailValidation(string accountCreationStatus, string userEmail);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagerContract/GrantValidation", ReplyAction="http://tempuri.org/IUserManagerContract/GrantValidationResponse")]
-        void GrantValidation(string validationStatus, BoogleClient.BoggleServices.AccountDTO playerInfoDTO);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBoggleServiceContracts/GrantValidation", ReplyAction="http://tempuri.org/IBoggleServiceContracts/GrantValidationResponse")]
+        void GrantValidation(string validationStatus, BoogleClient.BoggleServices.AccountDTO accountInfoDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBoggleServiceContracts/JoinLobby", ReplyAction="http://tempuri.org/IBoggleServiceContracts/JoinLobbyResponse")]
+        void JoinLobby();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserManagerContractChannel : BoogleClient.BoggleServices.IUserManagerContract, System.ServiceModel.IClientChannel {
+    public interface IBoggleServiceContractsChannel : BoogleClient.BoggleServices.IBoggleServiceContracts, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserManagerContractClient : System.ServiceModel.DuplexClientBase<BoogleClient.BoggleServices.IUserManagerContract>, BoogleClient.BoggleServices.IUserManagerContract {
+    public partial class BoggleServiceContractsClient : System.ServiceModel.DuplexClientBase<BoogleClient.BoggleServices.IBoggleServiceContracts>, BoogleClient.BoggleServices.IBoggleServiceContracts {
         
-        public UserManagerContractClient(System.ServiceModel.InstanceContext callbackInstance) : 
+        public BoggleServiceContractsClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
         }
         
-        public UserManagerContractClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+        public BoggleServiceContractsClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
                 base(callbackInstance, endpointConfigurationName) {
         }
         
-        public UserManagerContractClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+        public BoggleServiceContractsClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public UserManagerContractClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public BoggleServiceContractsClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public UserManagerContractClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public BoggleServiceContractsClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, binding, remoteAddress) {
         }
         
@@ -176,6 +294,14 @@ namespace BoogleClient.BoggleServices {
         
         public System.Threading.Tasks.Task ValidateEmailAsync(string validationCode, string email) {
             return base.Channel.ValidateEmailAsync(validationCode, email);
+        }
+        
+        public void CreateLobby(BoogleClient.BoggleServices.LobbySettingsDTO lobbySettings) {
+            base.Channel.CreateLobby(lobbySettings);
+        }
+        
+        public System.Threading.Tasks.Task CreateLobbyAsync(BoogleClient.BoggleServices.LobbySettingsDTO lobbySettings) {
+            return base.Channel.CreateLobbyAsync(lobbySettings);
         }
     }
 }

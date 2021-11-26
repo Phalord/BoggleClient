@@ -34,6 +34,15 @@
         x:Key="BlackBrush"
         Color="{DynamicResource BoggleBlack}"/>
     <SolidColorBrush 
+        x:Key="BlackLightBrush"
+        Color="{DynamicResource BoggleLightBlack}"/>
+    <SolidColorBrush 
         x:Key="WhiteBrush"
         Color="{DynamicResource BoggleWhite}"/>
+    <SolidColorBrush 
+        x:Key="GrayBrush"
+        Color="{DynamicResource BoggleGray}"/>
+    <SolidColorBrush 
+        x:Key="LightGrayBrush"
+        Color="{DynamicResource BoggleLightGray}"/>
 </ResourceDictionary>

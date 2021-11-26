@@ -8,4 +8,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="AccountDTO" nillable="true" type="tns:AccountDTO" />
+  <xs:complexType name="LobbySettingsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatorUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GameMode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Language" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LobbyPrivacy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumberOfPlayers" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LobbySettingsDTO" nillable="true" type="tns:LobbySettingsDTO" />
 </xs:schema>

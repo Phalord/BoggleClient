@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace BoogleClient.ViewModel
 {
-    internal partial class LogInViewModel : BaseViewModel, IUserManagerContractCallback
+    internal class LogInViewModel : BoggleServiceCallback
     {
         private readonly NavigationService windowNavigationService;
         private readonly NavigationStore formsNavigationStore;
@@ -39,11 +39,6 @@ namespace BoogleClient.ViewModel
                 .CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 
-        private void OnCurrentViewModelChanged()
-        {
-            OnPropertyChanged(nameof(CurrentFormView));
-        }
-
         public BaseViewModel CurrentFormView =>
             formsNavigationStore.CurrentViewModel;
 
@@ -64,8 +59,14 @@ namespace BoogleClient.ViewModel
             return new EmailValidationViewModel(this, userEmail);
         }
 
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentFormView));
+        }
+
         #region Callback
-        public void GrantAccess(string accessStatus, AccountDTO userAccount)
+
+        public override void GrantAccess(string accessStatus, AccountDTO userAccount)
         {
             if (accessStatus == accessGranted)
             {
@@ -86,7 +87,7 @@ namespace BoogleClient.ViewModel
             }
         }
 
-        public void AskForEmailValidation(string accountCreationStatus, string userEmail)
+        public override void AskForEmailValidation(string accountCreationStatus, string userEmail)
         {
             if (accountCreationStatus.Equals(usernameRegistered))
             {
@@ -102,7 +103,7 @@ namespace BoogleClient.ViewModel
             }
         }
 
-        public void GrantValidation(string validationStatus, AccountDTO userAccount)
+        public override void GrantValidation(string validationStatus, AccountDTO userAccount)
         {
             if (validationStatus.Equals(emailNotFound))
             {
@@ -122,14 +123,15 @@ namespace BoogleClient.ViewModel
 
     }
 
-    internal partial class LogInFormViewModel : BaseViewModel
+    internal class LogInFormViewModel : BaseViewModel
     {
         public LogInFormViewModel(
             LogInViewModel logInViewModel,
             NavigationService formsNavigationService)
         {
             LogInCommand = new LogInCommand(this, logInViewModel);
-            NavigateCommand = new NavigateCommand(formsNavigationService, null);
+            NavigateCommand =
+                new NavigateCommand(formsNavigationService, null);
         }
 
         public string UserName { get; set; }
@@ -139,7 +141,7 @@ namespace BoogleClient.ViewModel
         public ICommand NavigateCommand { get; }
     }
 
-    internal partial class RegisterFormViewModel : BaseViewModel
+    internal class RegisterFormViewModel : BaseViewModel
     {
         private string userName;
         private string email;
@@ -201,7 +203,7 @@ namespace BoogleClient.ViewModel
         public ICommand CreateAccountCommand { get; set; }
     }
 
-    internal partial class EmailValidationViewModel : BaseViewModel
+    internal class EmailValidationViewModel : BaseViewModel
     {
         private bool isWaiting;
         private string validationCode;

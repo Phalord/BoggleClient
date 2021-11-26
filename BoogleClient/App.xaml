@@ -15,9 +15,9 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/Brushes.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/Button.xaml"/>
-                <ResourceDictionary Source="Resources/Styles/TextBox.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/Text.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <FontFamily x:Key="MaterialDesignFont">pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto</FontFamily>
 
             <DataTemplate DataType="{x:Type viewModel:LogInViewModel}">
                 <view:LogInView/>
@@ -39,6 +39,21 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModel:SocialsMenuViewModel}">
                 <view:SocialsMenuView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ProfileViewModel}">
+                <view:ProfileView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:LeaderboardViewModel}">
+                <view:LeaderboardView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:SettingsMenuViewModel}">
+                <view:SettingsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:LobbyCreationViewModel}">
+                <view:CreateLobbyView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:SearchLobbyViewModel}">
+                <view:SearchLobbyView/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
