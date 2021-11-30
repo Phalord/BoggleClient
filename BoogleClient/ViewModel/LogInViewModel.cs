@@ -1,9 +1,7 @@
 ﻿using BoogleClient.BoggleServices;
-using BoogleClient.Commands;
 using BoogleClient.Services;
 using BoogleClient.Stores;
 using System.Windows;
-using System.Windows.Input;
 
 namespace BoogleClient.ViewModel
 {
@@ -121,122 +119,5 @@ namespace BoogleClient.ViewModel
 
         #endregion
 
-    }
-
-    internal class LogInFormViewModel : BaseViewModel
-    {
-        public LogInFormViewModel(
-            LogInViewModel logInViewModel,
-            NavigationService formsNavigationService)
-        {
-            LogInCommand = new LogInCommand(this, logInViewModel);
-            NavigateCommand =
-                new NavigateCommand(formsNavigationService, null);
-        }
-
-        public string UserName { get; set; }
-
-        public ICommand LogInCommand { get; }
-
-        public ICommand NavigateCommand { get; }
-    }
-
-    internal class RegisterFormViewModel : BaseViewModel
-    {
-        private string userName;
-        private string email;
-        private string password;
-        private string passwordConfirmation;
-
-        public RegisterFormViewModel(
-            LogInViewModel logInViewModel,
-            NavigationService formsNavigationService)
-        {
-            NavigateCommand = new NavigateCommand(formsNavigationService, null);
-            CreateAccountCommand = new CreateAccountCommand(this, logInViewModel);
-            Password = string.Empty;
-            PasswordConfirmation = string.Empty;
-        }
-
-        public string UserName
-        {
-            get => userName;
-            set
-            {
-                userName = value;
-                OnPropertyChanged(nameof(UserName));
-            }
-        }
-
-        public string Email
-        {
-            get => email;
-            set
-            {
-                email = value;
-                OnPropertyChanged(nameof(Email));
-            }
-        }
-
-        public string Password
-        {
-            get => password;
-            set
-            {
-                password = value;
-                OnPropertyChanged(nameof(Password));
-            }
-        }
-
-        public string PasswordConfirmation
-        {
-            get => passwordConfirmation;
-            set
-            {
-                passwordConfirmation = value;
-                OnPropertyChanged(nameof(PasswordConfirmation));
-            }
-        }
-
-        public ICommand NavigateCommand { get; }
-
-        public ICommand CreateAccountCommand { get; set; }
-    }
-
-    internal class EmailValidationViewModel : BaseViewModel
-    {
-        private bool isWaiting;
-        private string validationCode;
-
-        public EmailValidationViewModel(
-            LogInViewModel logInViewModel,
-            string userEmail)
-        {
-            ValidateEmailCommand = new ValidateEmailCommand(this, logInViewModel, userEmail);
-            IsWaiting = false;
-            ValidationCode = string.Empty;
-        }
-
-        public bool IsWaiting
-        {
-            get => isWaiting;
-            set
-            {
-                isWaiting = value;
-                OnPropertyChanged(nameof(IsWaiting));
-            }
-        }
-
-        public string ValidationCode
-        {
-            get => validationCode;
-            set
-            {
-                validationCode = value;
-                OnPropertyChanged(nameof(ValidationCode));
-            }
-        }
-
-        public ICommand ValidateEmailCommand { get; set; }
     }
 }

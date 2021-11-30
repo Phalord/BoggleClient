@@ -34,6 +34,8 @@
       <xsd:import schemaLocation="http://localhost:8130/BoggleServices?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8130/BoggleServices?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8130/BoggleServices?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" />
+      <xsd:import schemaLocation="http://localhost:8130/BoggleServices?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/BoggleModel" />
+      <xsd:import schemaLocation="http://localhost:8130/BoggleServices?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IBoggleServiceContracts_LogIn_InputMessage">
@@ -47,6 +49,15 @@
   </wsdl:message>
   <wsdl:message name="IBoggleServiceContracts_CreateLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateLobby" />
+  </wsdl:message>
+  <wsdl:message name="IBoggleServiceContracts_SearchPublicLobbies_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchPublicLobbies" />
+  </wsdl:message>
+  <wsdl:message name="IBoggleServiceContracts_UpdatePublicLobbies_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePublicLobbies" />
+  </wsdl:message>
+  <wsdl:message name="IBoggleServiceContracts_JoinPrivateLobbie_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinPrivateLobbie" />
   </wsdl:message>
   <wsdl:message name="IBoggleServiceContracts_GrantAccess_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GrantAccess" />
@@ -72,6 +83,12 @@
   <wsdl:message name="IBoggleServiceContracts_JoinLobby_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:JoinLobbyResponse" />
   </wsdl:message>
+  <wsdl:message name="IBoggleServiceContracts_DisplayPublicLobbies_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:DisplayPublicLobbies" />
+  </wsdl:message>
+  <wsdl:message name="IBoggleServiceContracts_DisplayPublicLobbies_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:DisplayPublicLobbiesResponse" />
+  </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="IBoggleServiceContracts">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="LogIn">
       <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/LogIn" message="tns:IBoggleServiceContracts_LogIn_InputMessage" />
@@ -84,6 +101,15 @@
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="CreateLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/CreateLobby" message="tns:IBoggleServiceContracts_CreateLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SearchPublicLobbies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/SearchPublicLobbies" message="tns:IBoggleServiceContracts_SearchPublicLobbies_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdatePublicLobbies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/UpdatePublicLobbies" message="tns:IBoggleServiceContracts_UpdatePublicLobbies_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="JoinPrivateLobbie">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/JoinPrivateLobbie" message="tns:IBoggleServiceContracts_JoinPrivateLobbie_InputMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GrantAccess">
       <wsdl:output wsaw:Action="http://tempuri.org/IBoggleServiceContracts/GrantAccess" message="tns:IBoggleServiceContracts_GrantAccess_OutputCallbackMessage" />
@@ -100,6 +126,10 @@
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="JoinLobby">
       <wsdl:output wsaw:Action="http://tempuri.org/IBoggleServiceContracts/JoinLobby" message="tns:IBoggleServiceContracts_JoinLobby_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/JoinLobbyResponse" message="tns:IBoggleServiceContracts_JoinLobby_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DisplayPublicLobbies">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBoggleServiceContracts/DisplayPublicLobbies" message="tns:IBoggleServiceContracts_DisplayPublicLobbies_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/DisplayPublicLobbiesResponse" message="tns:IBoggleServiceContracts_DisplayPublicLobbies_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IBoggleServiceContracts" type="tns:IBoggleServiceContracts">
@@ -125,6 +155,24 @@
     </wsdl:operation>
     <wsdl:operation name="CreateLobby">
       <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/CreateLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SearchPublicLobbies">
+      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/SearchPublicLobbies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePublicLobbies">
+      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/UpdatePublicLobbies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="JoinPrivateLobbie">
+      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/JoinPrivateLobbie" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -158,6 +206,15 @@
     </wsdl:operation>
     <wsdl:operation name="JoinLobby">
       <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/JoinLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisplayPublicLobbies">
+      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/DisplayPublicLobbies" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

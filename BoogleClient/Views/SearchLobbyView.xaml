@@ -15,12 +15,53 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <Label 
-            Grid.Row="0"
-            Content="{x:Static p:Resources.searchPublicLobby}"
-            Style="{StaticResource TitleText}"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"/>
+        <StackPanel
+            Background="{StaticResource BlackBrush}"
+            Height="100">
+            <Label
+                Grid.Row="0"
+                Margin="0,20"
+                Content="{x:Static p:Resources.searchPublicLobby}"
+                Style="{StaticResource TitleText}"
+                Foreground="{StaticResource WhiteBrush}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Height="80">
+                <TextBox
+                    Height="40"
+                    Width="350"
+                    Margin="10, 0"
+                    Padding="10, 5"
+                    FontSize="20"
+                    materialDesign:HintAssist.Hint="Private lobby code"
+                    BorderBrush="{StaticResource PrimaryBrush}"
+                    Background="{StaticResource BlackLightBrush}"
+                    Foreground="{StaticResource WhiteBrush}"/>
+                <Button
+                    Style="{StaticResource OutlinedButton}"
+                    Content="Join"
+                    Height="40"
+                    Width="100"
+                    FontSize="20"/>
+            </StackPanel>
+            <ScrollViewer
+                VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Disabled"
+                HorizontalAlignment="Center"
+                Height="305"
+                Width="800">
+                <StackPanel
+                    Width="800"
+                    HorizontalAlignment="Center"/>
+            </ScrollViewer>
+        </StackPanel>
 
         <StackPanel
             Orientation="Horizontal"

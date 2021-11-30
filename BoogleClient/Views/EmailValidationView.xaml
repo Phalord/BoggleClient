@@ -50,8 +50,7 @@
             <Label HorizontalAlignment="Center">
                 <Hyperlink
                     NavigateUri="https://google.com"
-                    TextDecorations="None"
-                    RequestNavigate="Hyperlink_RequestNavigate">
+                    TextDecorations="None">
                     <Label Content="{x:Static p:Resources.changeEmail}"
                            Foreground="{StaticResource SecondaryBrush}"/>
                 </Hyperlink>

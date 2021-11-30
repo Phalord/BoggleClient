@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace BoogleClient.ViewModel
 {
-    internal partial class MainMenuViewModel : BaseViewModel
+    internal class MainMenuViewModel : BaseViewModel
     {
         private readonly NavigationService createLobbyNavigationService;
         private readonly NavigationService searchLobbyNavigationService;
@@ -92,47 +92,6 @@ namespace BoogleClient.ViewModel
         {
             OnPropertyChanged(nameof(CurrentMenuSelected));
         }
-
-    }
-
-    internal class PlayOptionsViewModel : BaseViewModel
-    {
-
-        public PlayOptionsViewModel(
-            NavigationService createLobbyNavigationService,
-            NavigationService searchLobbyNavigationService,
-            AccountDTO userAccount)
-        {
-
-            CreateLobbyCommand = new NavigateCommand(
-                createLobbyNavigationService, userAccount);
-            SearchLobbyCommand = new NavigateCommand(
-                searchLobbyNavigationService, userAccount);
-        }
-
-
-        public ICommand CreateLobbyCommand { get; }
-
-        public ICommand SearchLobbyCommand { get; }
-    }
-
-    internal partial class SocialsMenuViewModel : BaseViewModel
-    {
-
-    }
-
-    internal partial class LeaderboardViewModel : BaseViewModel
-    {
-
-    }
-
-    internal partial class ProfileViewModel : BaseViewModel
-    {
-
-    }
-
-    internal partial class SettingsMenuViewModel : BaseViewModel
-    {
 
     }
 }

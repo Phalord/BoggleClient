@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BoggleModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BoggleModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8130/BoggleServices?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="Lobby">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GameMatch" nillable="true" type="tns:Match" />
+      <xs:element minOccurs="0" name="MessageHistory" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element minOccurs="0" name="Players" nillable="true" type="tns:ArrayOfPlayer" />
+      <xs:element minOccurs="0" name="Privacy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Size" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Lobby" nillable="true" type="tns:Lobby" />
+  <xs:complexType name="Match">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GameMode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Language" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MatchBoard" nillable="true" type="tns:Board" />
+      <xs:element minOccurs="0" name="Rounds" type="xs:int" />
+      <xs:element minOccurs="0" name="SecondsPerRound" type="xs:int" />
+      <xs:element minOccurs="0" name="WinningScore" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Match" nillable="true" type="tns:Match" />
+  <xs:complexType name="Board">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Dices" nillable="true" type="tns:ArrayOfDice" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Board" nillable="true" type="tns:Board" />
+  <xs:complexType name="ArrayOfDice">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Dice" nillable="true" type="tns:Dice" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDice" nillable="true" type="tns:ArrayOfDice" />
+  <xs:complexType name="Dice">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Faces" nillable="true" type="q1:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Dice" nillable="true" type="tns:Dice" />
+  <xs:complexType name="ArrayOfMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessage" nillable="true" type="tns:ArrayOfMessage" />
+  <xs:complexType name="Message">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sender" nillable="true" type="tns:Player" />
+      <xs:element minOccurs="0" name="TimeSent" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Message" nillable="true" type="tns:Message" />
+  <xs:complexType name="Player">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Account" nillable="true" type="tns:UserAccount" />
+      <xs:element minOccurs="0" name="FriendRequests" nillable="true" type="tns:ArrayOfFriendRequest" />
+      <xs:element minOccurs="0" name="Nationality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nickname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Performance" nillable="true" type="tns:PerformanceRecord" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Player" nillable="true" type="tns:Player" />
+  <xs:complexType name="UserAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsVerified" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlayerAccount" nillable="true" type="tns:Player" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserAccount" nillable="true" type="tns:UserAccount" />
+  <xs:complexType name="ArrayOfFriendRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FriendRequest" nillable="true" type="tns:FriendRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFriendRequest" nillable="true" type="tns:ArrayOfFriendRequest" />
+  <xs:complexType name="FriendRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Receiver" nillable="true" type="tns:Player" />
+      <xs:element minOccurs="0" name="Sender" nillable="true" type="tns:Player" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FriendRequest" nillable="true" type="tns:FriendRequest" />
+  <xs:complexType name="PerformanceRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PlayerPerformance" nillable="true" type="tns:Player" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PerformanceRecord" nillable="true" type="tns:PerformanceRecord" />
+  <xs:complexType name="ArrayOfPlayer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Player" nillable="true" type="tns:Player" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlayer" nillable="true" type="tns:ArrayOfPlayer" />
+  <xs:complexType name="ArrayOfLobby">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Lobby" nillable="true" type="tns:Lobby" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLobby" nillable="true" type="tns:ArrayOfLobby" />
+</xs:schema>

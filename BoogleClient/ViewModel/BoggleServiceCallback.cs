@@ -1,6 +1,4 @@
-﻿
-
-using BoogleClient.BoggleServices;
+﻿using BoogleClient.BoggleServices;
 
 namespace BoogleClient.ViewModel
 {
@@ -21,7 +19,12 @@ namespace BoogleClient.ViewModel
             throw new System.NotImplementedException();
         }
 
-        public virtual void JoinLobby()
+        public virtual void JoinLobby(Lobby newLobby)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public virtual void DisplayPublicLobbies(Lobby[] publicLobbies)
         {
             throw new System.NotImplementedException();
         }

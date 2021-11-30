@@ -80,9 +80,17 @@ namespace BoogleClient.ViewModel
 
         public ICommand ScrollNextNumberOfPlayers { get; }
 
-        public override void JoinLobby()
+        public override void JoinLobby(Lobby newLobby)
         {
+            
             MessageBox.Show("Lobby created successfuly", "It works!");
+        }
+
+        private BaseViewModel CreateLobbyViewModel()
+        {
+
+
+            return null;
         }
     }
 }

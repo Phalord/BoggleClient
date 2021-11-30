@@ -120,16 +120,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Services\LobbyNavigationService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\TabNavigationService.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
     <Compile Include="ViewModel\BoggleServiceCallback.cs" />
+    <Compile Include="ViewModel\EmailValidationViewModel.cs" />
+    <Compile Include="ViewModel\LeaderboardViewModel.cs" />
     <Compile Include="ViewModel\LobbyCreationViewModel.cs" />
+    <Compile Include="ViewModel\LogInFormViewModel.cs" />
     <Compile Include="ViewModel\LogInViewModel.cs" />
     <Compile Include="ViewModel\MainMenuViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\PlayOptionsViewModel.cs" />
+    <Compile Include="ViewModel\ProfileViewModel.cs" />
+    <Compile Include="ViewModel\RegisterFormViewModel.cs" />
     <Compile Include="ViewModel\SearchLobbyViewModel.cs" />
+    <Compile Include="ViewModel\SettingsMenuViewModel.cs" />
+    <Compile Include="ViewModel\SocialsMenuViewModel.cs" />
+    <Compile Include="Views\Components\LobbyPreview.xaml.cs">
+      <DependentUpon>LobbyPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\PlayerPreview.xaml.cs">
+      <DependentUpon>PlayerPreview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreateLobbyView.xaml.cs">
       <DependentUpon>CreateLobbyView.xaml</DependentUpon>
     </Compile>
@@ -138,6 +153,9 @@
     </Compile>
     <Compile Include="Views\LeaderboardView.xaml.cs">
       <DependentUpon>LeaderboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LobbyView.xaml.cs">
+      <DependentUpon>LobbyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LogInFormView.xaml.cs">
       <DependentUpon>LogInFormView.xaml</DependentUpon>
@@ -197,6 +215,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Components\LobbyPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Components\PlayerPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CreateLobbyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -206,6 +232,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LeaderboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LobbyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -275,6 +305,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\BoggleServices\BoggleServices2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BoggleServices\BoggleServices3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BoggleServices\BoggleServices31.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\BoggleServices\UserManager.wsdl" />

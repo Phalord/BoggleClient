@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8130/BoggleServices?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" />
+  <xs:import schemaLocation="http://localhost:8130/BoggleServices?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/BoggleModel" />
   <xs:element name="LogIn">
     <xs:complexType>
       <xs:sequence>
@@ -28,6 +29,24 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="lobbySettings" nillable="true" type="q2:LobbySettingsDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchPublicLobbies">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePublicLobbies">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JoinPrivateLobbie">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -72,10 +91,24 @@
   </xs:element>
   <xs:element name="JoinLobby">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q5:Lobby" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="JoinLobbyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DisplayPublicLobbies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="publicLobbies" nillable="true" type="q6:ArrayOfLobby" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DisplayPublicLobbiesResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

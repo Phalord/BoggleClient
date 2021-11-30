@@ -13,12 +13,5 @@ namespace BoogleClient.Views
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Boton apretado");
-            Console.WriteLine(((Button)sender).Command.ToString());
-            Console.WriteLine(((Button)sender).CommandBindings.ToString());
-        }
     }
 }

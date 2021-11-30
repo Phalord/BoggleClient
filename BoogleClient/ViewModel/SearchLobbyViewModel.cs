@@ -7,8 +7,8 @@ namespace BoogleClient.ViewModel
 {
     internal class SearchLobbyViewModel : BaseViewModel
     {
-        private NavigationService navigationService;
-        private AccountDTO userAccount;
+        private readonly NavigationService navigationService;
+        private readonly AccountDTO userAccount;
 
         public SearchLobbyViewModel(
             NavigationService navigationService,

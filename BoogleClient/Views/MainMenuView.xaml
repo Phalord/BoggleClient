@@ -27,7 +27,6 @@
                     Content="{x:Static p:Resources.leaderboard}"
                     Style="{StaticResource TextButton}"
                     Command="{Binding NavigateLeaderboardCommand}"
-                    Click="Button_Click"
                     Height="70"
                     Width="180"/>
                 <Button 
@@ -35,7 +34,6 @@
                     Style="{StaticResource TextButton}"
                     Command="{Binding NavigatePlayCommand}"
                     Background="{StaticResource SecondaryDarkBrush}"
-                    Click="Button_Click"
                     Height="70"
                     FontSize="50"
                     Padding="0,0,0,10"
@@ -44,14 +42,12 @@
                     Content="{x:Static p:Resources.socials}"
                     Style="{StaticResource TextButton}"
                     Command="{Binding NavigateSocialsCommand}"
-                    Click="Button_Click"
                     Height="70"
                     Width="180"/>
                 <Button
                     Content="{x:Static p:Resources.settings}"
                     Style="{StaticResource TextButton}"
                     Command="{Binding NavigateSettingsCommand}"
-                    Click="Button_Click"
                     Height="70"
                     Width="180"/>
             </StackPanel>
