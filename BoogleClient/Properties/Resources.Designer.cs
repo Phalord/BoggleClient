@@ -61,6 +61,33 @@ namespace BoogleClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Friend.
+        /// </summary>
+        public static string addFriend {
+            get {
+                return ResourceManager.GetString("addFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string all {
+            get {
+                return ResourceManager.GetString("all", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analytics.
+        /// </summary>
+        public static string analytics {
+            get {
+                return ResourceManager.GetString("analytics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Arcade.
         /// </summary>
         public static string arcade {
@@ -70,11 +97,11 @@ namespace BoogleClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change email.
+        ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        public static string changeEmail {
+        public static string cancel {
             get {
-                return ResourceManager.GetString("changeEmail", resourceCulture);
+                return ResourceManager.GetString("cancel", resourceCulture);
             }
         }
         
@@ -142,11 +169,65 @@ namespace BoogleClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exit Lobby.
+        /// </summary>
+        public static string exitLobby {
+            get {
+                return ResourceManager.GetString("exitLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Forgot Password?.
         /// </summary>
         public static string forgotPassword {
             get {
                 return ResourceManager.GetString("forgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friend Code.
+        /// </summary>
+        public static string friendCode {
+            get {
+                return ResourceManager.GetString("friendCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game mode.
+        /// </summary>
+        public static string gameMode {
+            get {
+                return ResourceManager.GetString("gameMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Games Played.
+        /// </summary>
+        public static string gamesPlayed {
+            get {
+                return ResourceManager.GetString("gamesPlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Highest Score.
+        /// </summary>
+        public static string highestScore {
+            get {
+                return ResourceManager.GetString("highestScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invite Player.
+        /// </summary>
+        public static string invitePlayer {
+            get {
+                return ResourceManager.GetString("invitePlayer", resourceCulture);
             }
         }
         
@@ -178,11 +259,74 @@ namespace BoogleClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lobby Privacy.
+        /// </summary>
+        public static string lobbyPrivacy {
+            get {
+                return ResourceManager.GetString("lobbyPrivacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log In.
         /// </summary>
         public static string logIn {
             get {
                 return ResourceManager.GetString("logIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Match History.
+        /// </summary>
+        public static string matchHistory {
+            get {
+                return ResourceManager.GetString("matchHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Match Settings.
+        /// </summary>
+        public static string matchSettings {
+            get {
+                return ResourceManager.GetString("matchSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Match starting in....
+        /// </summary>
+        public static string matchStarting {
+            get {
+                return ResourceManager.GetString("matchStarting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of players.
+        /// </summary>
+        public static string numberOfPlayers {
+            get {
+                return ResourceManager.GetString("numberOfPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Online.
+        /// </summary>
+        public static string online {
+            get {
+                return ResourceManager.GetString("online", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overview.
+        /// </summary>
+        public static string overview {
+            get {
+                return ResourceManager.GetString("overview", resourceCulture);
             }
         }
         
@@ -201,6 +345,24 @@ namespace BoogleClient.Properties {
         public static string play {
             get {
                 return ResourceManager.GetString("play", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Players in lobby.
+        /// </summary>
+        public static string playersInLobby {
+            get {
+                return ResourceManager.GetString("playersInLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Players invited.
+        /// </summary>
+        public static string playersInvited {
+            get {
+                return ResourceManager.GetString("playersInvited", resourceCulture);
             }
         }
         
@@ -232,11 +394,29 @@ namespace BoogleClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Requests.
+        /// </summary>
+        public static string requests {
+            get {
+                return ResourceManager.GetString("requests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search public lobby.
         /// </summary>
         public static string searchPublicLobby {
             get {
                 return ResourceManager.GetString("searchPublicLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send code again.
+        /// </summary>
+        public static string sendCodeAgain {
+            get {
+                return ResourceManager.GetString("sendCodeAgain", resourceCulture);
             }
         }
         
@@ -259,6 +439,15 @@ namespace BoogleClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Score.
+        /// </summary>
+        public static string totalScore {
+            get {
+                return ResourceManager.GetString("totalScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username.
         /// </summary>
         public static string username {
@@ -273,6 +462,24 @@ namespace BoogleClient.Properties {
         public static string validateEmail {
             get {
                 return ResourceManager.GetString("validateEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Victories.
+        /// </summary>
+        public static string victories {
+            get {
+                return ResourceManager.GetString("victories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write your message....
+        /// </summary>
+        public static string writeYourMessage {
+            get {
+                return ResourceManager.GetString("writeYourMessage", resourceCulture);
             }
         }
     }

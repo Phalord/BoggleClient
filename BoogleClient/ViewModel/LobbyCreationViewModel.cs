@@ -1,6 +1,7 @@
 ﻿using BoogleClient.BoggleServices;
 using BoogleClient.Commands;
 using BoogleClient.Services;
+using BoogleClient.Stores;
 using System;
 using System.Globalization;
 using System.Threading;
@@ -11,16 +12,17 @@ namespace BoogleClient.ViewModel
 {
     internal class LobbyCreationViewModel : BoggleServiceCallback
     {
-        private readonly NavigationService navigationService;
+        private readonly NavigationStore navigationStore;
         private readonly AccountDTO userAccount;
         private LobbySettingsDTO lobbySettings;
 
         public LobbyCreationViewModel(
             NavigationService navigationService,
             AccountDTO userAccount, int[] roomSizes,
-            string[] gameModes, string[] privacies)
+            string[] gameModes, string[] privacies,
+            NavigationStore navigationStore)
         {
-            this.navigationService = navigationService;
+            this.navigationStore = navigationStore;
             this.userAccount = userAccount;
 
 
@@ -42,7 +44,7 @@ namespace BoogleClient.ViewModel
             ScrollNextNumberOfPlayers =
                 new ScrollNextNumberOfPlayersCommand(this, roomSizes);
             ChangeLobbyPrivacy =
-                new ChangeLobbyCommand(this, privacies);
+                new ChangeLobbyPrivacyCommand(this, privacies);
             CancelCommand =
                 new NavigateCommand(navigationService, userAccount);
             CreateLobbyCommand =
@@ -80,17 +82,14 @@ namespace BoogleClient.ViewModel
 
         public ICommand ScrollNextNumberOfPlayers { get; }
 
-        public override void JoinLobby(Lobby newLobby)
+        public override void JoinLobby(Lobby lobby)
         {
-            
-            MessageBox.Show("Lobby created successfuly", "It works!");
+            navigationStore.CurrentViewModel = CreateLobbyViewModel(lobby);
         }
 
-        private BaseViewModel CreateLobbyViewModel()
+        private BaseViewModel CreateLobbyViewModel(Lobby lobby)
         {
-
-
-            return null;
+            return new LobbyViewModel(lobby, userAccount);
         }
     }
 }

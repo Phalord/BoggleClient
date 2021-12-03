@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Resources/Styles/Button.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/Text.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/LobbyPreviewCard.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/PlayerLobbyCard.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <FontFamily x:Key="MaterialDesignFont">pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto</FontFamily>
 
@@ -55,6 +56,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModel:SearchLobbyViewModel}">
                 <view:SearchLobbyView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:LobbyViewModel}">
+                <view:LobbyView/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

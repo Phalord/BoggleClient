@@ -1121,11 +1121,11 @@ namespace BoogleClient.BoggleServices {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/UpdatePublicLobbies")]
         System.Threading.Tasks.Task UpdatePublicLobbiesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/JoinPrivateLobbie")]
-        void JoinPrivateLobbie(string userName, string lobbyCode);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/JoinLobbyByCode")]
+        void JoinLobbyByCode(string userName, string lobbyCode);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/JoinPrivateLobbie")]
-        System.Threading.Tasks.Task JoinPrivateLobbieAsync(string userName, string lobbyCode);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/JoinLobbyByCode")]
+        System.Threading.Tasks.Task JoinLobbyByCodeAsync(string userName, string lobbyCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1223,12 +1223,12 @@ namespace BoogleClient.BoggleServices {
             return base.Channel.UpdatePublicLobbiesAsync();
         }
         
-        public void JoinPrivateLobbie(string userName, string lobbyCode) {
-            base.Channel.JoinPrivateLobbie(userName, lobbyCode);
+        public void JoinLobbyByCode(string userName, string lobbyCode) {
+            base.Channel.JoinLobbyByCode(userName, lobbyCode);
         }
         
-        public System.Threading.Tasks.Task JoinPrivateLobbieAsync(string userName, string lobbyCode) {
-            return base.Channel.JoinPrivateLobbieAsync(userName, lobbyCode);
+        public System.Threading.Tasks.Task JoinLobbyByCodeAsync(string userName, string lobbyCode) {
+            return base.Channel.JoinLobbyByCodeAsync(userName, lobbyCode);
         }
     }
 }

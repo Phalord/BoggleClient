@@ -2,13 +2,13 @@
 
 namespace BoogleClient.Commands
 {
-    internal class ChangeLobbyCommand : BaseCommand
+    internal class ChangeLobbyPrivacyCommand : BaseCommand
     {
         private readonly LobbyCreationViewModel lobbyCreationViewModel;
         private readonly string privatePrivacy;
         private readonly string publicPrivacy;
 
-        public ChangeLobbyCommand(
+        public ChangeLobbyPrivacyCommand(
             LobbyCreationViewModel lobbyCreationViewModel,
             string[] privacies)
         {

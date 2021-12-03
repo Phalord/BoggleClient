@@ -56,8 +56,8 @@
   <wsdl:message name="IBoggleServiceContracts_UpdatePublicLobbies_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePublicLobbies" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_JoinPrivateLobbie_InputMessage">
-    <wsdl:part name="parameters" element="tns:JoinPrivateLobbie" />
+  <wsdl:message name="IBoggleServiceContracts_JoinLobbyByCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinLobbyByCode" />
   </wsdl:message>
   <wsdl:message name="IBoggleServiceContracts_GrantAccess_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GrantAccess" />
@@ -108,8 +108,8 @@
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdatePublicLobbies">
       <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/UpdatePublicLobbies" message="tns:IBoggleServiceContracts_UpdatePublicLobbies_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="JoinPrivateLobbie">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/JoinPrivateLobbie" message="tns:IBoggleServiceContracts_JoinPrivateLobbie_InputMessage" />
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="JoinLobbyByCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/JoinLobbyByCode" message="tns:IBoggleServiceContracts_JoinLobbyByCode_InputMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GrantAccess">
       <wsdl:output wsaw:Action="http://tempuri.org/IBoggleServiceContracts/GrantAccess" message="tns:IBoggleServiceContracts_GrantAccess_OutputCallbackMessage" />
@@ -171,8 +171,8 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="JoinPrivateLobbie">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/JoinPrivateLobbie" style="document" />
+    <wsdl:operation name="JoinLobbyByCode">
+      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/JoinLobbyByCode" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -15,8 +15,8 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <Label 
-           Grid.Row="0"
+        <Label
+            Grid.Row="0"
             Content="{x:Static p:Resources.createLobby}"
             Style="{StaticResource TitleText}"
             HorizontalAlignment="Center"
@@ -77,7 +77,7 @@
                     
                 </StackPanel>
                 <Label
-                    Content="Game mode"
+                    Content="{x:Static p:Resources.gameMode}"
                     Style="{StaticResource BodyText}"
                     Grid.Row="1"
                     HorizontalAlignment="Center"/>
@@ -136,7 +136,7 @@
                     
                 </StackPanel>
                 <Label
-                    Content="Number of players"
+                    Content="{x:Static p:Resources.numberOfPlayers}"
                     Style="{StaticResource BodyText}"
                     Grid.Row="1"
                     HorizontalAlignment="Center"/>
@@ -195,7 +195,7 @@
                     
                 </StackPanel>
                 <Label
-                    Content="Lobby privacy"
+                    Content="{x:Static p:Resources.lobbyPrivacy}"
                     Style="{StaticResource BodyText}"
                     Grid.Row="1"
                     HorizontalAlignment="Center"/>
@@ -209,7 +209,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
             <Button 
-                Content="Cancel"
+                Content="{x:Static p:Resources.cancel}"
                 Style="{StaticResource OutlinedButton}"
                 Command="{Binding CancelCommand}"
                 Width="200"

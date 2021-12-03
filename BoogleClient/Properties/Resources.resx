@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="addFriend" xml:space="preserve">
+    <value>Add Friend</value>
+  </data>
+  <data name="all" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="analytics" xml:space="preserve">
+    <value>Analytics</value>
+  </data>
   <data name="arcade" xml:space="preserve">
     <value>Arcade</value>
   </data>
-  <data name="changeEmail" xml:space="preserve">
-    <value>Change email</value>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="classic" xml:space="preserve">
     <value>Classic</value>
@@ -144,8 +153,26 @@
   <data name="email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="exitLobby" xml:space="preserve">
+    <value>Exit Lobby</value>
+  </data>
   <data name="forgotPassword" xml:space="preserve">
     <value>Forgot Password?</value>
+  </data>
+  <data name="friendCode" xml:space="preserve">
+    <value>Friend Code</value>
+  </data>
+  <data name="gameMode" xml:space="preserve">
+    <value>Game mode</value>
+  </data>
+  <data name="gamesPlayed" xml:space="preserve">
+    <value>Games Played</value>
+  </data>
+  <data name="highestScore" xml:space="preserve">
+    <value>Highest Score</value>
+  </data>
+  <data name="invitePlayer" xml:space="preserve">
+    <value>Invite Player</value>
   </data>
   <data name="join" xml:space="preserve">
     <value>Join</value>
@@ -156,14 +183,41 @@
   <data name="leaderboard" xml:space="preserve">
     <value>Leaderboard</value>
   </data>
+  <data name="lobbyPrivacy" xml:space="preserve">
+    <value>Lobby Privacy</value>
+  </data>
   <data name="logIn" xml:space="preserve">
     <value>Log In</value>
+  </data>
+  <data name="matchHistory" xml:space="preserve">
+    <value>Match History</value>
+  </data>
+  <data name="matchSettings" xml:space="preserve">
+    <value>Match Settings</value>
+  </data>
+  <data name="matchStarting" xml:space="preserve">
+    <value>Match starting in...</value>
+  </data>
+  <data name="numberOfPlayers" xml:space="preserve">
+    <value>Number of players</value>
+  </data>
+  <data name="online" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="overview" xml:space="preserve">
+    <value>Overview</value>
   </data>
   <data name="password" xml:space="preserve">
     <value>Password</value>
   </data>
   <data name="play" xml:space="preserve">
     <value>Play</value>
+  </data>
+  <data name="playersInLobby" xml:space="preserve">
+    <value>Players in lobby</value>
+  </data>
+  <data name="playersInvited" xml:space="preserve">
+    <value>Players invited</value>
   </data>
   <data name="privateLobbyCode" xml:space="preserve">
     <value>Private Lobby Code</value>
@@ -174,8 +228,14 @@
   <data name="race" xml:space="preserve">
     <value>Race</value>
   </data>
+  <data name="requests" xml:space="preserve">
+    <value>Requests</value>
+  </data>
   <data name="searchPublicLobby" xml:space="preserve">
     <value>Search public lobby</value>
+  </data>
+  <data name="sendCodeAgain" xml:space="preserve">
+    <value>Send code again</value>
   </data>
   <data name="settings" xml:space="preserve">
     <value>Settings</value>
@@ -183,10 +243,19 @@
   <data name="socials" xml:space="preserve">
     <value>Socials</value>
   </data>
+  <data name="totalScore" xml:space="preserve">
+    <value>Total Score</value>
+  </data>
   <data name="username" xml:space="preserve">
     <value>Username</value>
   </data>
   <data name="validateEmail" xml:space="preserve">
     <value>Validate email</value>
+  </data>
+  <data name="victories" xml:space="preserve">
+    <value>Victories</value>
+  </data>
+  <data name="writeYourMessage" xml:space="preserve">
+    <value>Write your message...</value>
   </data>
 </root>

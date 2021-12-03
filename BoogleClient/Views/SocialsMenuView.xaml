@@ -22,17 +22,17 @@
 
             <StackPanel Orientation="Horizontal" Grid.Column="0">
                 <Button 
-                    Content="Online"
+                    Content="{x:Static p:Resources.online}"
                     Style="{StaticResource TextButton}"
                     Height="75"
                     Width="200"/>
                 <Button 
-                    Content="All"
+                    Content="{x:Static p:Resources.all}"
                     Style="{StaticResource TextButton}"
                     Height="75"
                     Width="200"/>
                 <Button 
-                    Content="Requests"
+                    Content="{x:Static p:Resources.requests}"
                     Style="{StaticResource TextButton}"
                     Height="75"
                     Width="200"/>
@@ -45,12 +45,14 @@
                 <TextBox
                     BorderBrush="{StaticResource PrimaryLightBrush}"
                     materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PrimaryBrush}"
+                    materialDesign:HintAssist.Hint="{x:Static p:Resources.friendCode}"
                     Foreground="{StaticResource WhiteBrush}"
-                    FontSize="15"
+                    FontSize="20"
+                    VerticalContentAlignment="Bottom"
                     Width="250"
                     Height="40"/>
                 <Button 
-                    Content="Add Friend"
+                    Content="{x:Static p:Resources.addFriend}"
                     Style="{StaticResource ContainedButton}"
                     FontSize="20"
                     Height="40"

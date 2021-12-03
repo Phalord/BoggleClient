@@ -49,9 +49,9 @@
                 HorizontalAlignment="Center"/>
             <Label HorizontalAlignment="Center">
                 <Hyperlink
-                    NavigateUri="https://google.com"
+                    Command="{Binding SendCodeAgainCommand}"
                     TextDecorations="None">
-                    <Label Content="{x:Static p:Resources.changeEmail}"
+                    <Label Content="{x:Static p:Resources.sendCodeAgain}"
                            Foreground="{StaticResource SecondaryBrush}"/>
                 </Hyperlink>
             </Label>

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:p="clr-namespace:BoogleClient.Properties"
              xmlns:local="clr-namespace:BoogleClient.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
@@ -20,7 +21,7 @@
             <Label
                 Margin="0,50,0,0"
                 HorizontalAlignment="Center"
-                Content="Nickname"
+                Content="{Binding Nickname}"
                 Width="220"
                 HorizontalContentAlignment="Center"
                 Style="{StaticResource TitleText}"
@@ -45,7 +46,7 @@
                     Style="{StaticResource TitleText}"
                     Foreground="{StaticResource WhiteBrush}" />
                 <Label
-                    Content="Victories"
+                    Content="{x:Static p:Resources.victories}"
                     Style="{StaticResource TitleText}"
                     Foreground="{StaticResource WhiteBrush}"
                     HorizontalAlignment="Center"
@@ -79,13 +80,13 @@
                     <Label
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Content="0"
+                        Content="{Binding GamesPlayed}"
                         HorizontalContentAlignment="Center"
                         Style="{StaticResource TitleText}"
                         FontSize="30"
                         Foreground="{StaticResource WhiteBrush}" />
                     <Label
-                        Content="Games Played"
+                        Content="{x:Static p:Resources.gamesPlayed}"
                         Style="{StaticResource TitleText}"
                         FontSize="25"
                         Width="180"
@@ -110,13 +111,13 @@
                     <Label
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Content="0"
+                        Content="{Binding HighestScore}"
                         HorizontalContentAlignment="Center"
                         Style="{StaticResource TitleText}"
                         FontSize="30"
                         Foreground="{StaticResource WhiteBrush}" />
                     <Label
-                        Content="Highest Score"
+                        Content="{x:Static p:Resources.highestScore}"
                         Style="{StaticResource TitleText}"
                         FontSize="25"
                         Width="180"
@@ -141,13 +142,13 @@
                     <Label
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Content="0"
+                        Content="{Binding TotalScore}"
                         HorizontalContentAlignment="Center"
                         Style="{StaticResource TitleText}"
                         FontSize="30"
                         Foreground="{StaticResource WhiteBrush}" />
                     <Label
-                        Content="Total Score"
+                        Content="{x:Static p:Resources.totalScore}"
                         Style="{StaticResource TitleText}"
                         FontSize="25"
                         Width="180"

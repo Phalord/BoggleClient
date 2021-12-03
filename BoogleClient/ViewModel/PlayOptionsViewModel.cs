@@ -46,7 +46,7 @@ namespace BoogleClient.ViewModel
 
             return new LobbyCreationViewModel(
                 new NavigationService(windowNavigationStore, CreateMainMenuViewModel),
-                userAccount, roomSizes, gameModes, privacies);
+                userAccount, roomSizes, gameModes, privacies, windowNavigationStore);
         }
 
         private BaseViewModel CreateMainMenuViewModel(AccountDTO userAccount)
@@ -58,7 +58,7 @@ namespace BoogleClient.ViewModel
         {
             windowNavigationStore.CurrentViewModel = new SearchLobbyViewModel(
                 new NavigationService(windowNavigationStore, CreateMainMenuViewModel),
-                userAccount, publicLobbies);
+                userAccount, publicLobbies, windowNavigationStore);
         }
     }
 }
