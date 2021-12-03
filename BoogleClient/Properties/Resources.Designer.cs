@@ -151,6 +151,24 @@ namespace BoogleClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Join.
+        /// </summary>
+        public static string join {
+            get {
+                return ResourceManager.GetString("join", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Join Lobby.
+        /// </summary>
+        public static string joinLobby {
+            get {
+                return ResourceManager.GetString("joinLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Leaderboard.
         /// </summary>
         public static string leaderboard {
@@ -183,6 +201,15 @@ namespace BoogleClient.Properties {
         public static string play {
             get {
                 return ResourceManager.GetString("play", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private Lobby Code.
+        /// </summary>
+        public static string privateLobbyCode {
+            get {
+                return ResourceManager.GetString("privateLobbyCode", resourceCulture);
             }
         }
         

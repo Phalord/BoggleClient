@@ -18,4 +18,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="LobbySettingsDTO" nillable="true" type="tns:LobbySettingsDTO" />
+  <xs:complexType name="ArrayOfPublicLobbyPreviewDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PublicLobbyPreviewDTO" nillable="true" type="tns:PublicLobbyPreviewDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPublicLobbyPreviewDTO" nillable="true" type="tns:ArrayOfPublicLobbyPreviewDTO" />
+  <xs:complexType name="PublicLobbyPreviewDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GameMode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LobbyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LobbySize" type="xs:int" />
+      <xs:element minOccurs="0" name="PlayersInside" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PublicLobbyPreviewDTO" nillable="true" type="tns:PublicLobbyPreviewDTO" />
 </xs:schema>

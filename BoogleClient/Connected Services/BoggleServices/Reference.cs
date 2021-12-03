@@ -988,6 +988,99 @@ namespace BoogleClient.BoggleServices {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PublicLobbyPreviewDTO", Namespace="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos")]
+    [System.SerializableAttribute()]
+    public partial class PublicLobbyPreviewDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GameModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LobbyCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LobbySizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PlayersInsideField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GameMode {
+            get {
+                return this.GameModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GameModeField, value) != true)) {
+                    this.GameModeField = value;
+                    this.RaisePropertyChanged("GameMode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LobbyCode {
+            get {
+                return this.LobbyCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LobbyCodeField, value) != true)) {
+                    this.LobbyCodeField = value;
+                    this.RaisePropertyChanged("LobbyCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LobbySize {
+            get {
+                return this.LobbySizeField;
+            }
+            set {
+                if ((this.LobbySizeField.Equals(value) != true)) {
+                    this.LobbySizeField = value;
+                    this.RaisePropertyChanged("LobbySize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PlayersInside {
+            get {
+                return this.PlayersInsideField;
+            }
+            set {
+                if ((this.PlayersInsideField.Equals(value) != true)) {
+                    this.PlayersInsideField = value;
+                    this.RaisePropertyChanged("PlayersInside");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BoggleServices.IBoggleServiceContracts", CallbackContract=typeof(BoogleClient.BoggleServices.IBoggleServiceContractsCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
     public interface IBoggleServiceContracts {
@@ -1051,7 +1144,7 @@ namespace BoogleClient.BoggleServices {
         void JoinLobby(BoogleClient.BoggleServices.Lobby lobby);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBoggleServiceContracts/DisplayPublicLobbies", ReplyAction="http://tempuri.org/IBoggleServiceContracts/DisplayPublicLobbiesResponse")]
-        void DisplayPublicLobbies(BoogleClient.BoggleServices.Lobby[] publicLobbies);
+        void DisplayPublicLobbies(BoogleClient.BoggleServices.PublicLobbyPreviewDTO[] publicLobbies);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

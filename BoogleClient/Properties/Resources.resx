@@ -147,6 +147,12 @@
   <data name="forgotPassword" xml:space="preserve">
     <value>Forgot Password?</value>
   </data>
+  <data name="join" xml:space="preserve">
+    <value>Join</value>
+  </data>
+  <data name="joinLobby" xml:space="preserve">
+    <value>Join Lobby</value>
+  </data>
   <data name="leaderboard" xml:space="preserve">
     <value>Leaderboard</value>
   </data>
@@ -158,6 +164,9 @@
   </data>
   <data name="play" xml:space="preserve">
     <value>Play</value>
+  </data>
+  <data name="privateLobbyCode" xml:space="preserve">
+    <value>Private Lobby Code</value>
   </data>
   <data name="profile" xml:space="preserve">
     <value>Profile</value>

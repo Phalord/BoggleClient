@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="Resources/Styles/Brushes.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/Button.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/Text.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/LobbyPreviewCard.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <FontFamily x:Key="MaterialDesignFont">pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto</FontFamily>
 

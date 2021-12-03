@@ -54,9 +54,17 @@
                 </Grid.RowDefinitions>
 
                 <ScrollViewer
+                    Grid.Row="0"
                     VerticalScrollBarVisibility="Auto"
                     HorizontalScrollBarVisibility="Disabled"
-                    Margin="20,0">
+                    Margin="20,10">
+                    <StackPanel/>
+                </ScrollViewer>
+                <ScrollViewer
+                    Grid.Row="1"
+                    VerticalScrollBarVisibility="Auto"
+                    HorizontalScrollBarVisibility="Disabled"
+                    Margin="20,20">
                     <StackPanel/>
                 </ScrollViewer>
             </Grid>

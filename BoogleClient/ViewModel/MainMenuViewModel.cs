@@ -9,19 +9,17 @@ namespace BoogleClient.ViewModel
 {
     internal class MainMenuViewModel : BaseViewModel
     {
-        private readonly NavigationService createLobbyNavigationService;
-        private readonly NavigationService searchLobbyNavigationService;
+        private readonly NavigationStore windowNavigationStore;
         private readonly AccountDTO userAccount;
         private NavigationStore menusNavigationStore;
 
+
         public MainMenuViewModel(
-            NavigationService createLobbyNavigationService,
-            NavigationService searchLobbyNavigationService,
+            NavigationStore windowNavigationStore,
             AccountDTO userAccount)
         {
             this.userAccount = userAccount;
-            this.createLobbyNavigationService = createLobbyNavigationService;
-            this.searchLobbyNavigationService = searchLobbyNavigationService;
+            this.windowNavigationStore = windowNavigationStore;
             menusNavigationStore = new NavigationStore()
             {
                 CurrentViewModel = CreatePlayOptionsViewModel()
@@ -67,10 +65,7 @@ namespace BoogleClient.ViewModel
 
         private PlayOptionsViewModel CreatePlayOptionsViewModel()
         {
-            return new PlayOptionsViewModel(
-                createLobbyNavigationService,
-                searchLobbyNavigationService,
-                userAccount);
+            return new PlayOptionsViewModel(windowNavigationStore, userAccount);
         }
 
         private LeaderboardViewModel CreateLeaderboardViewModel()

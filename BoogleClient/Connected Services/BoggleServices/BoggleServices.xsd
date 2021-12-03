@@ -104,7 +104,7 @@
   <xs:element name="DisplayPublicLobbies">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="publicLobbies" nillable="true" type="q6:ArrayOfLobby" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="publicLobbies" nillable="true" type="q6:ArrayOfPublicLobbyPreviewDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

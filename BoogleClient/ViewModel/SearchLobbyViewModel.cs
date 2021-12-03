@@ -1,26 +1,29 @@
 ﻿using BoogleClient.BoggleServices;
 using BoogleClient.Commands;
 using BoogleClient.Services;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace BoogleClient.ViewModel
 {
     internal class SearchLobbyViewModel : BaseViewModel
     {
-        private readonly NavigationService navigationService;
         private readonly AccountDTO userAccount;
 
         public SearchLobbyViewModel(
-            NavigationService navigationService,
-            AccountDTO userAccount)
+            NavigationService cancelNavegationService,
+            AccountDTO userAccount, PublicLobbyPreviewDTO[] publicLobbies)
         {
-            this.navigationService = navigationService;
             this.userAccount = userAccount;
-
+            PublicLobbies = new ObservableCollection<PublicLobbyPreviewDTO>(publicLobbies);
             CancelCommand =
-                new NavigateCommand(navigationService, userAccount);
+                new NavigateCommand(cancelNavegationService, userAccount);
         }
 
+        public ObservableCollection<PublicLobbyPreviewDTO> PublicLobbies { get; set; }
+
         public ICommand CancelCommand { get; }
+
+        public ICommand RefreshPublicLobbies { get; set; }
     }
 }

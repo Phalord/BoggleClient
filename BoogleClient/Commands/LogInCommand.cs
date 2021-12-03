@@ -30,7 +30,8 @@ namespace BoogleClient.Commands
             try
             {
                 contractsClient.LogIn(logInFormViewModel.UserName, passwordBox.Password);
-            } catch (EndpointNotFoundException)
+            }
+            catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Error al establecer conexión con el servidor", "Error de conexión");
             }

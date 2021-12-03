@@ -114,6 +114,7 @@
     <Compile Include="Commands\ScrollNextNumberOfPlayersCommand.cs" />
     <Compile Include="Commands\ScrollPreviousGameModeCommand.cs" />
     <Compile Include="Commands\ScrollPreviousNumberOfPlayersCommand.cs" />
+    <Compile Include="Commands\SearchPublicLobbyCommand.cs" />
     <Compile Include="Commands\ValidateEmailCommand.cs" />
     <Compile Include="Connected Services\BoggleServices\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -139,9 +140,6 @@
     <Compile Include="ViewModel\SearchLobbyViewModel.cs" />
     <Compile Include="ViewModel\SettingsMenuViewModel.cs" />
     <Compile Include="ViewModel\SocialsMenuViewModel.cs" />
-    <Compile Include="Views\Components\LobbyPreview.xaml.cs">
-      <DependentUpon>LobbyPreview.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Components\PlayerPreview.xaml.cs">
       <DependentUpon>PlayerPreview.xaml</DependentUpon>
     </Compile>
@@ -211,11 +209,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Styles\Text.xaml">
+    <Page Include="Resources\Styles\LobbyPreviewCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Components\LobbyPreview.xaml">
+    <Page Include="Resources\Styles\Text.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
