@@ -12,7 +12,7 @@ namespace BoogleClient.ViewModel
 {
     internal class LobbyCreationViewModel : BoggleServiceCallback
     {
-        private readonly NavigationStore navigationStore;
+        private readonly NavigationStore windowNavigationStore;
         private readonly AccountDTO userAccount;
         private LobbySettingsDTO lobbySettings;
 
@@ -22,7 +22,7 @@ namespace BoogleClient.ViewModel
             string[] gameModes, string[] privacies,
             NavigationStore navigationStore)
         {
-            this.navigationStore = navigationStore;
+            windowNavigationStore = navigationStore;
             this.userAccount = userAccount;
 
 
@@ -84,12 +84,17 @@ namespace BoogleClient.ViewModel
 
         public override void JoinLobby(Lobby lobby)
         {
-            navigationStore.CurrentViewModel = CreateLobbyViewModel(lobby);
+            windowNavigationStore.CurrentViewModel = CreateLobbyViewModel(lobby);
         }
 
         private BaseViewModel CreateLobbyViewModel(Lobby lobby)
         {
             return new LobbyViewModel(lobby, userAccount);
+        }
+
+        public override void UpdateLobby(Lobby lobby)
+        {
+            windowNavigationStore.CurrentViewModel = CreateLobbyViewModel(lobby);
         }
     }
 }

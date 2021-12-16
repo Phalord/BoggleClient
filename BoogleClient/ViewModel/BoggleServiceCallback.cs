@@ -33,5 +33,15 @@ namespace BoogleClient.ViewModel
         {
             throw new System.NotImplementedException();
         }
+
+        public virtual void UpdateLobby(Lobby lobby)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public virtual void RefreshPublicLobbies(PublicLobbyPreviewDTO[] publicLobbies)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

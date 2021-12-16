@@ -111,11 +111,13 @@
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Commands\NavigateMainMenuCommand.cs" />
     <Compile Include="Commands\NavigateTabCommand.cs" />
+    <Compile Include="Commands\RefreshPublicLobbiesCommand.cs" />
     <Compile Include="Commands\ScrollNextGameModeCommand.cs" />
     <Compile Include="Commands\ScrollNextNumberOfPlayersCommand.cs" />
     <Compile Include="Commands\ScrollPreviousGameModeCommand.cs" />
     <Compile Include="Commands\ScrollPreviousNumberOfPlayersCommand.cs" />
     <Compile Include="Commands\SearchPublicLobbyCommand.cs" />
+    <Compile Include="Commands\SendMessageCommand.cs" />
     <Compile Include="Commands\ValidateEmailCommand.cs" />
     <Compile Include="Connected Services\BoggleServices\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -212,6 +214,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\LobbyPreviewCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\MessageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -462,7 +462,7 @@ namespace BoogleClient.BoggleServices {
         private string BodyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BoogleClient.BoggleServices.Player SenderField;
+        private string SenderField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime TimeSentField;
@@ -491,7 +491,7 @@ namespace BoogleClient.BoggleServices {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BoogleClient.BoggleServices.Player Sender {
+        public string Sender {
             get {
                 return this.SenderField;
             }
@@ -1126,6 +1126,12 @@ namespace BoogleClient.BoggleServices {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/JoinLobbyByCode")]
         System.Threading.Tasks.Task JoinLobbyByCodeAsync(string userName, string lobbyCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/SendMessage")]
+        void SendMessage(BoogleClient.BoggleServices.Lobby lobby, string body, string sender);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBoggleServiceContracts/SendMessage")]
+        System.Threading.Tasks.Task SendMessageAsync(BoogleClient.BoggleServices.Lobby lobby, string body, string sender);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1145,6 +1151,15 @@ namespace BoogleClient.BoggleServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBoggleServiceContracts/DisplayPublicLobbies", ReplyAction="http://tempuri.org/IBoggleServiceContracts/DisplayPublicLobbiesResponse")]
         void DisplayPublicLobbies(BoogleClient.BoggleServices.PublicLobbyPreviewDTO[] publicLobbies);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBoggleServiceContracts/RefreshPublicLobbies", ReplyAction="http://tempuri.org/IBoggleServiceContracts/RefreshPublicLobbiesResponse")]
+        void RefreshPublicLobbies(BoogleClient.BoggleServices.PublicLobbyPreviewDTO[] publicLobbies);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBoggleServiceContracts/UpdateLobby", ReplyAction="http://tempuri.org/IBoggleServiceContracts/UpdateLobbyResponse")]
+        void UpdateLobby(BoogleClient.BoggleServices.Lobby lobby);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBoggleServiceContracts/DeliverMessage", ReplyAction="http://tempuri.org/IBoggleServiceContracts/DeliverMessageResponse")]
+        void DeliverMessage(BoogleClient.BoggleServices.Message message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1229,6 +1244,14 @@ namespace BoogleClient.BoggleServices {
         
         public System.Threading.Tasks.Task JoinLobbyByCodeAsync(string userName, string lobbyCode) {
             return base.Channel.JoinLobbyByCodeAsync(userName, lobbyCode);
+        }
+        
+        public void SendMessage(BoogleClient.BoggleServices.Lobby lobby, string body, string sender) {
+            base.Channel.SendMessage(lobby, body, sender);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageAsync(BoogleClient.BoggleServices.Lobby lobby, string body, string sender) {
+            return base.Channel.SendMessageAsync(lobby, body, sender);
         }
     }
 }

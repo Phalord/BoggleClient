@@ -24,6 +24,7 @@
                 BorderBrush="{StaticResource NegativeBrush}"
                 Foreground="{StaticResource WhiteBrush}"
                 Background="{StaticResource BlackBrush}"
+                Command="{Binding ExitLobbyCommand}"
                 Height="50"
                 VerticalAlignment="Center"
                 Margin="20,0"
@@ -82,7 +83,7 @@
                         ItemContainerStyle="{StaticResource LobbyPreviewCard}"
                         HorizontalAlignment="Center"
                         Margin="5"
-                        Height="100"
+                        Height="130"
                         Width="230" />
                 </StackPanel>
             </Grid>
@@ -104,11 +105,13 @@
                             Content="{x:Static p:Resources.invitePlayer}"
                             Style="{StaticResource OutlinedButton}"
                             BorderBrush="{StaticResource PrimaryBrush}"
+                            Command="{Binding InvitePlayerCommand}"
                             Width="150" Margin="0,10"/>
                         <Button
                             Content="{x:Static p:Resources.matchSettings}"
                             Style="{StaticResource OutlinedButton}"
                             BorderBrush="{StaticResource PrimaryBrush}"
+                            Command="{Binding ChangeMatchSettingsCommand}"
                             Width="150" Margin="0,10"/>
                     </StackPanel>
 
@@ -144,6 +147,7 @@
                         Height="70"
                         Orientation="Horizontal">
                         <TextBox
+                            Text="{Binding MessageText}"
                             Height="40"
                             Width="600"
                             Margin="30, 10"
@@ -158,7 +162,8 @@
                             Height="70"
                             Width="70"
                             Foreground="{StaticResource PrimaryBrush}"
-                            Style="{StaticResource TextButton}">
+                            Style="{StaticResource TextButton}"
+                            Command="{Binding SendMessageCommand}">
                             <materialDesign:PackIcon
                                 Kind="SendOutline"
                                 BorderThickness="0"

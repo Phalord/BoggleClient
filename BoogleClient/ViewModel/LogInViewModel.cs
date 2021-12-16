@@ -22,6 +22,7 @@ namespace BoogleClient.ViewModel
         private const string emailNotFound = "EmailNotFound";
         private const string wrongValidationCode = "WrongValidationCode";
         private const string emailValidated = "EmailValidated";
+        private const string playerLogged = "PlayerAlreadyLogged";
         #endregion
 
         public LogInViewModel(NavigationService windowNavigationService)
@@ -66,20 +67,24 @@ namespace BoogleClient.ViewModel
 
         public override void GrantAccess(string accessStatus, AccountDTO userAccount)
         {
-            if (accessStatus == accessGranted)
+            if (accessStatus.Equals(accessGranted))
             {
                 windowNavigationService.Navigate(userAccount);
             }
-            else if (accessStatus == wrongPassword)
+            else if (accessStatus.Equals(playerLogged))
+            {
+                MessageBox.Show(playerLogged);
+            }
+            else if (accessStatus.Equals(wrongPassword))
             {
                 MessageBox.Show(wrongPassword);
             }
-            else if (accessStatus == unverifiedEmail)
+            else if (accessStatus.Equals(unverifiedEmail))
             {
                 formsNavigationStore.CurrentViewModel =
                     CreateEmailValidationViewModel(userAccount.Email);
             }
-            else if (accessStatus == nonExistentUser)
+            else if (accessStatus.Equals(nonExistentUser))
             {
                 MessageBox.Show(nonExistentUser);
             }

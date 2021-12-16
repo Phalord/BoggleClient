@@ -50,11 +50,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SendMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q3:Lobby" />
+        <xs:element minOccurs="0" name="body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sender" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GrantAccess">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="accessStatus" nillable="true" type="xs:string" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="accountInfoDTO" nillable="true" type="q3:AccountDTO" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="accountInfoDTO" nillable="true" type="q4:AccountDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -80,7 +89,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="validationStatus" nillable="true" type="xs:string" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="accountInfoDTO" nillable="true" type="q4:AccountDTO" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="accountInfoDTO" nillable="true" type="q5:AccountDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -92,7 +101,7 @@
   <xs:element name="JoinLobby">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q5:Lobby" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q6:Lobby" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -104,11 +113,47 @@
   <xs:element name="DisplayPublicLobbies">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="publicLobbies" nillable="true" type="q6:ArrayOfPublicLobbyPreviewDTO" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="publicLobbies" nillable="true" type="q7:ArrayOfPublicLobbyPreviewDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DisplayPublicLobbiesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefreshPublicLobbies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="publicLobbies" nillable="true" type="q8:ArrayOfPublicLobbyPreviewDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefreshPublicLobbiesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLobby">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q9:Lobby" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLobbyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeliverMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="message" nillable="true" type="q10:Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeliverMessageResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

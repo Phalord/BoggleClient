@@ -11,6 +11,10 @@ namespace BoogleClient.ViewModel
     {
         private readonly AccountDTO userAccount;
         private readonly NavigationStore windowNavigationStore;
+        private ObservableCollection<PublicLobbyPreviewDTO> publicLobbies;
+
+        private PublicLobbyPreviewDTO selectedLobby;
+        private string lobbyCode;
 
         public SearchLobbyViewModel(
             NavigationService cancelNavegationService,
@@ -20,22 +24,36 @@ namespace BoogleClient.ViewModel
         {
             this.userAccount = userAccount;
             this.windowNavigationStore = windowNavigationStore;
-            PublicLobbies = 
+            PublicLobbies =
                 new ObservableCollection<PublicLobbyPreviewDTO>(publicLobbies);
             CancelCommand =
                 new NavigateCommand(cancelNavegationService, userAccount);
             JoinLobbyCommand =
                 new JoinLobbyCommand(this, GetLobbyCodeOfSelected, userAccount);
+            RefreshPublicLobbiesCommand =
+                new RefreshPublicLobbiesCommand(this);
         }
 
-        public ObservableCollection<PublicLobbyPreviewDTO> PublicLobbies { get; set; }
-
-        private PublicLobbyPreviewDTO selectedLobby;
+        public ObservableCollection<PublicLobbyPreviewDTO> PublicLobbies
+        {
+            get => publicLobbies;
+            private set
+            {
+                publicLobbies = value;
+                OnPropertyChanged(nameof(PublicLobbies));
+            }
+        }
 
         public PublicLobbyPreviewDTO SelectedLobby
         {
             get { return selectedLobby; }
             set { selectedLobby = value; }
+        }
+
+        public string LobbyCode
+        {
+            get { return lobbyCode; }
+            set { lobbyCode = value; }
         }
 
 
@@ -45,6 +63,8 @@ namespace BoogleClient.ViewModel
 
         public ICommand JoinLobbyCommand { get; set; }
 
+        public ICommand JoinLobbyByCodeCommand { get; set; }
+
         private string GetLobbyCodeOfSelected()
         {
             return selectedLobby.LobbyCode;
@@ -53,6 +73,18 @@ namespace BoogleClient.ViewModel
         public override void JoinLobby(Lobby lobby)
         {
             windowNavigationStore.CurrentViewModel = CreateLobbyViewModel(lobby);
+        }
+
+        public override void UpdateLobby(Lobby lobby)
+        {
+            windowNavigationStore.CurrentViewModel = CreateLobbyViewModel(lobby);
+        }
+
+        public override void RefreshPublicLobbies(
+            PublicLobbyPreviewDTO[] publicLobbies)
+        {
+            PublicLobbies =
+                new ObservableCollection<PublicLobbyPreviewDTO>(publicLobbies);
         }
 
         private BaseViewModel CreateLobbyViewModel(Lobby lobby)
