@@ -2,30 +2,22 @@
 using BoogleClient.Commands;
 using BoogleClient.Services;
 using BoogleClient.Stores;
-using System;
 using System.Globalization;
 using System.Threading;
-using System.Windows;
 using System.Windows.Input;
 
 namespace BoogleClient.ViewModel
 {
-    internal class LobbyCreationViewModel : BoggleServiceCallback
+    internal class LobbyCreationViewModel : BaseViewModel
     {
-        private readonly NavigationStore windowNavigationStore;
-        private readonly AccountDTO userAccount;
         private LobbySettingsDTO lobbySettings;
 
         public LobbyCreationViewModel(
-            NavigationService navigationService,
+            NavigationService cancelNavigationService,
             AccountDTO userAccount, int[] roomSizes,
             string[] gameModes, string[] privacies,
-            NavigationStore navigationStore)
+            PlayOptionsViewModel playOptionsViewModel)
         {
-            windowNavigationStore = navigationStore;
-            this.userAccount = userAccount;
-
-
             LobbySettings = new LobbySettingsDTO
             {
                 GameMode = gameModes[0],
@@ -46,9 +38,9 @@ namespace BoogleClient.ViewModel
             ChangeLobbyPrivacy =
                 new ChangeLobbyPrivacyCommand(this, privacies);
             CancelCommand =
-                new NavigateCommand(navigationService, userAccount);
+                new NavigateCommand(cancelNavigationService, userAccount);
             CreateLobbyCommand =
-                new CreateNewLobbyCommand(this);
+                new CreateNewLobbyCommand(this, playOptionsViewModel);
         }
 
         private string GetCurrentLanguage()
@@ -81,20 +73,5 @@ namespace BoogleClient.ViewModel
         public ICommand ScrollPreviousNumberOfPlayers { get; }
 
         public ICommand ScrollNextNumberOfPlayers { get; }
-
-        public override void JoinLobby(Lobby lobby)
-        {
-            windowNavigationStore.CurrentViewModel = CreateLobbyViewModel(lobby);
-        }
-
-        private BaseViewModel CreateLobbyViewModel(Lobby lobby)
-        {
-            return new LobbyViewModel(lobby, userAccount);
-        }
-
-        public override void UpdateLobby(Lobby lobby)
-        {
-            windowNavigationStore.CurrentViewModel = CreateLobbyViewModel(lobby);
-        }
     }
 }

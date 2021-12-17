@@ -1,5 +1,7 @@
 ﻿using BoogleClient.BoggleServices;
 using BoogleClient.ViewModel;
+using System;
+using System.ComponentModel;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,23 +19,34 @@ namespace BoogleClient.Commands
         {
             this.logInFormViewModel = logInFormViewModel;
             this.logInViewModel = logInViewModel;
+
+            logInFormViewModel.PropertyChanged += OnViewModelPropertyChanged;
+        }
+
+        private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(LogInFormViewModel.UserName))
+            {
+                OnCanExecuteChanged();
+            }
         }
 
         public override void Execute(object parameter)
         {
-            BoggleServiceContractsClient contractsClient =
-                new BoggleServiceContractsClient(
+            UserManagerContractClient contractClient =
+                new UserManagerContractClient(
                     new InstanceContext(logInViewModel));
 
             PasswordBox passwordBox = (PasswordBox) parameter;
 
             try
             {
-                contractsClient.LogIn(logInFormViewModel.UserName, passwordBox.Password);
+                contractClient.LogIn(logInFormViewModel.UserName, passwordBox.Password);
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Error al establecer conexión con el servidor", "Error de conexión");
+                MessageBox.Show("Error al establecer conexión con el servidor",
+                    "Error de conexión");
             }
         }
     }

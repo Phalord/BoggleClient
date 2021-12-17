@@ -1,15 +1,15 @@
 ﻿using BoogleClient.BoggleServices;
 using BoogleClient.Services;
 using BoogleClient.Stores;
+using System;
 using System.Windows;
 
 namespace BoogleClient.ViewModel
 {
-    internal class LogInViewModel : BoggleServiceCallback
+    internal class LogInViewModel : BaseViewModel, IUserManagerContractCallback
     {
         private readonly NavigationService windowNavigationService;
         private readonly NavigationStore formsNavigationStore;
-
 
         #region Constants
         private const string accessGranted = "AccessGranted";
@@ -65,7 +65,7 @@ namespace BoogleClient.ViewModel
 
         #region Callback
 
-        public override void GrantAccess(string accessStatus, AccountDTO userAccount)
+        public void GrantAccess(string accessStatus, AccountDTO userAccount)
         {
             if (accessStatus.Equals(accessGranted))
             {
@@ -90,7 +90,7 @@ namespace BoogleClient.ViewModel
             }
         }
 
-        public override void AskForEmailValidation(string accountCreationStatus, string userEmail)
+        public void AskForEmailValidation(string accountCreationStatus, string userEmail)
         {
             if (accountCreationStatus.Equals(usernameRegistered))
             {
@@ -106,7 +106,7 @@ namespace BoogleClient.ViewModel
             }
         }
 
-        public override void GrantValidation(string validationStatus, AccountDTO userAccount)
+        public void GrantValidation(string validationStatus, AccountDTO userAccount)
         {
             if (validationStatus.Equals(emailNotFound))
             {
@@ -120,6 +120,11 @@ namespace BoogleClient.ViewModel
             {
                 windowNavigationService.Navigate(userAccount);
             }
+        }
+
+        public void DeliverLobbyInvite(string lobbyCode)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

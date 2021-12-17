@@ -1,11 +1,8 @@
 ﻿using BoogleClient.BoggleServices;
 using BoogleClient.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace BoogleClient.Commands
@@ -22,27 +19,37 @@ namespace BoogleClient.Commands
             this.lobbyViewModel = lobbyViewModel;
             this.sender = sender;
             this.lobby = lobby;
+
+            lobbyViewModel.PropertyChanged += OnviewModelPropertyChanged;
         }
 
         public override void Execute(object parameter)
         {
-            BoggleServiceContractsClient contractsClient =
-                new BoggleServiceContractsClient(
-                    new InstanceContext(lobbyViewModel));
+            LobbyManagerContractClient contractClient =
+                new LobbyManagerContractClient(new InstanceContext(lobbyViewModel));
 
             try
             {
-                contractsClient.SendMessage(lobby, lobbyViewModel.MessageText, sender);
+                contractClient.SendMessage(lobby, lobbyViewModel.MessageText, sender);
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Error al establecer conexión con el servidor", "Error de conexión");
+                MessageBox.Show("Error al establecer conexión con el servidor",
+                    "Error de conexión");
             }
         }
 
         public override bool CanExecute(object parameter)
         {
-            return lobbyViewModel.MessageText.Length > 0;
+            return true;//lobbyViewModel.MessageText.Length != 0;
+        }
+
+        private void OnviewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(LobbyViewModel.MessageText))
+            {
+                OnCanExecuteChanged();
+            }
         }
     }
 }

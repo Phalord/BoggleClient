@@ -1,29 +1,24 @@
 ﻿using BoogleClient.BoggleServices;
 using BoogleClient.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace BoogleClient.Commands
 {
     internal class RefreshPublicLobbiesCommand : BaseCommand
     {
-        private readonly SearchLobbyViewModel searchLobbyViewModel;
+        private readonly PlayOptionsViewModel playOptionsViewModel;
 
-        public RefreshPublicLobbiesCommand(SearchLobbyViewModel searchLobbyViewModel)
+        public RefreshPublicLobbiesCommand(PlayOptionsViewModel playOptionsViewModel)
         {
-            this.searchLobbyViewModel = searchLobbyViewModel;
+            this.playOptionsViewModel = playOptionsViewModel;
         }
 
         public override void Execute(object parameter)
         {
-            BoggleServiceContractsClient contractsClient =
-                new BoggleServiceContractsClient(
-                    new InstanceContext(searchLobbyViewModel));
+            GameManagerContractClient contractsClient =
+                new GameManagerContractClient(
+                    new InstanceContext(playOptionsViewModel));
 
             try
             {

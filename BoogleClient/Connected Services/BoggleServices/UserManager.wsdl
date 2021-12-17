@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BoggleServices" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsp:Policy wsu:Id="NetTcpBinding_IBoggleServiceContracts_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_IUserManagerContract_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IGameManagerContract_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILobbyManagerContract_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -38,189 +96,187 @@
       <xsd:import schemaLocation="http://localhost:8130/BoggleServices?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IBoggleServiceContracts_LogIn_InputMessage">
+  <wsdl:message name="IUserManagerContract_LogIn_InputMessage">
     <wsdl:part name="parameters" element="tns:LogIn" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_CreateAccount_InputMessage">
+  <wsdl:message name="IUserManagerContract_CreateAccount_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateAccount" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_ValidateEmail_InputMessage">
+  <wsdl:message name="IUserManagerContract_ValidateEmail_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidateEmail" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_CreateLobby_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateLobby" />
-  </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_SearchPublicLobbies_InputMessage">
-    <wsdl:part name="parameters" element="tns:SearchPublicLobbies" />
-  </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_UpdatePublicLobbies_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdatePublicLobbies" />
-  </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_JoinLobbyByCode_InputMessage">
-    <wsdl:part name="parameters" element="tns:JoinLobbyByCode" />
-  </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_SendMessage_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendMessage" />
-  </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_GrantAccess_OutputCallbackMessage">
+  <wsdl:message name="IUserManagerContract_GrantAccess_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GrantAccess" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_GrantAccess_InputCallbackMessage">
+  <wsdl:message name="IUserManagerContract_GrantAccess_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GrantAccessResponse" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_AskForEmailValidation_OutputCallbackMessage">
+  <wsdl:message name="IUserManagerContract_AskForEmailValidation_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:AskForEmailValidation" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_AskForEmailValidation_InputCallbackMessage">
+  <wsdl:message name="IUserManagerContract_AskForEmailValidation_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:AskForEmailValidationResponse" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_GrantValidation_OutputCallbackMessage">
+  <wsdl:message name="IUserManagerContract_GrantValidation_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GrantValidation" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_GrantValidation_InputCallbackMessage">
+  <wsdl:message name="IUserManagerContract_GrantValidation_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GrantValidationResponse" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_JoinLobby_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:JoinLobby" />
+  <wsdl:message name="IUserManagerContract_DeliverLobbyInvite_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:DeliverLobbyInvite" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_JoinLobby_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:JoinLobbyResponse" />
+  <wsdl:message name="IUserManagerContract_DeliverLobbyInvite_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:DeliverLobbyInviteResponse" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_DisplayPublicLobbies_OutputCallbackMessage">
+  <wsdl:message name="IGameManagerContract_CreateLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateLobby" />
+  </wsdl:message>
+  <wsdl:message name="IGameManagerContract_AskToJoinLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:AskToJoinLobby" />
+  </wsdl:message>
+  <wsdl:message name="IGameManagerContract_SearchPublicLobbies_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchPublicLobbies" />
+  </wsdl:message>
+  <wsdl:message name="IGameManagerContract_UpdatePublicLobbies_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePublicLobbies" />
+  </wsdl:message>
+  <wsdl:message name="IGameManagerContract_GrantAccessToJoinLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GrantAccessToJoinLobby" />
+  </wsdl:message>
+  <wsdl:message name="IGameManagerContract_GrantAccessToJoinLobby_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GrantAccessToJoinLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameManagerContract_DisplayPublicLobbies_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:DisplayPublicLobbies" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_DisplayPublicLobbies_InputCallbackMessage">
+  <wsdl:message name="IGameManagerContract_DisplayPublicLobbies_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:DisplayPublicLobbiesResponse" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_RefreshPublicLobbies_OutputCallbackMessage">
+  <wsdl:message name="IGameManagerContract_RefreshPublicLobbies_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RefreshPublicLobbies" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_RefreshPublicLobbies_InputCallbackMessage">
+  <wsdl:message name="IGameManagerContract_RefreshPublicLobbies_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RefreshPublicLobbiesResponse" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_UpdateLobby_OutputCallbackMessage">
+  <wsdl:message name="ILobbyManagerContract_JoinLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManagerContract_ExitLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExitLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManagerContract_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManagerContract_SendInvite_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendInvite" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManagerContract_ChangeMatchSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeMatchSettings" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManagerContract_UpdateLobby_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateLobby" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_UpdateLobby_InputCallbackMessage">
+  <wsdl:message name="ILobbyManagerContract_UpdateLobby_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateLobbyResponse" />
   </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_DeliverMessage_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:DeliverMessage" />
-  </wsdl:message>
-  <wsdl:message name="IBoggleServiceContracts_DeliverMessage_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:DeliverMessageResponse" />
-  </wsdl:message>
-  <wsdl:portType msc:usingSession="true" name="IBoggleServiceContracts">
+  <wsdl:portType msc:usingSession="true" name="IUserManagerContract">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="LogIn">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/LogIn" message="tns:IBoggleServiceContracts_LogIn_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagerContract/LogIn" message="tns:IUserManagerContract_LogIn_InputMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="CreateAccount">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/CreateAccount" message="tns:IBoggleServiceContracts_CreateAccount_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagerContract/CreateAccount" message="tns:IUserManagerContract_CreateAccount_InputMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ValidateEmail">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/ValidateEmail" message="tns:IBoggleServiceContracts_ValidateEmail_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="CreateLobby">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/CreateLobby" message="tns:IBoggleServiceContracts_CreateLobby_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SearchPublicLobbies">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/SearchPublicLobbies" message="tns:IBoggleServiceContracts_SearchPublicLobbies_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdatePublicLobbies">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/UpdatePublicLobbies" message="tns:IBoggleServiceContracts_UpdatePublicLobbies_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="JoinLobbyByCode">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/JoinLobbyByCode" message="tns:IBoggleServiceContracts_JoinLobbyByCode_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SendMessage">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/SendMessage" message="tns:IBoggleServiceContracts_SendMessage_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagerContract/ValidateEmail" message="tns:IUserManagerContract_ValidateEmail_InputMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GrantAccess">
-      <wsdl:output wsaw:Action="http://tempuri.org/IBoggleServiceContracts/GrantAccess" message="tns:IBoggleServiceContracts_GrantAccess_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/GrantAccessResponse" message="tns:IBoggleServiceContracts_GrantAccess_InputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagerContract/GrantAccess" message="tns:IUserManagerContract_GrantAccess_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagerContract/GrantAccessResponse" message="tns:IUserManagerContract_GrantAccess_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AskForEmailValidation">
-      <wsdl:output wsaw:Action="http://tempuri.org/IBoggleServiceContracts/AskForEmailValidation" message="tns:IBoggleServiceContracts_AskForEmailValidation_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/AskForEmailValidationResponse" message="tns:IBoggleServiceContracts_AskForEmailValidation_InputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagerContract/AskForEmailValidation" message="tns:IUserManagerContract_AskForEmailValidation_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagerContract/AskForEmailValidationResponse" message="tns:IUserManagerContract_AskForEmailValidation_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GrantValidation">
-      <wsdl:output wsaw:Action="http://tempuri.org/IBoggleServiceContracts/GrantValidation" message="tns:IBoggleServiceContracts_GrantValidation_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/GrantValidationResponse" message="tns:IBoggleServiceContracts_GrantValidation_InputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagerContract/GrantValidation" message="tns:IUserManagerContract_GrantValidation_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagerContract/GrantValidationResponse" message="tns:IUserManagerContract_GrantValidation_InputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="JoinLobby">
-      <wsdl:output wsaw:Action="http://tempuri.org/IBoggleServiceContracts/JoinLobby" message="tns:IBoggleServiceContracts_JoinLobby_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/JoinLobbyResponse" message="tns:IBoggleServiceContracts_JoinLobby_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DisplayPublicLobbies">
-      <wsdl:output wsaw:Action="http://tempuri.org/IBoggleServiceContracts/DisplayPublicLobbies" message="tns:IBoggleServiceContracts_DisplayPublicLobbies_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/DisplayPublicLobbiesResponse" message="tns:IBoggleServiceContracts_DisplayPublicLobbies_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RefreshPublicLobbies">
-      <wsdl:output wsaw:Action="http://tempuri.org/IBoggleServiceContracts/RefreshPublicLobbies" message="tns:IBoggleServiceContracts_RefreshPublicLobbies_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/RefreshPublicLobbiesResponse" message="tns:IBoggleServiceContracts_RefreshPublicLobbies_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdateLobby">
-      <wsdl:output wsaw:Action="http://tempuri.org/IBoggleServiceContracts/UpdateLobby" message="tns:IBoggleServiceContracts_UpdateLobby_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/UpdateLobbyResponse" message="tns:IBoggleServiceContracts_UpdateLobby_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DeliverMessage">
-      <wsdl:output wsaw:Action="http://tempuri.org/IBoggleServiceContracts/DeliverMessage" message="tns:IBoggleServiceContracts_DeliverMessage_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IBoggleServiceContracts/DeliverMessageResponse" message="tns:IBoggleServiceContracts_DeliverMessage_InputCallbackMessage" />
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DeliverLobbyInvite">
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagerContract/DeliverLobbyInvite" message="tns:IUserManagerContract_DeliverLobbyInvite_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagerContract/DeliverLobbyInviteResponse" message="tns:IUserManagerContract_DeliverLobbyInvite_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="NetTcpBinding_IBoggleServiceContracts" type="tns:IBoggleServiceContracts">
-    <wsp:PolicyReference URI="#NetTcpBinding_IBoggleServiceContracts_policy" />
+  <wsdl:portType msc:usingSession="true" name="IGameManagerContract">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="CreateLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManagerContract/CreateLobby" message="tns:IGameManagerContract_CreateLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AskToJoinLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManagerContract/AskToJoinLobby" message="tns:IGameManagerContract_AskToJoinLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SearchPublicLobbies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManagerContract/SearchPublicLobbies" message="tns:IGameManagerContract_SearchPublicLobbies_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdatePublicLobbies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManagerContract/UpdatePublicLobbies" message="tns:IGameManagerContract_UpdatePublicLobbies_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GrantAccessToJoinLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManagerContract/GrantAccessToJoinLobby" message="tns:IGameManagerContract_GrantAccessToJoinLobby_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManagerContract/GrantAccessToJoinLobbyResponse" message="tns:IGameManagerContract_GrantAccessToJoinLobby_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DisplayPublicLobbies">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManagerContract/DisplayPublicLobbies" message="tns:IGameManagerContract_DisplayPublicLobbies_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManagerContract/DisplayPublicLobbiesResponse" message="tns:IGameManagerContract_DisplayPublicLobbies_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RefreshPublicLobbies">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManagerContract/RefreshPublicLobbies" message="tns:IGameManagerContract_RefreshPublicLobbies_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManagerContract/RefreshPublicLobbiesResponse" message="tns:IGameManagerContract_RefreshPublicLobbies_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType msc:usingSession="true" name="ILobbyManagerContract">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="JoinLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagerContract/JoinLobby" message="tns:ILobbyManagerContract_JoinLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ExitLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagerContract/ExitLobby" message="tns:ILobbyManagerContract_ExitLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagerContract/SendMessage" message="tns:ILobbyManagerContract_SendMessage_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SendInvite">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagerContract/SendInvite" message="tns:ILobbyManagerContract_SendInvite_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ChangeMatchSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagerContract/ChangeMatchSettings" message="tns:ILobbyManagerContract_ChangeMatchSettings_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdateLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagerContract/UpdateLobby" message="tns:ILobbyManagerContract_UpdateLobby_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagerContract/UpdateLobbyResponse" message="tns:ILobbyManagerContract_UpdateLobby_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IUserManagerContract" type="tns:IUserManagerContract">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUserManagerContract_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="LogIn">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/LogIn" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IUserManagerContract/LogIn" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="CreateAccount">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/CreateAccount" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IUserManagerContract/CreateAccount" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="ValidateEmail">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/ValidateEmail" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="CreateLobby">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/CreateLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SearchPublicLobbies">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/SearchPublicLobbies" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="UpdatePublicLobbies">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/UpdatePublicLobbies" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="JoinLobbyByCode">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/JoinLobbyByCode" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SendMessage">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/SendMessage" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IUserManagerContract/ValidateEmail" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="GrantAccess">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/GrantAccess" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IUserManagerContract/GrantAccess" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -229,7 +285,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="AskForEmailValidation">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/AskForEmailValidation" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IUserManagerContract/AskForEmailValidation" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -238,7 +294,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GrantValidation">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/GrantValidation" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IUserManagerContract/GrantValidation" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -246,8 +302,45 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="JoinLobby">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/JoinLobby" style="document" />
+    <wsdl:operation name="DeliverLobbyInvite">
+      <soap12:operation soapAction="http://tempuri.org/IUserManagerContract/DeliverLobbyInvite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IGameManagerContract" type="tns:IGameManagerContract">
+    <wsp:PolicyReference URI="#NetTcpBinding_IGameManagerContract_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="CreateLobby">
+      <soap12:operation soapAction="http://tempuri.org/IGameManagerContract/CreateLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="AskToJoinLobby">
+      <soap12:operation soapAction="http://tempuri.org/IGameManagerContract/AskToJoinLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SearchPublicLobbies">
+      <soap12:operation soapAction="http://tempuri.org/IGameManagerContract/SearchPublicLobbies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePublicLobbies">
+      <soap12:operation soapAction="http://tempuri.org/IGameManagerContract/UpdatePublicLobbies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GrantAccessToJoinLobby">
+      <soap12:operation soapAction="http://tempuri.org/IGameManagerContract/GrantAccessToJoinLobby" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -256,7 +349,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DisplayPublicLobbies">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/DisplayPublicLobbies" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IGameManagerContract/DisplayPublicLobbies" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -265,25 +358,50 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RefreshPublicLobbies">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/RefreshPublicLobbies" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IGameManagerContract/RefreshPublicLobbies" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILobbyManagerContract" type="tns:ILobbyManagerContract">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILobbyManagerContract_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="JoinLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManagerContract/JoinLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ExitLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManagerContract/ExitLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManagerContract/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendInvite">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManagerContract/SendInvite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeMatchSettings">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManagerContract/ChangeMatchSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="UpdateLobby">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/UpdateLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeliverMessage">
-      <soap12:operation soapAction="http://tempuri.org/IBoggleServiceContracts/DeliverMessage" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManagerContract/UpdateLobby" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -293,10 +411,28 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="BoggleServices">
-    <wsdl:port name="NetTcpBinding_IBoggleServiceContracts" binding="tns:NetTcpBinding_IBoggleServiceContracts">
+    <wsdl:port name="NetTcpBinding_IUserManagerContract" binding="tns:NetTcpBinding_IUserManagerContract">
       <soap12:address location="net.tcp://localhost:8140/BoggleServices/UserManager" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8140/BoggleServices/UserManager</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>ESCRITORIO-FALA\alex_</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IGameManagerContract" binding="tns:NetTcpBinding_IGameManagerContract">
+      <soap12:address location="net.tcp://localhost:8140/BoggleServices/GameManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8140/BoggleServices/GameManager</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>ESCRITORIO-FALA\alex_</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILobbyManagerContract" binding="tns:NetTcpBinding_ILobbyManagerContract">
+      <soap12:address location="net.tcp://localhost:8140/BoggleServices/LobbyManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8140/BoggleServices/LobbyManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>ESCRITORIO-FALA\alex_</Upn>
         </Identity>

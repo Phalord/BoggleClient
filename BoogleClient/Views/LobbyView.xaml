@@ -136,13 +136,13 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">
-                    <ScrollViewer
-                        Margin="20,10"
+                    <ListView
+                        ItemsSource="{Binding MessageHistory}"
+                        ItemContainerStyle="{StaticResource MessageView}"
+                        HorizontalAlignment="Center"
+                        Margin="5"
                         Height="260"
-                        VerticalScrollBarVisibility="Auto"
-                        HorizontalScrollBarVisibility="Disabled">
-                        <StackPanel />
-                    </ScrollViewer>
+                        Width="700" />
                     <StackPanel
                         Height="70"
                         Orientation="Horizontal">
@@ -154,6 +154,7 @@
                             Padding="10, 5"
                             FontSize="20"
                             materialDesign:HintAssist.Hint="{x:Static p:Resources.writeYourMessage}"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PrimaryBrush}"
                             BorderBrush="{StaticResource PrimaryBrush}"
                             Background="{StaticResource BlackLightBrush}"
                             Foreground="{StaticResource WhiteBrush}"/>

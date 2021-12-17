@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BoogleClient
 {
@@ -20,9 +8,32 @@ namespace BoogleClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static Window Window => Application.Current.MainWindow;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            Window.WindowState = WindowState.Minimized;
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Window.Close();
+        }
+
+        /// <summary>
+        /// Drag Window by clicking the custom titlebar
+        /// </summary>
+        private void Titlebar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                Window.DragMove();
+            }
         }
     }
 }

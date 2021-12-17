@@ -8,28 +8,28 @@ namespace BoogleClient.Commands
 {
     internal class JoinLobbyCommand : BaseCommand
     {
-        private readonly SearchLobbyViewModel searchLobbyViewModel;
+        private readonly PlayOptionsViewModel playOptionsViewModel;
         private readonly Func<string> getLobbyCodeOfSelected;
         private readonly AccountDTO userAccount;
 
         public JoinLobbyCommand(
-            SearchLobbyViewModel searchLobbyViewModel,
+            PlayOptionsViewModel playOptionsViewModel,
             Func<string> getLobbyCodeOfSelected, AccountDTO userAccount)
         {
-            this.searchLobbyViewModel = searchLobbyViewModel;
+            this.playOptionsViewModel = playOptionsViewModel;
             this.getLobbyCodeOfSelected = getLobbyCodeOfSelected;
             this.userAccount = userAccount;
         }
 
         public override void Execute(object parameter)
         {
-            BoggleServiceContractsClient contractsClient =
-                new BoggleServiceContractsClient(
-                    new InstanceContext(searchLobbyViewModel));
+            GameManagerContractClient contractClient =
+                new GameManagerContractClient(
+                    new InstanceContext(playOptionsViewModel));
 
             try
             {
-                contractsClient.JoinLobbyByCode(userAccount.UserName, getLobbyCodeOfSelected());
+                contractClient.AskToJoinLobby(userAccount.UserName, getLobbyCodeOfSelected());
             }
             catch (EntryPointNotFoundException)
             {

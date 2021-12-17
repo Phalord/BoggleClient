@@ -24,8 +24,8 @@ namespace BoogleClient.Commands
 
         public override void Execute(object parameter)
         {
-            BoggleServiceContractsClient contractsClient =
-                new BoggleServiceContractsClient(
+            UserManagerContractClient contractClient =
+                new UserManagerContractClient(
                     new InstanceContext(logInViewModel));
 
             string hashedPassword =
@@ -40,7 +40,7 @@ namespace BoogleClient.Commands
 
             try
             {
-                contractsClient.CreateAccount(accountDTO);
+                contractClient.CreateAccount(accountDTO);
             }
             catch (EndpointNotFoundException)
             {

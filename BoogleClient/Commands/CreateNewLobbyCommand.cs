@@ -8,18 +8,21 @@ namespace BoogleClient.Commands
     internal class CreateNewLobbyCommand : BaseCommand
     {
         private readonly LobbyCreationViewModel lobbyCreationViewModel;
+        private readonly PlayOptionsViewModel playOptionsViewModel;
 
         public CreateNewLobbyCommand(
-            LobbyCreationViewModel lobbyCreationViewModel)
+            LobbyCreationViewModel lobbyCreationViewModel,
+            PlayOptionsViewModel playOptionsViewModel)
         {
             this.lobbyCreationViewModel = lobbyCreationViewModel;
+            this.playOptionsViewModel = playOptionsViewModel;
         }
 
         public override void Execute(object parameter)
         {
-            BoggleServiceContractsClient contractsClient =
-                new BoggleServiceContractsClient(
-                    new System.ServiceModel.InstanceContext(lobbyCreationViewModel));
+            GameManagerContractClient contractsClient =
+                new GameManagerContractClient(
+                    new System.ServiceModel.InstanceContext(playOptionsViewModel));
 
             try
             {

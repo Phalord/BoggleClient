@@ -2,11 +2,12 @@
 using BoogleClient.Commands;
 using BoogleClient.Services;
 using BoogleClient.Stores;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BoogleClient.ViewModel
 {
-    internal class PlayOptionsViewModel : BoggleServiceCallback
+    internal class PlayOptionsViewModel : BaseViewModel, IGameManagerContractCallback
     {
         private readonly NavigationStore windowNavigationStore;
         private readonly AccountDTO userAccount;
@@ -46,7 +47,7 @@ namespace BoogleClient.ViewModel
 
             return new LobbyCreationViewModel(
                 new NavigationService(windowNavigationStore, CreateMainMenuViewModel),
-                userAccount, roomSizes, gameModes, privacies, windowNavigationStore);
+                userAccount, roomSizes, gameModes, privacies, this);
         }
 
         private BaseViewModel CreateMainMenuViewModel(AccountDTO userAccount)
@@ -54,11 +55,30 @@ namespace BoogleClient.ViewModel
             return new MainMenuViewModel(windowNavigationStore, userAccount);
         }
 
-        public override void DisplayPublicLobbies(PublicLobbyPreviewDTO[] publicLobbies)
+        public void DisplayPublicLobbies(PublicLobbyPreviewDTO[] publicLobbies)
         {
             windowNavigationStore.CurrentViewModel = new SearchLobbyViewModel(
                 new NavigationService(windowNavigationStore, CreateMainMenuViewModel),
-                userAccount, publicLobbies, windowNavigationStore);
+                userAccount, publicLobbies, this);
+        }
+
+        public void GrantAccessToJoinLobby(Lobby lobby)
+        {
+            if (lobby is null)
+            {
+                MessageBox.Show("Lobby no encontrado, intente nuevamente.",
+                    "Lobby inexistente");
+            }
+            else
+            {
+                windowNavigationStore.CurrentViewModel =
+                    new LobbyViewModel(lobby, userAccount, windowNavigationStore);
+            }
+        }
+
+        public void RefreshPublicLobbies(PublicLobbyPreviewDTO[] publicLobbies)
+        {
+            DisplayPublicLobbies(publicLobbies);
         }
     }
 }

@@ -106,6 +106,7 @@
     <Compile Include="Commands\ChangeLobbyPrivacyCommand.cs" />
     <Compile Include="Commands\CreateNewLobbyCommand.cs" />
     <Compile Include="Commands\CreateAccountCommand.cs" />
+    <Compile Include="Commands\ExitLobbyCommand.cs" />
     <Compile Include="Commands\JoinLobbyCommand.cs" />
     <Compile Include="Commands\LogInCommand.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
@@ -128,7 +129,6 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\TabNavigationService.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
-    <Compile Include="ViewModel\BoggleServiceCallback.cs" />
     <Compile Include="ViewModel\EmailValidationViewModel.cs" />
     <Compile Include="ViewModel\LeaderboardViewModel.cs" />
     <Compile Include="ViewModel\LobbyCreationViewModel.cs" />

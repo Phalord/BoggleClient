@@ -1,16 +1,13 @@
 ﻿using BoogleClient.BoggleServices;
 using BoogleClient.Commands;
 using BoogleClient.Services;
-using BoogleClient.Stores;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace BoogleClient.ViewModel
 {
-    internal class SearchLobbyViewModel : BoggleServiceCallback
+    internal class SearchLobbyViewModel : BaseViewModel
     {
-        private readonly AccountDTO userAccount;
-        private readonly NavigationStore windowNavigationStore;
         private ObservableCollection<PublicLobbyPreviewDTO> publicLobbies;
 
         private PublicLobbyPreviewDTO selectedLobby;
@@ -20,18 +17,16 @@ namespace BoogleClient.ViewModel
             NavigationService cancelNavegationService,
             AccountDTO userAccount,
             PublicLobbyPreviewDTO[] publicLobbies,
-            NavigationStore windowNavigationStore)
+            PlayOptionsViewModel playOptionsViewModel)
         {
-            this.userAccount = userAccount;
-            this.windowNavigationStore = windowNavigationStore;
             PublicLobbies =
                 new ObservableCollection<PublicLobbyPreviewDTO>(publicLobbies);
             CancelCommand =
                 new NavigateCommand(cancelNavegationService, userAccount);
             JoinLobbyCommand =
-                new JoinLobbyCommand(this, GetLobbyCodeOfSelected, userAccount);
+                new JoinLobbyCommand(playOptionsViewModel, GetLobbyCodeOfSelected, userAccount);
             RefreshPublicLobbiesCommand =
-                new RefreshPublicLobbiesCommand(this);
+                new RefreshPublicLobbiesCommand(playOptionsViewModel);
         }
 
         public ObservableCollection<PublicLobbyPreviewDTO> PublicLobbies
@@ -46,14 +41,22 @@ namespace BoogleClient.ViewModel
 
         public PublicLobbyPreviewDTO SelectedLobby
         {
-            get { return selectedLobby; }
-            set { selectedLobby = value; }
+            get => selectedLobby;
+            set
+            {
+                selectedLobby = value;
+                OnPropertyChanged(nameof(PublicLobbies));
+            }
         }
 
         public string LobbyCode
         {
-            get { return lobbyCode; }
-            set { lobbyCode = value; }
+            get => lobbyCode;
+            set
+            {
+                lobbyCode = value;
+                OnPropertyChanged(nameof(PublicLobbies));
+            }
         }
 
 
@@ -68,28 +71,6 @@ namespace BoogleClient.ViewModel
         private string GetLobbyCodeOfSelected()
         {
             return selectedLobby.LobbyCode;
-        }
-
-        public override void JoinLobby(Lobby lobby)
-        {
-            windowNavigationStore.CurrentViewModel = CreateLobbyViewModel(lobby);
-        }
-
-        public override void UpdateLobby(Lobby lobby)
-        {
-            windowNavigationStore.CurrentViewModel = CreateLobbyViewModel(lobby);
-        }
-
-        public override void RefreshPublicLobbies(
-            PublicLobbyPreviewDTO[] publicLobbies)
-        {
-            PublicLobbies =
-                new ObservableCollection<PublicLobbyPreviewDTO>(publicLobbies);
-        }
-
-        private BaseViewModel CreateLobbyViewModel(Lobby lobby)
-        {
-            return new LobbyViewModel(lobby, userAccount);
         }
     }
 }

@@ -25,45 +25,11 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CreateLobby">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="lobbySettings" nillable="true" type="q2:LobbySettingsDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SearchPublicLobbies">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdatePublicLobbies">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="JoinLobbyByCode">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SendMessage">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q3:Lobby" />
-        <xs:element minOccurs="0" name="body" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="sender" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GrantAccess">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="accessStatus" nillable="true" type="xs:string" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="accountInfoDTO" nillable="true" type="q4:AccountDTO" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="accountInfoDTO" nillable="true" type="q2:AccountDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -89,7 +55,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="validationStatus" nillable="true" type="xs:string" />
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="accountInfoDTO" nillable="true" type="q5:AccountDTO" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="accountInfoDTO" nillable="true" type="q3:AccountDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -98,14 +64,51 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="JoinLobby">
+  <xs:element name="DeliverLobbyInvite">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q6:Lobby" />
+        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="JoinLobbyResponse">
+  <xs:element name="DeliverLobbyInviteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateLobby">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="lobbySettings" nillable="true" type="q4:LobbySettingsDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AskToJoinLobby">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchPublicLobbies">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePublicLobbies">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GrantAccessToJoinLobby">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q5:Lobby" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GrantAccessToJoinLobbyResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -113,7 +116,7 @@
   <xs:element name="DisplayPublicLobbies">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="publicLobbies" nillable="true" type="q7:ArrayOfPublicLobbyPreviewDTO" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="publicLobbies" nillable="true" type="q6:ArrayOfPublicLobbyPreviewDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -125,7 +128,7 @@
   <xs:element name="RefreshPublicLobbies">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="publicLobbies" nillable="true" type="q8:ArrayOfPublicLobbyPreviewDTO" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BoggleModel.DataTransfer.Dtos" minOccurs="0" name="publicLobbies" nillable="true" type="q7:ArrayOfPublicLobbyPreviewDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -134,26 +137,55 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateLobby">
+  <xs:element name="JoinLobby">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExitLobby">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q8:Lobby" />
+        <xs:element minOccurs="0" name="body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sender" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendInvite">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q9:Lobby" />
+        <xs:element minOccurs="0" name="sender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="receiver" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeMatchSettings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q10:Lobby" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLobby">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q11:Lobby" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateLobbyResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeliverMessage">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="message" nillable="true" type="q10:Message" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeliverMessageResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

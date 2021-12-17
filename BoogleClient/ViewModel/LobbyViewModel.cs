@@ -1,27 +1,65 @@
 ﻿using BoogleClient.BoggleServices;
 using BoogleClient.Commands;
-using System;
-using System.Collections.Generic;
+using BoogleClient.Services;
+using BoogleClient.Stores;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ServiceModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BoogleClient.ViewModel
 {
-    internal class LobbyViewModel : BaseViewModel
+    internal class LobbyViewModel : BaseViewModel, ILobbyManagerContractCallback
     {
         private string messageText;
         private readonly Lobby lobby;
         private readonly AccountDTO userAccount;
+        private readonly NavigationStore windowNavigationStore;
+        private readonly ObservableCollection<Message> messageHistory;
+        private readonly ObservableCollection<Player> players;
 
-        public LobbyViewModel(Lobby lobby, AccountDTO userAccount)
+        public LobbyViewModel(Lobby lobby, AccountDTO userAccount,
+            NavigationStore windowNavigationStore)
         {
             this.lobby = lobby;
             this.userAccount = userAccount;
+            this.windowNavigationStore = windowNavigationStore;
+            messageText = string.Empty;
+            messageHistory = new ObservableCollection<Message>();
+            players = new ObservableCollection<Player>();
+
+            JoinLobby();
+
             SendMessageCommand =
                 new SendMessageCommand(this, userAccount.UserName, lobby);
+            ExitLobbyCommand =
+                new ExitLobbyCommand(lobby.Code, userAccount, this,
+                    new NavigationService(
+                        windowNavigationStore, CreateMainMenuView));
+        }
+
+        private void JoinLobby()
+        {
+            LobbyManagerContractClient contractsClient =
+                new LobbyManagerContractClient(
+                    new InstanceContext(this));
+
+            try
+            {
+                contractsClient.JoinLobby(userAccount.UserName, lobby.Code);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Error al establecer conexión con el servidor",
+                    "Error de conexión");
+                ExitLobbyCommand.Execute(null);
+            }
+        }
+
+        private BaseViewModel CreateMainMenuView(AccountDTO arg)
+        {
+            return new MainMenuViewModel(windowNavigationStore, userAccount);
         }
 
         public string MessageText
@@ -34,36 +72,51 @@ namespace BoogleClient.ViewModel
             }
         }
 
-        public ObservableCollection<Player> PlayersInLobby =>
-            CreateObservablePlayers();
+        public ObservableCollection<Player> PlayersInLobby => players;
 
-        public ObservableCollection<Message> MessageHistory =>
-            CreateObservableMessages();
+        public ObservableCollection<Message> MessageHistory => messageHistory;
 
-        private ObservableCollection<Message> CreateObservableMessages()
+        public void UpdateLobby(Lobby lobby)
         {
-            ObservableCollection<Message> messageHistory =
-                new ObservableCollection<Message>(lobby.MessageHistory);
-
-            return messageHistory;
-        }
-
-        private ObservableCollection<Player> CreateObservablePlayers()
-        {
-            ObservableCollection<Player> players = 
-                new ObservableCollection<Player>(lobby.Players);
-            players.Remove(players.FirstOrDefault(
-                player => player.UserName.Equals(userAccount.UserName)));
-            return players;
+            this.lobby.Code = lobby.Code;
+            this.lobby.GameMatch = lobby.GameMatch;
+            this.lobby.MessageHistory = lobby.MessageHistory;
+            this.lobby.Players = lobby.Players;
+            this.lobby.Privacy = lobby.Privacy;
+            this.lobby.Size = lobby.Size;
+            UpdateObservableMessages();
+            UpdateObservablePlayers();
         }
 
         //public ObservableCollection<InvitesDTO> InvitesSent { get; set; }
+        public string GameMode { get; set; }
 
         public ICommand SendMessageCommand { get; private set; }
         public ICommand ExitLobbyCommand { get; private set; }
         public ICommand InvitePlayerCommand { get; private set; }
         public ICommand ChangeMatchSettingsCommand { get; private set; }
 
-        public string GameMode { get; set; }
+        private void UpdateObservableMessages()
+        {
+            messageHistory.Clear();
+
+            foreach (Message message in lobby.MessageHistory)
+            {
+                messageHistory.Add(message);
+            }
+        }
+
+        private void UpdateObservablePlayers()
+        {
+            players.Clear();
+
+            foreach (Player player in lobby.Players)
+            {
+                players.Add(player);
+            }
+
+            _ = players.Remove(players.FirstOrDefault(
+                player => player.UserName.Equals(userAccount.UserName)));
+        }
     }
 }

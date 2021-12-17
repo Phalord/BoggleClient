@@ -26,13 +26,14 @@ namespace BoogleClient.Commands
 
         public override void Execute(object parameter)
         {
-            BoggleServiceContractsClient contractsClient =
-                new BoggleServiceContractsClient(
+            UserManagerContractClient contractClient =
+                new UserManagerContractClient(
                     new InstanceContext(logInViewModel));
             try
             {
-                contractsClient.ValidateEmail(
+                contractClient.ValidateEmail(
                     emailValidationViewModel.ValidationCode, userEmail);
+                emailValidationViewModel.ValidationCode = string.Empty;
             } catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Error al establecer conexión con el servidor", "Error de conexión");
@@ -41,8 +42,7 @@ namespace BoogleClient.Commands
 
         public override bool CanExecute(object parameter)
         {
-            return emailValidationViewModel.ValidationCode.Length.Equals(5)
-                && !emailValidationViewModel.IsWaiting;
+            return emailValidationViewModel.ValidationCode.Length.Equals(5);
         }
 
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
