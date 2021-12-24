@@ -13,6 +13,7 @@ namespace BoogleClient.ViewModel
     internal class LobbyViewModel : BaseViewModel, ILobbyManagerContractCallback
     {
         private string messageText;
+        private string gameMode;
         private readonly Lobby lobby;
         private readonly AccountDTO userAccount;
         private readonly NavigationStore windowNavigationStore;
@@ -28,6 +29,7 @@ namespace BoogleClient.ViewModel
             messageText = string.Empty;
             messageHistory = new ObservableCollection<Message>();
             players = new ObservableCollection<Player>();
+            gameMode = lobby.GameMatch.GameMode;
 
             JoinLobby();
 
@@ -71,6 +73,24 @@ namespace BoogleClient.ViewModel
                 OnPropertyChanged(nameof(MessageText));
             }
         }
+        public string GameMode
+        {
+            get => gameMode;
+            set
+            {
+                gameMode = value;
+                OnPropertyChanged(nameof(GameMode));
+            }
+        }
+        public string LobbyCode
+        {
+            get => lobby.Code;
+            set
+            {
+                lobby.Code = value;
+                OnPropertyChanged(nameof(LobbyCode));
+            }
+        }
 
         public ObservableCollection<Player> PlayersInLobby => players;
 
@@ -84,12 +104,12 @@ namespace BoogleClient.ViewModel
             this.lobby.Players = lobby.Players;
             this.lobby.Privacy = lobby.Privacy;
             this.lobby.Size = lobby.Size;
+            this.lobby.GameMatch.GameMode = lobby.GameMatch.GameMode;
             UpdateObservableMessages();
             UpdateObservablePlayers();
         }
 
         //public ObservableCollection<InvitesDTO> InvitesSent { get; set; }
-        public string GameMode { get; set; }
 
         public ICommand SendMessageCommand { get; private set; }
         public ICommand ExitLobbyCommand { get; private set; }
