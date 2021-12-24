@@ -17,15 +17,17 @@ namespace BoogleClient.ViewModel
         private readonly Lobby lobby;
         private readonly AccountDTO userAccount;
         private readonly NavigationStore windowNavigationStore;
+        private readonly LogInViewModel logInViewModel;
         private readonly ObservableCollection<Message> messageHistory;
         private readonly ObservableCollection<Player> players;
 
         public LobbyViewModel(Lobby lobby, AccountDTO userAccount,
-            NavigationStore windowNavigationStore)
+            NavigationStore windowNavigationStore, LogInViewModel logInViewModel)
         {
             this.lobby = lobby;
             this.userAccount = userAccount;
             this.windowNavigationStore = windowNavigationStore;
+            this.logInViewModel = logInViewModel;
             messageText = string.Empty;
             messageHistory = new ObservableCollection<Message>();
             players = new ObservableCollection<Player>();
@@ -61,7 +63,7 @@ namespace BoogleClient.ViewModel
 
         private BaseViewModel CreateMainMenuView(AccountDTO arg)
         {
-            return new MainMenuViewModel(windowNavigationStore, userAccount);
+            return new MainMenuViewModel(windowNavigationStore, userAccount, logInViewModel);
         }
 
         public string MessageText
@@ -92,9 +94,35 @@ namespace BoogleClient.ViewModel
             }
         }
 
-        public ObservableCollection<Player> PlayersInLobby => players;
+        public ObservableCollection<Player> PlayersInLobby
+        {
+            get
+            {
+                players.Clear();
 
-        public ObservableCollection<Message> MessageHistory => messageHistory;
+                foreach (Player player in lobby.Players)
+                {
+                    players.Add(player);
+                }
+
+                return players;
+            }
+        }
+
+        public ObservableCollection<Message> MessageHistory
+        {
+            get
+            {
+                messageHistory.Clear();
+
+                foreach (Message message in lobby.MessageHistory)
+                {
+                    messageHistory.Add(message);
+                }
+
+                return messageHistory;
+            }
+        }
 
         public void UpdateLobby(Lobby lobby)
         {
@@ -105,8 +133,6 @@ namespace BoogleClient.ViewModel
             this.lobby.Privacy = lobby.Privacy;
             this.lobby.Size = lobby.Size;
             this.lobby.GameMatch.GameMode = lobby.GameMatch.GameMode;
-            UpdateObservableMessages();
-            UpdateObservablePlayers();
         }
 
         //public ObservableCollection<InvitesDTO> InvitesSent { get; set; }
@@ -115,28 +141,5 @@ namespace BoogleClient.ViewModel
         public ICommand ExitLobbyCommand { get; private set; }
         public ICommand InvitePlayerCommand { get; private set; }
         public ICommand ChangeMatchSettingsCommand { get; private set; }
-
-        private void UpdateObservableMessages()
-        {
-            messageHistory.Clear();
-
-            foreach (Message message in lobby.MessageHistory)
-            {
-                messageHistory.Add(message);
-            }
-        }
-
-        private void UpdateObservablePlayers()
-        {
-            players.Clear();
-
-            foreach (Player player in lobby.Players)
-            {
-                players.Add(player);
-            }
-
-            _ = players.Remove(players.FirstOrDefault(
-                player => player.UserName.Equals(userAccount.UserName)));
-        }
     }
 }

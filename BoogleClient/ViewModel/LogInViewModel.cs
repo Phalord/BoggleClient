@@ -8,6 +8,7 @@ namespace BoogleClient.ViewModel
 {
     internal class LogInViewModel : BaseViewModel, IUserManagerContractCallback
     {
+        private readonly NavigationStore windowNavigationStore;
         private readonly NavigationService windowNavigationService;
         private readonly NavigationStore formsNavigationStore;
 
@@ -25,13 +26,15 @@ namespace BoogleClient.ViewModel
         private const string playerLogged = "PlayerAlreadyLogged";
         #endregion
 
-        public LogInViewModel(NavigationService windowNavigationService)
+        public LogInViewModel(
+            NavigationStore windowNavigationStore,
+            NavigationService windowNavigationService)
         {
             formsNavigationStore = new NavigationStore();
             formsNavigationStore.CurrentViewModel =
                 new LogInFormViewModel(this, new NavigationService(
                     formsNavigationStore, CreateRegisterFormViewModel));
-            
+            this.windowNavigationStore = windowNavigationStore;
             this.windowNavigationService = windowNavigationService;
 
             formsNavigationStore
@@ -125,6 +128,11 @@ namespace BoogleClient.ViewModel
         public void DeliverLobbyInvite(string lobbyCode)
         {
             throw new NotImplementedException();
+        }
+
+        public void CloseSession()
+        {
+            windowNavigationStore.CurrentViewModel = this;
         }
 
         #endregion

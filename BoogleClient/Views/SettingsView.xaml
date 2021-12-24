@@ -66,19 +66,25 @@
                 Foreground="{StaticResource WhiteBrush}"/>
         </materialDesign:Card>
 
-        <materialDesign:Card
-            Background="{StaticResource WhiteBrush}"
-            Margin="35,15"
+        <Button
+            Style="{StaticResource TextButton}"
+            Command="{Binding LogOutCommand}"
+            Width="50" Height="50"
+            Padding="0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             Grid.Column="4"
             Grid.Row="2">
-
-            <materialDesign:PackIcon 
+            <materialDesign:Card
+            Background="{StaticResource WhiteBrush}">
+                <materialDesign:PackIcon 
                 Kind="Logout"
                 Width="50"
                 Height="50"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 Foreground="{StaticResource SecondaryBrush}"/>
-        </materialDesign:Card>
+            </materialDesign:Card>
+        </Button>
     </Grid>
 </UserControl>

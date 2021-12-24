@@ -11,14 +11,17 @@ namespace BoogleClient.ViewModel
     {
         private readonly NavigationStore windowNavigationStore;
         private readonly AccountDTO userAccount;
-        private NavigationStore menusNavigationStore;
+        private readonly LogInViewModel logInViewModel;
+        private readonly NavigationStore menusNavigationStore;
 
 
         public MainMenuViewModel(
             NavigationStore windowNavigationStore,
-            AccountDTO userAccount)
+            AccountDTO userAccount,
+            LogInViewModel logInViewModel)
         {
             this.userAccount = userAccount;
+            this.logInViewModel = logInViewModel;
             this.windowNavigationStore = windowNavigationStore;
             menusNavigationStore = new NavigationStore()
             {
@@ -55,7 +58,7 @@ namespace BoogleClient.ViewModel
 
         private SettingsMenuViewModel CreateSettingsMenuViewModel()
         {
-            return new SettingsMenuViewModel();
+            return new SettingsMenuViewModel(userAccount, logInViewModel);
         }
 
         private SocialsMenuViewModel CreateSocialsMenuViewModel()
@@ -65,7 +68,7 @@ namespace BoogleClient.ViewModel
 
         private PlayOptionsViewModel CreatePlayOptionsViewModel()
         {
-            return new PlayOptionsViewModel(windowNavigationStore, userAccount);
+            return new PlayOptionsViewModel(windowNavigationStore, userAccount, logInViewModel);
         }
 
         private LeaderboardViewModel CreateLeaderboardViewModel()
@@ -75,7 +78,7 @@ namespace BoogleClient.ViewModel
 
         private ProfileViewModel CreateProfileViewModel()
         {
-            return new ProfileViewModel();
+            return new ProfileViewModel(windowNavigationStore, userAccount);
         }
 
         private TabNavigationService CreateTabNavigationService(Func<BaseViewModel> createViewModel)

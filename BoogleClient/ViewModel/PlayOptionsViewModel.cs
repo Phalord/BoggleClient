@@ -11,6 +11,7 @@ namespace BoogleClient.ViewModel
     {
         private readonly NavigationStore windowNavigationStore;
         private readonly AccountDTO userAccount;
+        private readonly LogInViewModel logInViewModel;
 
         #region Constants
 
@@ -24,7 +25,8 @@ namespace BoogleClient.ViewModel
 
         public PlayOptionsViewModel(
             NavigationStore windowNavigationStore,
-            AccountDTO userAccount)
+            AccountDTO userAccount,
+            LogInViewModel logInViewModel)
         {
 
             CreateLobbyCommand = new NavigateCommand(
@@ -33,6 +35,7 @@ namespace BoogleClient.ViewModel
             SearchLobbyCommand = new SearchPublicLobbyCommand(this);
             this.windowNavigationStore = windowNavigationStore;
             this.userAccount = userAccount;
+            this.logInViewModel = logInViewModel;
         }
 
         public ICommand CreateLobbyCommand { get; }
@@ -52,7 +55,7 @@ namespace BoogleClient.ViewModel
 
         private BaseViewModel CreateMainMenuViewModel(AccountDTO userAccount)
         {
-            return new MainMenuViewModel(windowNavigationStore, userAccount);
+            return new MainMenuViewModel(windowNavigationStore, userAccount, logInViewModel);
         }
 
         public void DisplayPublicLobbies(PublicLobbyPreviewDTO[] publicLobbies)
@@ -72,7 +75,7 @@ namespace BoogleClient.ViewModel
             else
             {
                 windowNavigationStore.CurrentViewModel =
-                    new LobbyViewModel(lobby, userAccount, windowNavigationStore);
+                    new LobbyViewModel(lobby, userAccount, windowNavigationStore, logInViewModel);
             }
         }
 
