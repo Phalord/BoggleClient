@@ -38,7 +38,7 @@ namespace BoogleClient.ViewModel
             ChangeLobbyPrivacy =
                 new ChangeLobbyPrivacyCommand(this, privacies);
             CancelCommand =
-                new NavigateCommand(cancelNavigationService, userAccount);
+                new NavigateCommand(cancelNavigationService);
             CreateLobbyCommand =
                 new CreateNewLobbyCommand(this, playOptionsViewModel);
         }

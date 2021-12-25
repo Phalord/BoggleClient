@@ -15,7 +15,7 @@ namespace BoogleClient.ViewModel
             LogInViewModel logInViewModel,
             NavigationService formsNavigationService)
         {
-            NavigateCommand = new NavigateCommand(formsNavigationService, null);
+            NavigateCommand = new NavigateCommand(formsNavigationService);
             CreateAccountCommand = new CreateAccountCommand(this, logInViewModel);
             Password = string.Empty;
             PasswordConfirmation = string.Empty;

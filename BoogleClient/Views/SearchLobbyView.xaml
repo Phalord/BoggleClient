@@ -47,7 +47,7 @@
                 <Button
                     Style="{StaticResource OutlinedButton}"
                     Content="{x:Static p:Resources.join}"
-                    Command="{Binding JoinLobbyCommand}"
+                    Command="{Binding JoinLobbyByCodeCommand}"
                     Height="40"
                     Width="100"
                     FontSize="20"/>

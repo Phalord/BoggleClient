@@ -11,16 +11,15 @@ namespace BoogleClient.Commands
     {
         private readonly LobbyViewModel lobbyViewModel;
         private readonly string sender;
-        private readonly Lobby lobby;
 
-        public SendMessageCommand(LobbyViewModel lobbyViewModel,
-            string sender, Lobby lobby)
+        public SendMessageCommand(
+            LobbyViewModel lobbyViewModel,
+            string sender)
         {
             this.lobbyViewModel = lobbyViewModel;
             this.sender = sender;
-            this.lobby = lobby;
 
-            lobbyViewModel.PropertyChanged += OnviewModelPropertyChanged;
+            lobbyViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
 
         public override void Execute(object parameter)
@@ -30,7 +29,10 @@ namespace BoogleClient.Commands
 
             try
             {
-                contractClient.SendMessage(lobby, lobbyViewModel.MessageText, sender);
+                contractClient.SendMessage(
+                    lobbyViewModel.LobbyCode,
+                    lobbyViewModel.MessageText,
+                    sender);
             }
             catch (EndpointNotFoundException)
             {
@@ -41,10 +43,11 @@ namespace BoogleClient.Commands
 
         public override bool CanExecute(object parameter)
         {
-            return true;//lobbyViewModel.MessageText.Length != 0;
+            return !lobbyViewModel
+                .MessageText.Length.Equals(string.Empty);
         }
 
-        private void OnviewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(LobbyViewModel.MessageText))
             {

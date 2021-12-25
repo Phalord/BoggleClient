@@ -19,12 +19,16 @@ namespace BoogleClient.ViewModel
             PublicLobbyPreviewDTO[] publicLobbies,
             PlayOptionsViewModel playOptionsViewModel)
         {
+            LobbyCode = string.Empty;
+
             PublicLobbies =
                 new ObservableCollection<PublicLobbyPreviewDTO>(publicLobbies);
             CancelCommand =
-                new NavigateCommand(cancelNavegationService, userAccount);
+                new NavigateCommand(cancelNavegationService);
             JoinLobbyCommand =
                 new JoinLobbyCommand(playOptionsViewModel, GetLobbyCodeOfSelected, userAccount);
+            JoinLobbyByCodeCommand =
+                new JoinLobbyByCodeCommand(playOptionsViewModel, this, userAccount);
             RefreshPublicLobbiesCommand =
                 new RefreshPublicLobbiesCommand(playOptionsViewModel);
         }
@@ -55,7 +59,7 @@ namespace BoogleClient.ViewModel
             set
             {
                 lobbyCode = value;
-                OnPropertyChanged(nameof(PublicLobbies));
+                OnPropertyChanged(nameof(LobbyCode));
             }
         }
 

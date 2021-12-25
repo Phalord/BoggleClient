@@ -42,7 +42,7 @@ namespace BoogleClient.Commands
 
         public override void Execute(object parameter)
         {
-            menuNavigationService.Navigate(null);
+            menuNavigationService.Navigate();
         }
 
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)

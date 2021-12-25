@@ -14,7 +14,7 @@ namespace BoogleClient.ViewModel
     {
         private string messageText;
         private string gameMode;
-        private readonly Lobby lobby;
+        private Lobby lobby;
         private readonly AccountDTO userAccount;
         private readonly NavigationStore windowNavigationStore;
         private readonly LogInViewModel logInViewModel;
@@ -36,7 +36,7 @@ namespace BoogleClient.ViewModel
             JoinLobby();
 
             SendMessageCommand =
-                new SendMessageCommand(this, userAccount.UserName, lobby);
+                new SendMessageCommand(this, userAccount.UserName);
             ExitLobbyCommand =
                 new ExitLobbyCommand(lobby.Code, userAccount, this,
                     new NavigationService(
@@ -61,7 +61,7 @@ namespace BoogleClient.ViewModel
             }
         }
 
-        private BaseViewModel CreateMainMenuView(AccountDTO arg)
+        private BaseViewModel CreateMainMenuView()
         {
             return new MainMenuViewModel(windowNavigationStore, userAccount, logInViewModel);
         }
@@ -96,43 +96,39 @@ namespace BoogleClient.ViewModel
 
         public ObservableCollection<Player> PlayersInLobby
         {
-            get
+            get => players;
+            set
             {
                 players.Clear();
 
-                foreach (Player player in lobby.Players)
+                foreach (Player player in value)
                 {
                     players.Add(player);
                 }
-
-                return players;
+                OnPropertyChanged(nameof(PlayersInLobby));
             }
         }
 
         public ObservableCollection<Message> MessageHistory
         {
-            get
+            get => messageHistory;
+            set
             {
                 messageHistory.Clear();
-
-                foreach (Message message in lobby.MessageHistory)
+                foreach (Message message in value)
                 {
                     messageHistory.Add(message);
                 }
 
-                return messageHistory;
+                OnPropertyChanged(nameof(MessageHistory));
             }
         }
 
         public void UpdateLobby(Lobby lobby)
         {
-            this.lobby.Code = lobby.Code;
-            this.lobby.GameMatch = lobby.GameMatch;
-            this.lobby.MessageHistory = lobby.MessageHistory;
-            this.lobby.Players = lobby.Players;
-            this.lobby.Privacy = lobby.Privacy;
-            this.lobby.Size = lobby.Size;
-            this.lobby.GameMatch.GameMode = lobby.GameMatch.GameMode;
+            this.lobby = lobby;
+            MessageHistory = new ObservableCollection<Message>(lobby.MessageHistory);
+            PlayersInLobby = new ObservableCollection<Player>(lobby.Players);
         }
 
         //public ObservableCollection<InvitesDTO> InvitesSent { get; set; }

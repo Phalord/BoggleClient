@@ -31,7 +31,7 @@ namespace BoogleClient.ViewModel
 
             CreateLobbyCommand = new NavigateCommand(
                 new NavigationService(
-                    windowNavigationStore, CreateLobbyCreationViewModel), userAccount);
+                    windowNavigationStore, CreateLobbyCreationViewModel));
             SearchLobbyCommand = new SearchPublicLobbyCommand(this);
             this.windowNavigationStore = windowNavigationStore;
             this.userAccount = userAccount;
@@ -42,7 +42,7 @@ namespace BoogleClient.ViewModel
 
         public ICommand SearchLobbyCommand { get; }
 
-        private BaseViewModel CreateLobbyCreationViewModel(AccountDTO userAccount)
+        private BaseViewModel CreateLobbyCreationViewModel()
         {
             int[] roomSizes = { 2, 4, 8, 16 };
             string[] gameModes = { Classic, Arcade, Race };
@@ -53,7 +53,7 @@ namespace BoogleClient.ViewModel
                 userAccount, roomSizes, gameModes, privacies, this);
         }
 
-        private BaseViewModel CreateMainMenuViewModel(AccountDTO userAccount)
+        private BaseViewModel CreateMainMenuViewModel()
         {
             return new MainMenuViewModel(windowNavigationStore, userAccount, logInViewModel);
         }

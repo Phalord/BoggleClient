@@ -58,7 +58,8 @@ namespace BoogleClient.ViewModel
 
         private SettingsMenuViewModel CreateSettingsMenuViewModel()
         {
-            return new SettingsMenuViewModel(userAccount, logInViewModel);
+            return new SettingsMenuViewModel(
+                userAccount, logInViewModel, menusNavigationStore);
         }
 
         private SocialsMenuViewModel CreateSocialsMenuViewModel()

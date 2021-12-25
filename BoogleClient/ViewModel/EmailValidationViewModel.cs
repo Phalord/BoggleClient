@@ -12,7 +12,8 @@ namespace BoogleClient.ViewModel
             LogInViewModel logInViewModel,
             string userEmail)
         {
-            ValidateEmailCommand = new ValidateEmailCommand(this, logInViewModel, userEmail);
+            ValidateEmailCommand =
+                new ValidateEmailCommand(this, logInViewModel, userEmail);
             IsWaiting = false;
             ValidationCode = string.Empty;
         }

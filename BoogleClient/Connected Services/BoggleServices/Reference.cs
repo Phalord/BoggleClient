@@ -1326,10 +1326,10 @@ namespace BoogleClient.BoggleServices {
         System.Threading.Tasks.Task ExitLobbyAsync(string userName, string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagerContract/SendMessage")]
-        void SendMessage(BoogleClient.BoggleServices.Lobby lobby, string body, string sender);
+        void SendMessage(string lobbyCode, string body, string sender);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagerContract/SendMessage")]
-        System.Threading.Tasks.Task SendMessageAsync(BoogleClient.BoggleServices.Lobby lobby, string body, string sender);
+        System.Threading.Tasks.Task SendMessageAsync(string lobbyCode, string body, string sender);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagerContract/SendInvite")]
         void SendInvite(BoogleClient.BoggleServices.Lobby lobby, string sender, string receiver);
@@ -1395,12 +1395,12 @@ namespace BoogleClient.BoggleServices {
             return base.Channel.ExitLobbyAsync(userName, lobbyCode);
         }
         
-        public void SendMessage(BoogleClient.BoggleServices.Lobby lobby, string body, string sender) {
-            base.Channel.SendMessage(lobby, body, sender);
+        public void SendMessage(string lobbyCode, string body, string sender) {
+            base.Channel.SendMessage(lobbyCode, body, sender);
         }
         
-        public System.Threading.Tasks.Task SendMessageAsync(BoogleClient.BoggleServices.Lobby lobby, string body, string sender) {
-            return base.Channel.SendMessageAsync(lobby, body, sender);
+        public System.Threading.Tasks.Task SendMessageAsync(string lobbyCode, string body, string sender) {
+            return base.Channel.SendMessageAsync(lobbyCode, body, sender);
         }
         
         public void SendInvite(BoogleClient.BoggleServices.Lobby lobby, string sender, string receiver) {

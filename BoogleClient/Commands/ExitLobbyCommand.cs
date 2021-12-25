@@ -42,7 +42,7 @@ namespace BoogleClient.Commands
             }
             finally
             {
-                cancelNavigationService.Navigate(userAccount);
+                cancelNavigationService.Navigate();
             }
         }
     }

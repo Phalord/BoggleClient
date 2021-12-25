@@ -8,6 +8,7 @@ namespace BoogleClient.ViewModel
 {
     internal class LogInViewModel : BaseViewModel, IUserManagerContractCallback
     {
+        private AccountDTO userAccount = null;
         private readonly NavigationStore windowNavigationStore;
         private readonly NavigationService windowNavigationService;
         private readonly NavigationStore formsNavigationStore;
@@ -26,16 +27,16 @@ namespace BoogleClient.ViewModel
         private const string playerLogged = "PlayerAlreadyLogged";
         #endregion
 
-        public LogInViewModel(
-            NavigationStore windowNavigationStore,
-            NavigationService windowNavigationService)
+        public LogInViewModel(NavigationStore windowNavigationStore)
         {
             formsNavigationStore = new NavigationStore();
             formsNavigationStore.CurrentViewModel =
                 new LogInFormViewModel(this, new NavigationService(
                     formsNavigationStore, CreateRegisterFormViewModel));
             this.windowNavigationStore = windowNavigationStore;
-            this.windowNavigationService = windowNavigationService;
+
+            windowNavigationService =
+                new NavigationService(windowNavigationStore, CreateMainMenuViewModel);
 
             formsNavigationStore
                 .CurrentViewModelChanged += OnCurrentViewModelChanged;
@@ -44,13 +45,18 @@ namespace BoogleClient.ViewModel
         public BaseViewModel CurrentFormView =>
             formsNavigationStore.CurrentViewModel;
 
-        private RegisterFormViewModel CreateRegisterFormViewModel(AccountDTO userAccount)
+        private BaseViewModel CreateMainMenuViewModel()
+        {
+            return new MainMenuViewModel(windowNavigationStore, userAccount, this);
+        }
+
+        private RegisterFormViewModel CreateRegisterFormViewModel()
         {
             return new RegisterFormViewModel(this,
                 new NavigationService(formsNavigationStore, CreateLogInFormViewModel));
         }
 
-        private LogInFormViewModel CreateLogInFormViewModel(AccountDTO userAccount)
+        private LogInFormViewModel CreateLogInFormViewModel()
         {
             return new LogInFormViewModel(this,
                 new NavigationService(formsNavigationStore, CreateRegisterFormViewModel));
@@ -72,7 +78,8 @@ namespace BoogleClient.ViewModel
         {
             if (accessStatus.Equals(accessGranted))
             {
-                windowNavigationService.Navigate(userAccount);
+                this.userAccount = userAccount;
+                windowNavigationService.Navigate();
             }
             else if (accessStatus.Equals(playerLogged))
             {
@@ -121,7 +128,7 @@ namespace BoogleClient.ViewModel
             }
             else if (validationStatus.Equals(emailValidated))
             {
-                windowNavigationService.Navigate(userAccount);
+                windowNavigationService.Navigate();
             }
         }
 

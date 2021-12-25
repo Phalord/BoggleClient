@@ -173,7 +173,7 @@
   <xs:element name="SendMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q8:Lobby" />
+        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="body" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="sender" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -182,7 +182,7 @@
   <xs:element name="SendInvite">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q9:Lobby" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q8:Lobby" />
         <xs:element minOccurs="0" name="sender" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="receiver" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -191,14 +191,14 @@
   <xs:element name="ChangeMatchSettings">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q10:Lobby" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q9:Lobby" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateLobby">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q11:Lobby" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BoggleModel" minOccurs="0" name="lobby" nillable="true" type="q10:Lobby" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

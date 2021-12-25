@@ -13,7 +13,6 @@ namespace BoogleClient
     public partial class App : Application
     {
         private readonly NavigationStore navigationStore;
-        private LogInViewModel logInViewModel;
 
         public App()
         {
@@ -22,12 +21,7 @@ namespace BoogleClient
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            logInViewModel =
-                new LogInViewModel(
-                    navigationStore,
-                    new NavigationService(navigationStore, CreateMainMenuViewModel));
-
-            navigationStore.CurrentViewModel = logInViewModel;
+            navigationStore.CurrentViewModel = new LogInViewModel(navigationStore);
 
             MainWindow = new MainWindow()
             {
@@ -37,11 +31,6 @@ namespace BoogleClient
             MainWindow.Show();
 
             base.OnStartup(e);
-        }
-
-        private BaseViewModel CreateMainMenuViewModel(AccountDTO userAccount)
-        {
-            return new MainMenuViewModel(navigationStore, userAccount, logInViewModel);
         }
     }
 }
