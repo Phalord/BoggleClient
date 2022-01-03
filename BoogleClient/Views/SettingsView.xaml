@@ -16,7 +16,6 @@
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
 
@@ -46,35 +45,11 @@
 
         <Button
             Style="{StaticResource TextButton}"
-            Command="{Binding ShowDisplaySettingsCommand}"
-            Width="180" Height="240"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Grid.Column="2"
-            Grid.Row="1"
-            Padding="0" Margin="0">
-            <materialDesign:Card
-                Background="{StaticResource BlackBrush}"
-                Height="240"
-                Width="180">
-
-                <materialDesign:PackIcon 
-                    Kind="DesktopWindows"
-                    Width="150"
-                    Height="150"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Foreground="{StaticResource WhiteBrush}"/>
-            </materialDesign:Card>
-        </Button>
-
-        <Button
-            Style="{StaticResource TextButton}"
             Command="{Binding ShowInfoCommand}"
             Width="180" Height="240"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Grid.Column="3"
+            Grid.Column="2"
             Grid.Row="1"
             Padding="0" Margin="0">
             <materialDesign:Card
@@ -98,7 +73,7 @@
             Padding="0"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Grid.Column="4"
+            Grid.Column="3"
             Grid.Row="2">
             <materialDesign:Card
             Background="{StaticResource WhiteBrush}">

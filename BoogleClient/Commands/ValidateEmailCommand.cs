@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace BoogleClient.Commands
 {
-    class ValidateEmailCommand : BaseCommand
+    internal class ValidateEmailCommand : BaseCommand
     {
         private readonly EmailValidationViewModel emailValidationViewModel;
         private readonly LogInViewModel logInViewModel;

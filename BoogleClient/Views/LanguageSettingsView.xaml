@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="BoogleClient.Views.LanguageSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:p="clr-namespace:BoogleClient.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="515" d:DesignWidth="1040">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Background="{StaticResource BlackBrush}"
+            VerticalAlignment="Center" Height="100">
+            <Label
+                Content="{x:Static p:Resources.languageSettings}"
+                Style="{StaticResource TitleText}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0,20,0,0"
+                Foreground="{StaticResource WhiteBrush}"/>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="2"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center">
+            <Button
+                Content="{x:Static p:Resources.cancel}"
+                Style="{StaticResource OutlinedButton}"
+                Command="{Binding CancelCommand}"
+                Width="200"
+                Height="44"
+                FontSize="20"
+                FontWeight="DemiBold"/>
+            <Button
+                Content="{x:Static p:Resources.saveChanges}"
+                Style="{StaticResource ContainedButton}"
+                Command="{Binding SaveChangesCommand}"
+                Width="200"
+                Height="44"
+                FontSize="20"
+                FontWeight="DemiBold"
+                Margin="50,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

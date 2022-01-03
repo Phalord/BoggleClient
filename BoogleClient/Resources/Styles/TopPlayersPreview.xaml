@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style
+        TargetType="ListViewItem"
+        x:Key="TopPlayersPreview"
+        x:Name="TopPlayersPreview">
+
+        <Setter Property="Background" Value="{StaticResource SecondaryLightBrush}"/>
+        <Setter Property="Focusable" Value="False"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        Focusable="{TemplateBinding Focusable}"
+                        Height="50" Width="850"
+                        CornerRadius="10"
+                        Margin="10,5">
+                        
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    
+</ResourceDictionary>

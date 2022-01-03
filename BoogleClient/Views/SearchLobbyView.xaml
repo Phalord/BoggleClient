@@ -34,7 +34,8 @@
                 VerticalAlignment="Bottom"
                 Height="80" Width="800">
                 <TextBox
-                    Text="{Binding LobbyCode}"
+                    Text="{Binding LobbyCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    CharacterCasing="Upper"
                     Height="40"
                     Width="350"
                     Margin="10, 0"

@@ -129,6 +129,9 @@
   <data name="arcade" xml:space="preserve">
     <value>Arcade</value>
   </data>
+  <data name="back" xml:space="preserve">
+    <value>Back</value>
+  </data>
   <data name="cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -150,6 +153,18 @@
   <data name="createLobby" xml:space="preserve">
     <value>Create Lobby</value>
   </data>
+  <data name="designer" xml:space="preserve">
+    <value>Designer:</value>
+  </data>
+  <data name="designerInfo" xml:space="preserve">
+    <value>Alex Sandoval and Mark Renteria</value>
+  </data>
+  <data name="developer" xml:space="preserve">
+    <value>Developer:</value>
+  </data>
+  <data name="developerInfo" xml:space="preserve">
+    <value>Alex Sandoval</value>
+  </data>
   <data name="email" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -161,6 +176,9 @@
   </data>
   <data name="friendCode" xml:space="preserve">
     <value>Friend Code</value>
+  </data>
+  <data name="gameInformation" xml:space="preserve">
+    <value>Game Information</value>
   </data>
   <data name="gameMode" xml:space="preserve">
     <value>Game mode</value>
@@ -179,6 +197,9 @@
   </data>
   <data name="joinLobby" xml:space="preserve">
     <value>Join Lobby</value>
+  </data>
+  <data name="languageSettings" xml:space="preserve">
+    <value>Language Settings</value>
   </data>
   <data name="leaderboard" xml:space="preserve">
     <value>Leaderboard</value>
@@ -231,6 +252,9 @@
   <data name="requests" xml:space="preserve">
     <value>Requests</value>
   </data>
+  <data name="saveChanges" xml:space="preserve">
+    <value>Save Changes</value>
+  </data>
   <data name="searchPublicLobby" xml:space="preserve">
     <value>Search public lobby</value>
   </data>
@@ -243,6 +267,12 @@
   <data name="socials" xml:space="preserve">
     <value>Socials</value>
   </data>
+  <data name="support" xml:space="preserve">
+    <value>Support:</value>
+  </data>
+  <data name="supportInfo" xml:space="preserve">
+    <value>Invite me a coffee!</value>
+  </data>
   <data name="totalScore" xml:space="preserve">
     <value>Total Score</value>
   </data>
@@ -251,6 +281,12 @@
   </data>
   <data name="validateEmail" xml:space="preserve">
     <value>Validate email</value>
+  </data>
+  <data name="version" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="versionInfo" xml:space="preserve">
+    <value>1.0</value>
   </data>
   <data name="victories" xml:space="preserve">
     <value>Victories</value>

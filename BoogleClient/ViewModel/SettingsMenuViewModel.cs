@@ -20,8 +20,6 @@ namespace BoogleClient.ViewModel
             LogOutCommand = new LogOutCommand(logInViewModel, userAccount);
             ShowLanguageSettingsCommand = new NavigateCommand(new NavigationService(
                 menusNavigationStore, CreateLanguageSettingsViewModel));
-            ShowDisplaySettingsCommand = new NavigateCommand(new NavigationService(
-                menusNavigationStore, CreateDisplaySettingsViewModel));
             ShowInfoCommand = new NavigateCommand(new NavigationService(
                 menusNavigationStore, CreateInfoViewModel));
             this.userAccount = userAccount;
@@ -34,12 +32,6 @@ namespace BoogleClient.ViewModel
                 this, userAccount, menusNavigationStore);
         }
 
-        private BaseViewModel CreateDisplaySettingsViewModel()
-        {
-            return new DisplaySettingsViewModel(
-                this, userAccount, menusNavigationStore);
-        }
-
         private BaseViewModel CreateLanguageSettingsViewModel()
         {
             return new LanguageSettingsViewModel(
@@ -47,7 +39,6 @@ namespace BoogleClient.ViewModel
         }
 
         public ICommand ShowLanguageSettingsCommand { get; set; }
-        public ICommand ShowDisplaySettingsCommand { get; set; }
         public ICommand ShowInfoCommand { get; set; }
         public ICommand LogOutCommand { get; set; }
     }

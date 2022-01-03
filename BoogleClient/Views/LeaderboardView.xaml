@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:p="clr-namespace:BoogleClient.Properties"
-             xmlns:local="clr-namespace:BoogleClient.Views"
              mc:Ignorable="d" 
              d:DesignHeight="515" d:DesignWidth="1040">
     <Grid>
@@ -13,17 +12,57 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label
-            Content="{x:Static p:Resources.leaderboard}"
-            Style="{StaticResource TitleText}"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Foreground="{StaticResource BlackBrush}"/>
+        <StackPanel
+            Background="{StaticResource BlackBrush}"
+            VerticalAlignment="Center" Height="100">
+            <Label
+                Content="{x:Static p:Resources.leaderboard}"
+                Style="{StaticResource TitleText}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0,20,0,0"
+                Foreground="{StaticResource WhiteBrush}"/>
+        </StackPanel>
 
         <StackPanel Grid.Row="1">
-            <StackPanel Orientation="Vertical">
-                
+            <StackPanel
+                Height="50"
+                Margin="120,30,120,0"
+                Orientation="Horizontal">
+                <Label
+                    Style="{StaticResource BodyText}"
+                    Width="300"
+                    FontSize="25"
+                    Content="Player Name"/>
+                <Label
+                    Style="{StaticResource BodyText}"
+                    FontSize="25"
+                    Width="170"
+                    Content="Games Played"/>
+                <Label
+                    Style="{StaticResource BodyText}"
+                    Width="170"
+                    HorizontalContentAlignment="Right"
+                    FontSize="25"
+                    Content="Won Matches"/>
+                <Label
+                    Style="{StaticResource BodyText}"
+                    Width="160"
+                    FontSize="25"
+                    HorizontalContentAlignment="Right"
+                    Content="Total Points"/>
             </StackPanel>
+            <ListView
+                ItemContainerStyle="{StaticResource TopPlayersPreview}"
+                HorizontalAlignment="Center"
+                Margin="0,10,0,0"
+                Height="300"
+                Width="950">
+                <ListViewItem />
+                <ListViewItem />
+                <ListViewItem />
+                <ListViewItem />
+            </ListView>
         </StackPanel>
     </Grid>
 </UserControl>

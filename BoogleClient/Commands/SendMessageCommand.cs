@@ -1,6 +1,5 @@
 ﻿using BoogleClient.BoggleServices;
 using BoogleClient.ViewModel;
-using System;
 using System.ComponentModel;
 using System.ServiceModel;
 using System.Windows;
@@ -38,6 +37,10 @@ namespace BoogleClient.Commands
             {
                 MessageBox.Show("Error al establecer conexión con el servidor",
                     "Error de conexión");
+            }
+            finally
+            {
+                lobbyViewModel.MessageText = string.Empty;
             }
         }
 

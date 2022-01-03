@@ -63,7 +63,8 @@ namespace BoogleClient.ViewModel
 
         private BaseViewModel CreateMainMenuView()
         {
-            return new MainMenuViewModel(windowNavigationStore, userAccount, logInViewModel);
+            return new MainMenuViewModel(
+                windowNavigationStore, userAccount, logInViewModel);
         }
 
         public string MessageText

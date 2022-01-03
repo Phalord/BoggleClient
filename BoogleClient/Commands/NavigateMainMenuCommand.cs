@@ -1,12 +1,6 @@
 ﻿using BoogleClient.Services;
-using BoogleClient.Stores;
 using BoogleClient.ViewModel;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BoogleClient.Commands
 {
@@ -32,7 +26,7 @@ namespace BoogleClient.Commands
         {
             bool canExecute = false;
 
-            if (!mainMenuViewModel.CurrentMenuSelected.Equals(newViewModel))
+            if (!mainMenuViewModel.CurrentMenuSelected.GetType().Equals(newViewModel.GetType()))
             {
                 canExecute = true;
             }

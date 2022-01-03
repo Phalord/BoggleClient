@@ -19,6 +19,7 @@
                 <ResourceDictionary Source="Resources/Styles/LobbyPreviewCard.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/PlayerLobbyCard.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/MessageView.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/TopPlayersPreview.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <FontFamily x:Key="MaterialDesignFont">pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto</FontFamily>
 
