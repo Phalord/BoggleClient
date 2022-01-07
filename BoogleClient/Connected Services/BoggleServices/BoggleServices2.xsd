@@ -33,4 +33,43 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PublicLobbyPreviewDTO" nillable="true" type="tns:PublicLobbyPreviewDTO" />
+  <xs:complexType name="ArrayOfTopPlayerDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TopPlayerDTO" nillable="true" type="tns:TopPlayerDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTopPlayerDTO" nillable="true" type="tns:ArrayOfTopPlayerDTO" />
+  <xs:complexType name="TopPlayerDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PlayedMatches" type="xs:int" />
+      <xs:element minOccurs="0" name="PlayerNickname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalScore" type="xs:int" />
+      <xs:element minOccurs="0" name="WonMatches" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TopPlayerDTO" nillable="true" type="tns:TopPlayerDTO" />
+  <xs:complexType name="PlayerOverviewDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GamesPlayed" type="xs:int" />
+      <xs:element minOccurs="0" name="HighestScore" type="xs:int" />
+      <xs:element minOccurs="0" name="Nickname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalScore" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Victories" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlayerOverviewDTO" nillable="true" type="tns:PlayerOverviewDTO" />
+  <xs:complexType name="PlayerAnalyticsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DroppedMatches" type="xs:int" />
+      <xs:element minOccurs="0" name="HighestScore" type="xs:int" />
+      <xs:element minOccurs="0" name="LostMatches" type="xs:int" />
+      <xs:element minOccurs="0" name="Nickname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlayedMatches" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalScore" type="xs:int" />
+      <xs:element minOccurs="0" name="WonMatches" type="xs:int" />
+      <xs:element minOccurs="0" name="WordsFound" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlayerAnalyticsDTO" nillable="true" type="tns:PlayerAnalyticsDTO" />
 </xs:schema>

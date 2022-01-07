@@ -1,31 +1,58 @@
 ﻿using BoogleClient.BoggleServices;
+using BoogleClient.Commands;
 using BoogleClient.Stores;
-using System;
+using System.Windows.Input;
 
 namespace BoogleClient.ViewModel
 {
-    internal class ProfileViewModel : BaseViewModel
+    internal class ProfileViewModel : BaseViewModel, IProfileManagerContractCallback
     {
         private readonly NavigationStore profileNavigationStore;
-        private readonly NavigationStore windowNavigationStore;
-        private readonly AccountDTO userAccount;
 
-        public ProfileViewModel(
-            NavigationStore windowNavigationStore,
-            AccountDTO userAccount)
+        public ProfileViewModel(AccountDTO userAccount)
         {
-            this.windowNavigationStore = windowNavigationStore;
-            this.userAccount = userAccount;
+            profileNavigationStore = new NavigationStore();
+            profileNavigationStore
+                .CurrentViewModelChanged += OnCurrentViewModelChanged;
 
-            profileNavigationStore = new NavigationStore()
-            {
-                CurrentViewModel = CreateProfileOverviewViewModel()
-            };
+            DisplayAnalyticsViewCommand = new RetrievePlayerAnalytics(this, userAccount);
+            DisplayProfileOverviewCommand = new RetrieveProfileOverview(this, userAccount);
+
+            DisplayProfileOverviewCommand.Execute(null);
         }
 
-        private BaseViewModel CreateProfileOverviewViewModel()
+        public BaseViewModel CurrentViewSelected => profileNavigationStore.CurrentViewModel;
+        public ICommand DisplayProfileOverviewCommand { get; set; }
+        public ICommand DisplayAnalyticsViewCommand { get; set; }
+
+        private BaseViewModel CreateProfileOverviewViewModel(
+            PlayerOverviewDTO playerOverviewDTO)
         {
-            return new ProfileOverviewViewModel();
+            return new ProfileOverviewViewModel(playerOverviewDTO); ;
+        }
+
+        private BaseViewModel CreateProfileAnalyticsViewModel(
+            PlayerAnalyticsDTO playerAnalyticsDTO)
+        {
+            return new ProfileAnalyticsViewModel(playerAnalyticsDTO);
+        }
+
+        public void DisplayPlayerOverview(PlayerOverviewDTO playerOverviewDTO)
+        {
+            profileNavigationStore.CurrentViewModel =
+                CreateProfileOverviewViewModel(playerOverviewDTO);
+                
+        }
+
+        public void DisplayPlayerAnalytics(PlayerAnalyticsDTO playerAnalyticsDTO)
+        {
+            profileNavigationStore.CurrentViewModel =
+                CreateProfileAnalyticsViewModel(playerAnalyticsDTO);
+        }
+
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewSelected));
         }
     }
 }

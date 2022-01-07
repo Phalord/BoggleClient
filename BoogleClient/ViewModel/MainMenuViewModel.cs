@@ -74,12 +74,12 @@ namespace BoogleClient.ViewModel
 
         private LeaderboardViewModel CreateLeaderboardViewModel()
         {
-            return new LeaderboardViewModel();
+            return new LeaderboardViewModel(userAccount);
         }
 
         private ProfileViewModel CreateProfileViewModel()
         {
-            return new ProfileViewModel(windowNavigationStore, userAccount);
+            return new ProfileViewModel(userAccount);
         }
 
         private TabNavigationService CreateTabNavigationService(Func<BaseViewModel> createViewModel)

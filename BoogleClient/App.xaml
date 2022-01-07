@@ -62,6 +62,12 @@
             <DataTemplate DataType="{x:Type viewModel:LobbyViewModel}">
                 <view:LobbyView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ProfileOverviewViewModel}">
+                <view:ProfileOverviewView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ProfileAnalyticsViewModel}">
+                <view:ProfileAnalyticsView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

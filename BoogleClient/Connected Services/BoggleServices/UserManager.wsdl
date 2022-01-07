@@ -87,6 +87,64 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILeaderboardManagerContract_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IProfileManagerContract_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8130/BoggleServices?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -189,6 +247,33 @@
   <wsdl:message name="ILobbyManagerContract_UpdateLobby_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateLobbyResponse" />
   </wsdl:message>
+  <wsdl:message name="ILeaderboardManagerContract_RetrieveTopPlayers_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveTopPlayers" />
+  </wsdl:message>
+  <wsdl:message name="ILeaderboardManagerContract_DisplayTopPlayers_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:DisplayTopPlayers" />
+  </wsdl:message>
+  <wsdl:message name="ILeaderboardManagerContract_DisplayTopPlayers_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:DisplayTopPlayersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManagerContract_RetreivePlayerOverview_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetreivePlayerOverview" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManagerContract_RetreivePlayerAnalytics_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetreivePlayerAnalytics" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManagerContract_DisplayPlayerOverview_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:DisplayPlayerOverview" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManagerContract_DisplayPlayerOverview_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:DisplayPlayerOverviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManagerContract_DisplayPlayerAnalytics_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:DisplayPlayerAnalytics" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManagerContract_DisplayPlayerAnalytics_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:DisplayPlayerAnalyticsResponse" />
+  </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="IUserManagerContract">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="LogIn">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagerContract/LogIn" message="tns:IUserManagerContract_LogIn_InputMessage" />
@@ -268,6 +353,31 @@
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdateLobby">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagerContract/UpdateLobby" message="tns:ILobbyManagerContract_UpdateLobby_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagerContract/UpdateLobbyResponse" message="tns:ILobbyManagerContract_UpdateLobby_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType msc:usingSession="true" name="ILeaderboardManagerContract">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RetrieveTopPlayers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILeaderboardManagerContract/RetrieveTopPlayers" message="tns:ILeaderboardManagerContract_RetrieveTopPlayers_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DisplayTopPlayers">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILeaderboardManagerContract/DisplayTopPlayers" message="tns:ILeaderboardManagerContract_DisplayTopPlayers_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILeaderboardManagerContract/DisplayTopPlayersResponse" message="tns:ILeaderboardManagerContract_DisplayTopPlayers_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType msc:usingSession="true" name="IProfileManagerContract">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RetreivePlayerOverview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfileManagerContract/RetreivePlayerOverview" message="tns:IProfileManagerContract_RetreivePlayerOverview_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RetreivePlayerAnalytics">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfileManagerContract/RetreivePlayerAnalytics" message="tns:IProfileManagerContract_RetreivePlayerAnalytics_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DisplayPlayerOverview">
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfileManagerContract/DisplayPlayerOverview" message="tns:IProfileManagerContract_DisplayPlayerOverview_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfileManagerContract/DisplayPlayerOverviewResponse" message="tns:IProfileManagerContract_DisplayPlayerOverview_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DisplayPlayerAnalytics">
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfileManagerContract/DisplayPlayerAnalytics" message="tns:IProfileManagerContract_DisplayPlayerAnalytics_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfileManagerContract/DisplayPlayerAnalyticsResponse" message="tns:IProfileManagerContract_DisplayPlayerAnalytics_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManagerContract" type="tns:IUserManagerContract">
@@ -441,13 +551,66 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILeaderboardManagerContract" type="tns:ILeaderboardManagerContract">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILeaderboardManagerContract_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RetrieveTopPlayers">
+      <soap12:operation soapAction="http://tempuri.org/ILeaderboardManagerContract/RetrieveTopPlayers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="DisplayTopPlayers">
+      <soap12:operation soapAction="http://tempuri.org/ILeaderboardManagerContract/DisplayTopPlayers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IProfileManagerContract" type="tns:IProfileManagerContract">
+    <wsp:PolicyReference URI="#NetTcpBinding_IProfileManagerContract_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RetreivePlayerOverview">
+      <soap12:operation soapAction="http://tempuri.org/IProfileManagerContract/RetreivePlayerOverview" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RetreivePlayerAnalytics">
+      <soap12:operation soapAction="http://tempuri.org/IProfileManagerContract/RetreivePlayerAnalytics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="DisplayPlayerOverview">
+      <soap12:operation soapAction="http://tempuri.org/IProfileManagerContract/DisplayPlayerOverview" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisplayPlayerAnalytics">
+      <soap12:operation soapAction="http://tempuri.org/IProfileManagerContract/DisplayPlayerAnalytics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="BoggleServices">
     <wsdl:port name="NetTcpBinding_IUserManagerContract" binding="tns:NetTcpBinding_IUserManagerContract">
       <soap12:address location="net.tcp://localhost:8140/BoggleServices/UserManager" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8140/BoggleServices/UserManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>SANDOVAL-CORUS\alex_</Upn>
+          <Upn>ESCRITORIO-FALA\alex_</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -456,7 +619,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8140/BoggleServices/GameManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>SANDOVAL-CORUS\alex_</Upn>
+          <Upn>ESCRITORIO-FALA\alex_</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -465,7 +628,25 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8140/BoggleServices/LobbyManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>SANDOVAL-CORUS\alex_</Upn>
+          <Upn>ESCRITORIO-FALA\alex_</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILeaderboardManagerContract" binding="tns:NetTcpBinding_ILeaderboardManagerContract">
+      <soap12:address location="net.tcp://localhost:8140/BoggleServices/LeaderboardManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8140/BoggleServices/LeaderboardManager</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>ESCRITORIO-FALA\alex_</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IProfileManagerContract" binding="tns:NetTcpBinding_IProfileManagerContract">
+      <soap12:address location="net.tcp://localhost:8140/BoggleServices/ProfileManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8140/BoggleServices/ProfileManager</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>ESCRITORIO-FALA\alex_</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

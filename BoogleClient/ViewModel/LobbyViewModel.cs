@@ -3,7 +3,6 @@ using BoogleClient.Commands;
 using BoogleClient.Services;
 using BoogleClient.Stores;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Input;
@@ -67,6 +66,13 @@ namespace BoogleClient.ViewModel
                 windowNavigationStore, userAccount, logInViewModel);
         }
 
+        public void UpdateLobby(Lobby lobby)
+        {
+            this.lobby = lobby;
+            MessageHistory = new ObservableCollection<Message>(lobby.MessageHistory);
+            PlayersInLobby = new ObservableCollection<Player>(lobby.Players);
+        }
+
         public string MessageText
         {
             get => messageText;
@@ -94,7 +100,6 @@ namespace BoogleClient.ViewModel
                 OnPropertyChanged(nameof(LobbyCode));
             }
         }
-
         public ObservableCollection<Player> PlayersInLobby
         {
             get => players;
@@ -109,7 +114,6 @@ namespace BoogleClient.ViewModel
                 OnPropertyChanged(nameof(PlayersInLobby));
             }
         }
-
         public ObservableCollection<Message> MessageHistory
         {
             get => messageHistory;
@@ -123,13 +127,6 @@ namespace BoogleClient.ViewModel
 
                 OnPropertyChanged(nameof(MessageHistory));
             }
-        }
-
-        public void UpdateLobby(Lobby lobby)
-        {
-            this.lobby = lobby;
-            MessageHistory = new ObservableCollection<Message>(lobby.MessageHistory);
-            PlayersInLobby = new ObservableCollection<Player>(lobby.Players);
         }
 
         //public ObservableCollection<InvitesDTO> InvitesSent { get; set; }

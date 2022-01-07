@@ -115,6 +115,8 @@
     <Compile Include="Commands\NavigateMainMenuCommand.cs" />
     <Compile Include="Commands\NavigateTabCommand.cs" />
     <Compile Include="Commands\RefreshPublicLobbiesCommand.cs" />
+    <Compile Include="Commands\RetrievePlayerAnalytics.cs" />
+    <Compile Include="Commands\RetrieveProfileOverview.cs" />
     <Compile Include="Commands\ScrollNextGameModeCommand.cs" />
     <Compile Include="Commands\ScrollNextNumberOfPlayersCommand.cs" />
     <Compile Include="Commands\ScrollPreviousGameModeCommand.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\PlayOptionsViewModel.cs" />
+    <Compile Include="ViewModel\ProfileAnalyticsViewModel.cs" />
     <Compile Include="ViewModel\ProfileOverviewViewModel.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\RegisterFormViewModel.cs" />
@@ -181,6 +184,9 @@
     </Compile>
     <Compile Include="Views\PlayOptionsView.xaml.cs">
       <DependentUpon>PlayOptionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProfileAnalyticsView.xaml.cs">
+      <DependentUpon>ProfileAnalyticsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProfileOverviewView.xaml.cs">
       <DependentUpon>ProfileOverviewView.xaml</DependentUpon>
@@ -285,6 +291,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PlayOptionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProfileAnalyticsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
